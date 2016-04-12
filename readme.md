@@ -30,7 +30,8 @@ getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
 
 Type: `string`
 
-The youtube or vimeo url or embed code from which you want to find the video id.
+The youtube or vimeo url or embed code from which you want to find the video id. See the
+[Patterns section](https://github.com/radiovisual/get-video-id#patterns) to see the formats that can be supplied.
 
 ## Patterns
 
