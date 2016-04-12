@@ -1,6 +1,18 @@
 import test from 'ava';
 import fn from './';
 
+/**
+ *  Vimeo should be able to find these patterns:
+ *
+ *  // urls
+ * 	https://vimeo.com/*
+ *  https://player.vimeo.com/video/*
+ *
+ *  // iframe
+ *  <iframe src="https://player.vimeo.com/video/97682350"
+ *
+ */
+
 test('gets vimeo id', t => {
 	t.is(fn('https://player.vimeo.com/video/123450987'), '123450987');
 	t.is(fn('https://vimeo.com/1230897'), '1230897');
@@ -10,6 +22,43 @@ test('gets vimeo id from iframe', t => {
 	const str = '<iframe src="https://player.vimeo.com/video/97682350" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/97682350">Todo list application utilizing the Swift programming language</a> from <a href="https://vimeo.com/user27750098">Rex Fatahi</a> on <a href="https://vimeo.com">Vimeo</a>.</p>';
 	t.is(fn(str), '97682350');
 });
+
+/**
+ * Youtube should be able to find these patterns:
+ *
+ *  // shortcodes
+ *  http://youtu.be/*?
+ *  https://youtu.be/*
+ *  http://youtu.be/*
+ *  youtube://
+ *
+ *  // /v/ or /vi/
+ *  http://www.youtube.com/v/*
+ *  http://youtube.com/vi/*?
+ *  http://youtube.com/v/*?
+ *
+ *  // v= or vi=
+ *  http://www.youtube.com/ytscreeningroom?v=*
+ *  http://www.youtube.com/watch?v=*?&
+ *  https://www.youtube.com/watch?v=*
+ *  http://youtube.com/watch?vi=*&
+ *  http://youtube.com/?vi=*&
+ *  http://youtube.com/?v=*
+ *
+ *  // embed
+ *  http://www.youtube.com/embed/*?
+ *  www.youtube-nocookie.com/embed/*?
+ *  https://www.youtube.com/embed/*
+ *
+ *  // user
+ *  http://www.youtube.com/user/username#p/a/u/2/*
+ *  http://www.youtube.com/user/username#p/u/1/*?
+ *  http://www.youtube.com/user/username#p/u/1/*
+ *
+ *  // iframe embed
+ *  <iframe width="560" height="315" src="https://www.youtube.com/embed/*" frameborder="0" allowfullscreen></iframe>
+ *
+ */
 
 test('gets youtube id from iframe', t => {
 	const str = '<iframe width="560" height="315" src="https://www.youtube.com/embed/97682350" frameborder="0" allowfullscreen></iframe>';
