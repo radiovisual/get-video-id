@@ -49,34 +49,37 @@ function vimeo(str) {
  *
  *	Can extract the id (*) from the following formats:
  *
- *	// shortcode
- *	youtube://*
- *	https://youtu.be/*
- *	http://youtu.be/*
- *	http://youtu.be/*?
+ *  // shortcodes
+ *  http://youtu.be/*?
+ *  https://youtu.be/*
+ *  http://youtu.be/*
+ *  youtube://
  *
- * 	// /v/ or /vi/
- *	http://www.youtube.com/v/*
- *	http://youtube.com/v/*?
- *	http://youtube.com/vi/*?
+ *  // /v/ or /vi/
+ *  http://www.youtube.com/v/*
+ *  http://youtube.com/vi/*?
+ *  http://youtube.com/v/*?
  *
- *	// v= or vi=
- *	http://www.youtube.com/ytscreeningroom?v=*
- *	https://www.youtube.com/watch?v=*
- *	http://www.youtube.com/watch?v=*?&
- *	http://youtube.com/?v=*
- *	http://youtube.com/?vi=*&
- *	http://youtube.com/watch?vi=*&
+ *  // v= or vi=
+ *  http://www.youtube.com/ytscreeningroom?v=*
+ *  http://www.youtube.com/watch?v=*?&
+ *  https://www.youtube.com/watch?v=*
+ *  http://youtube.com/watch?vi=*&
+ *  http://youtube.com/?vi=*&
+ *  http://youtube.com/?v=*
  *
- *	// embed
- *	https://www.youtube.com/embed/*
- *	www.youtube-nocookie.com/embed/*?
- *	http://www.youtube.com/embed/*?rel=0
+ *  // embed
+ *  http://www.youtube.com/embed/*?
+ *  www.youtube-nocookie.com/embed/*?
+ *  https://www.youtube.com/embed/*
  *
- *	// user
- *	http://www.youtube.com/user/username#p/u/1/*
- *	http://www.youtube.com/user/username#p/a/u/2/*
- *	http://www.youtube.com/user/username#p/u/1/*?
+ *  // user
+ *  http://www.youtube.com/user/username#p/a/u/2/*
+ *  http://www.youtube.com/user/username#p/u/1/*?
+ *  http://www.youtube.com/user/username#p/u/1/*
+ *
+ *  // iframe embed
+ *  <iframe width="560" height="315" src="https://www.youtube.com/embed/*" frameborder="0" allowfullscreen></iframe>
  *
  * @param {string} str - the url from which you want to extract the id
  * @returns {string|undefined}
