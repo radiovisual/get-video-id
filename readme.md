@@ -37,58 +37,62 @@ The youtube or vimeo url or embed code from which you want to find the video id.
 
 This module will extract the video id from the following url / embed patterns:
 
-**Youtube**
-
-```python
-"""
-// shortcodes
+**Youtube Shortcodes**
+```
 http://youtu.be/*?
 https://youtu.be/*
 http://youtu.be/*
 youtube://
+```
 
-// /v/ or /vi/
+**Youtube `/v/` or `/vi/`**
+```
 http://www.youtube.com/v/*
 http://youtube.com/vi/*?
 http://youtube.com/v/*?
+```
 
-// v= or vi=
+**Youtube `v=` or `vi=`**
+```
 http://www.youtube.com/ytscreeningroom?v=*
 http://www.youtube.com/watch?v=*?&
 https://www.youtube.com/watch?v=*
 http://youtube.com/watch?vi=*&
 http://youtube.com/?vi=*&
 http://youtube.com/?v=*
+```
 
-// embed
+**Youtube embed**
+```
 http://www.youtube.com/embed/*?
 www.youtube-nocookie.com/embed/*?
 https://www.youtube.com/embed/*
+```
 
-// user
+**Youtube user**
+```
 http://www.youtube.com/user/username#p/a/u/2/*
 http://www.youtube.com/user/username#p/u/1/*?
 http://www.youtube.com/user/username#p/u/1/*
-
-// iframe embed
-<iframe width="560" height="315" src="https://www.youtube.com/embed/*" frameborder="0" allowfullscreen></iframe>
-"""
 ```
 
-Note: any youtube url that has `-no-cookie` in it is also supported.
+**Youtube iframe**
+```
+<iframe width="560" height="315" src="https://www.youtube.com/embed/*" frameborder="0" allowfullscreen></iframe>
+```
 
-**Vimeo**
-
-```python
-"""
-// urls
+**Vimeo urls**
+```
 https://vimeo.com/*
 https://player.vimeo.com/video/*
-
-// iframe embed
-<iframe src="https://player.vimeo.com/video/*" ...
-"""
 ```
+
+**Vimeo iframe**
+```
+<iframe src="https://player.vimeo.com/video/*" ...
+```
+
+Note: Any Youtube url that has `-no-cookie` in it is also supported.
 
 ## License
 
