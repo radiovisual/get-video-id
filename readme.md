@@ -4,6 +4,10 @@
 
 [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
+This module will extract the Youtube or Vimeo Video ID from any known Youtube or Vimeo url pattern, including embed strings.
+*If you discover a Youtube or Vimeo url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues)
+to report it, or [submit a Pull Request](https://github.com/radiovisual/get-video-id/pull/new/master). Thanks!*
+
 ## Install
 
 ```
@@ -13,12 +17,13 @@ $ npm install --save get-video-id
 
 ## Usage
 
+Simply supply the module with any known Youtube or Vimeo url (or embed string) and the ID will be extracted:
+
 ```js
 const getVideoId = require('get-video-id');
 
 getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
 //=> '8rSH8-pbHZ0'
-
 ```
 
 
@@ -35,7 +40,8 @@ The youtube or vimeo url or embed code from which you want to find the video id.
 
 ## Patterns
 
-This module will extract the video id from the following url / embed patterns:
+This module will extract the video id from the url / embed patterns below.  
+(where `*` = the id and `?` or `&` = parameter strings):
 
 **Youtube Shortcodes**
 ```
@@ -65,7 +71,6 @@ http://youtube.com/?v=*
 **Youtube embed**
 ```
 http://www.youtube.com/embed/*?
-www.youtube-nocookie.com/embed/*?
 https://www.youtube.com/embed/*
 ```
 
@@ -81,6 +86,11 @@ http://www.youtube.com/user/username#p/u/1/*
 <iframe width="560" height="315" src="https://www.youtube.com/embed/*" frameborder="0" allowfullscreen></iframe>
 ```
 
+**Youtube `-nocookie`**
+```
+www.youtube-nocookie.com/embed/*?
+```
+
 **Vimeo urls**
 ```
 https://vimeo.com/*
@@ -91,8 +101,6 @@ https://player.vimeo.com/video/*
 ```
 <iframe src="https://player.vimeo.com/video/*" ...
 ```
-
-Note: Any Youtube url that has `-no-cookie` in it is also supported.
 
 ## License
 
