@@ -1,6 +1,6 @@
 {
   "name": "get-video-id",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Get the Youtube or Vimeo video id from a url or embed string.",
   "license": "MIT",
   "repository": "radiovisual/get-video-id",
@@ -20,17 +20,22 @@
     "index.js"
   ],
   "keywords": [
+    "RegExp",
+    "regexp",
     "iframe",
     "embed",
     "url",
     "vimeo",
     "youtube",
     "from",
+    "string",
     "id",
     "video",
     "read",
     "retrieve",
     "fetch",
+    "parse",
+    "extract",
     "get"
   ],
   "dependencies": {},
