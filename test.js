@@ -107,11 +107,11 @@ test('handles youtube /user/ formats', t => {
 	t.is(fn('http://www.youtube.com/user/username#p/u/1/ABC12302?rel=0'), 'ABC12302');
 });
 
-test('removes -no-cookie', t => {
-	t.is(fn('http://www.youtube-no-cookie.com/ytscreeningroom?v=ABC1230'), 'ABC1230');
-	t.is(fn('http://www.youtube-no-cookie.com/v/ABC1230'), 'ABC1230');
-	t.is(fn('http://www.youtube-no-cookie.com/user/username#p/u/1/ABC1230'), 'ABC1230');
-	t.is(fn('https://www.youtube-no-cookie.com/embed/ABC1230'), 'ABC1230');
+test('removes -nocookie', t => {
+	t.is(fn('http://www.youtube-nocookie.com/ytscreeningroom?v=ABC12300'), 'ABC12300');
+	t.is(fn('http://www.youtube-nocookie.com/v/ABC12301'), 'ABC12301');
+	t.is(fn('http://www.youtube-nocookie.com/user/username#p/u/1/ABC12302'), 'ABC12302');
+	t.is(fn('https://www.youtube-nocookie.com/embed/ABC12303'), 'ABC12303');
 });
 
 test('expects a string', t => {

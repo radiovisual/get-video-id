@@ -9,7 +9,7 @@ module.exports = function (str) {
 		str = getSrcFromEmbedCode(str);
 	}
 
-	// remove the '-no-cookie' flag from youtube urls
+	// remove the '-nocookie' flag from youtube urls
 	str = str.replace('-nocookie', '');
 
 	var id;
