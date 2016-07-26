@@ -18,6 +18,8 @@ module.exports = function (str) {
 		id = youtube(str);
 	} else if (/vimeo/.test(str)) {
 		id = vimeo(str);
+	} else if (/vine/.test(str)) {
+		id = vine(str);
 	}
 	return id;
 };
@@ -36,6 +38,17 @@ function vimeo(str) {
 		}
 	}
 	return id;
+}
+
+/**
+ * Get the vine id.
+ * @param {string} str - the url from which you want to extract the id
+ * @returns {string|undefined}
+ */
+function vine(str) {
+	var regex = /https:\/\/vine\.co\/v\/([a-zA-Z0-9]*)\/?/;
+	var matches = regex.exec(str);
+	return matches && matches[1];
 }
 
 /**

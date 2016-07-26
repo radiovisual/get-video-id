@@ -1,11 +1,11 @@
 # get-video-id 
 
-> Get the Youtube or Vimeo video id from a url or embed string.
+> Get the Youtube, Vimeo, or Vine video id from a url or embed string.
 
 [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
-This module will extract the Youtube or Vimeo Video ID from any known Youtube or Vimeo url pattern, including embed strings.
-*If you discover a Youtube or Vimeo url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues)
+This module will extract the Youtube, Vimeo, or Vine Video ID from any known Youtube or Vimeo url pattern, including embed strings.
+*If you discover a Youtube, Vimeo, or Vine url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues)
 to report it, or [submit a Pull Request](https://github.com/radiovisual/get-video-id/pull/new/master). Thanks!*
 
 ## Install
@@ -35,7 +35,7 @@ getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
 
 Type: `string`
 
-The youtube or vimeo url or embed code from which you want to find the video id. See the
+The youtube, vimeo, or vine url or embed code from which you want to find the video id. See the
 [Patterns section](https://github.com/radiovisual/get-video-id#patterns) to see the formats that can be supplied.
 
 ## Patterns
@@ -100,6 +100,11 @@ https://player.vimeo.com/video/*
 **Vimeo iframe**
 ```
 <iframe src="https://player.vimeo.com/video/*" ...
+```
+
+**Vine urls**
+```
+https://vine.co/v/*
 ```
 
 ## License
