@@ -24,6 +24,20 @@ test('gets vimeo id from iframe', t => {
 });
 
 /**
+ *  Vine should be able to find these patterns:
+ *
+ *  // urls
+ * 	https://vine.co/v/*
+ */
+
+test('gets vine id', t => {
+	t.is(fn('https://vine.co/v/e5vIvmV5v9J'), 'e5vIvmV5v9J');
+	t.is(fn('https://vine.co/v/e5vIvmV5v9J/'), 'e5vIvmV5v9J');
+	t.is(fn('https://vine.co/v/e5vIvmV5v9J/embed'), 'e5vIvmV5v9J');
+	t.is(fn('https://vine.co/v/e5vIvmV5v9J/card?api=1/'), 'e5vIvmV5v9J');
+});
+
+/**
  * Youtube should be able to find these patterns:
  *
  *  // shortcodes
