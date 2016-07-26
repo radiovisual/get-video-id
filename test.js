@@ -27,7 +27,7 @@ test('gets vimeo id from iframe', t => {
  *  Vine should be able to find these patterns:
  *
  *  // urls
- * 	https://vine.co/v/*
+ *  https://vine.co/v/*
  *
  * 	// iframe
  * 	<iframe src="https://vine.co/v/bjpPT1xwg6B/embed/simple"
