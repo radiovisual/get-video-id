@@ -4,7 +4,8 @@
 
 [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
-This module will extract the Youtube, Vimeo, or Vine Video ID from any known Youtube or Vimeo url pattern, including embed strings.
+This module will extract the Youtube, Vimeo, or Vine Video ID from any known Youtube, Vimeo or Vine url patterns, including embed strings.
+
 *If you discover a Youtube, Vimeo, or Vine url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues)
 to report it, or [submit a Pull Request](https://github.com/radiovisual/get-video-id/pull/new/master). Thanks!*
 
