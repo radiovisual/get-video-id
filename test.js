@@ -29,9 +29,9 @@ test('gets vimeo id from iframe', t => {
  *  // urls
  *  https://vine.co/v/*
  *
- * 	// iframe
- * 	<iframe src="https://vine.co/v/bjpPT1xwg6B/embed/simple"
- * 	<iframe src="https://vine.co/v/bjpPT1xwg6B/embed/postcard"
+ *  // iframe
+ *  <iframe src="https://vine.co/v/bjpPT1xwg6B/embed/simple"
+ *  <iframe src="https://vine.co/v/bjpPT1xwg6B/embed/postcard"
  *
  */
 
