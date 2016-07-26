@@ -2,7 +2,7 @@
 
 module.exports = function (str) {
 	if (typeof str !== 'string') {
-		throw new TypeError('get-video-id expected a string');
+		throw new TypeError('get-video-id expects a string');
 	}
 
 	if (/<iframe/ig.test(str)) {

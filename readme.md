@@ -107,6 +107,12 @@ https://player.vimeo.com/video/*
 https://vine.co/v/*
 ```
 
+**Vine iframe**
+```
+<iframe src="https://vine.co/v/*/embed/simple" width="600" height="600" frameborder="0"></iframe>
+<iframe src="https://vine.co/v/*/embed/postcard" width="600" height="600" frameborder="0"></iframe>
+```
+
 ## License
 
 MIT © [Michael Wuergler](http://numetriclabs.com)

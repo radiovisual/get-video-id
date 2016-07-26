@@ -28,6 +28,11 @@ test('gets vimeo id from iframe', t => {
  *
  *  // urls
  * 	https://vine.co/v/*
+ *
+ * 	// iframe
+ * 	<iframe src="https://vine.co/v/bjpPT1xwg6B/embed/simple"
+ * 	<iframe src="https://vine.co/v/bjpPT1xwg6B/embed/postcard"
+ *
  */
 
 test('gets vine id', t => {
@@ -35,6 +40,18 @@ test('gets vine id', t => {
 	t.is(fn('https://vine.co/v/e5vIvmV5v9J/'), 'e5vIvmV5v9J');
 	t.is(fn('https://vine.co/v/e5vIvmV5v9J/embed'), 'e5vIvmV5v9J');
 	t.is(fn('https://vine.co/v/e5vIvmV5v9J/card?api=1/'), 'e5vIvmV5v9J');
+	t.is(fn('https://vine.co/v/bjpPT1xwg6B/embed/simple'), 'bjpPT1xwg6B');
+	t.is(fn('https://vine.co/v/bjpPT1xwg6B/embed/postcard?audio=1'), 'bjpPT1xwg6B');
+});
+
+test('gets vine id from simple vine iframe embeds', t => {
+	const str = '<iframe src="https://vine.co/v/bjpPT1xwg6B/embed/simple" width="600" height="600" frameborder="0"></iframe>';
+	t.is(fn(str), 'bjpPT1xwg6B');
+});
+
+test('gets vine id from postcard vine iframe embeds', t => {
+	const str = '<iframe src="https://vine.co/v/bjpPT1xwg6B/embed/postcard" width="600" height="600" frameborder="0"></iframe>';
+	t.is(fn(str), 'bjpPT1xwg6B');
 });
 
 /**
@@ -131,5 +148,5 @@ test('removes -nocookie', t => {
 test('expects a string', t => {
 	t.throws(() => {
 		fn({});
-	}, 'get-video-id expected a string');
+	}, 'get-video-id expects a string');
 });
