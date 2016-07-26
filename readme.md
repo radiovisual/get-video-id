@@ -18,7 +18,7 @@ $ npm install --save get-video-id
 
 ## Usage
 
-Simply supply the module with any known Youtube or Vimeo url (or embed string) and the ID will be extracted:
+Simply supply the module with any known Youtube, Vimeo or Vine url (or embed string) and the ID will be extracted:
 
 ```js
 const getVideoId = require('get-video-id');
@@ -32,17 +32,19 @@ getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
 
 ### getVideoId(input)
 
+Get the Video ID string.  
+
 #### input
 
 Type: `string`
 
-The youtube, vimeo, or vine url or embed code from which you want to find the video id. See the
+The youtube, vimeo, or vine url (or embed code) from which you want to find the video id. See the
 [Patterns section](https://github.com/radiovisual/get-video-id#patterns) to see the formats that can be supplied.
 
 ## Patterns
 
 This module will extract the video id from the url / embed patterns below.  
-(where `*` = the id and `?` or `&` = parameter strings):
+(where `*` is the id and `?` or `&` are parameter strings):
 
 **Youtube Shortcodes**
 ```
