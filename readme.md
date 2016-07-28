@@ -9,6 +9,8 @@ This module will extract the Youtube, Vimeo, or Vine Video ID from any known You
 *If you discover a Youtube, Vimeo, or Vine url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues)
 to report it, or [submit a Pull Request](https://github.com/radiovisual/get-video-id/pull/new/master). Thanks!*
 
+**Pull Requests are welcome** if you would like to see support for other video services.
+
 ## Install
 
 ```
