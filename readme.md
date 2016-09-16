@@ -99,6 +99,7 @@ www.youtube-nocookie.com/embed/*?
 **Vimeo urls**
 ```
 https://vimeo.com/*
+https://vimeo.com/*?
 https://player.vimeo.com/video/*
 ```
 
