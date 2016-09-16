@@ -30,6 +30,9 @@ module.exports = function (str) {
  * @returns {string|undefined}
  */
 function vimeo(str) {
+	if (str.indexOf('#') > -1) {
+		str = str.split('#')[0];
+	}
 	var id;
 	if (/https?:\/\/vimeo\.com\/[0-9]+$|https?:\/\/player\.vimeo\.com\/video\/[0-9]+$/igm.test(str)) {
 		var arr = str.split('/');

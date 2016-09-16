@@ -42,6 +42,7 @@ test('gets vine id', t => {
 	t.is(fn('https://vine.co/v/e5vIvmV5v9J/card?api=1/'), 'e5vIvmV5v9J');
 	t.is(fn('https://vine.co/v/bjpPT1xwg6B/embed/simple'), 'bjpPT1xwg6B');
 	t.is(fn('https://vine.co/v/bjpPT1xwg6B/embed/postcard?audio=1'), 'bjpPT1xwg6B');
+	t.is(fn('https://vimeo.com/140542479#t=0m3s'), '140542479');
 });
 
 test('gets vine id from simple vine iframe embeds', t => {
