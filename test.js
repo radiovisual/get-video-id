@@ -91,6 +91,10 @@ test('gets vine id from postcard vine iframe embeds', t => {
  *  // iframe embed
  *  <iframe width="560" height="315" src="https://www.youtube.com/embed/*" frameborder="0" allowfullscreen></iframe>
  *
+ *  // attribution_link
+ *  http://www.youtube.com/attribution_link?u=%2Fwatch%3Fv%3D*%26
+ *  https://www.youtube.com/attribution_link?u=%2Fwatch%3Fv%3D*%26
+ *
  */
 
 test('gets youtube id from iframe', t => {
@@ -145,6 +149,11 @@ test('removes -nocookie', t => {
 	t.is(fn('http://www.youtube-nocookie.com/v/ABC12301'), 'ABC12301');
 	t.is(fn('http://www.youtube-nocookie.com/user/username#p/u/1/ABC12302'), 'ABC12302');
 	t.is(fn('https://www.youtube-nocookie.com/embed/ABC12303'), 'ABC12303');
+});
+
+test('handles youtube attribution_links', t => {
+	t.is(fn('http://www.youtube.com/attribution_link?u=%2Fwatch%3Fv%3DABC12300%26feature%3Dshare&a=JdfC0C9V6ZI'), 'ABC12300');
+	t.is(fn('https://www.youtube.com/attribution_link?a=JdfC0C9V6ZI&u=%2Fwatch%3Fv%3DABC12301%26feature%3Dshare'), 'ABC12301');
 });
 
 test('expects a string', t => {

@@ -96,6 +96,11 @@ http://www.youtube.com/user/username#p/u/1/*
 www.youtube-nocookie.com/embed/*?
 ```
 
+**Youtube attribution_link**
+```
+http://www.youtube.com/attribution_link?u=%2Fwatch%3Fv%3D*%26
+```
+
 **Vimeo urls**
 ```
 https://vimeo.com/*

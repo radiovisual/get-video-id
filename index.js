@@ -99,6 +99,13 @@ function youtube(str) {
 		var elements = str.split('/');
 		return stripParameters(elements.pop());
 	}
+
+	// attribution_link
+	var attrreg = /\/attribution_link\?.*v%3D([^%&]*)(%26|&|$)/;
+
+	if (attrreg.test(str)) {
+		return str.match(attrreg)[1];
+	}
 }
 
 /**
