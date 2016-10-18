@@ -1,4 +1,4 @@
-# get-video-id 
+# get-video-id
 
 > Get the Youtube, Vimeo, or Vine video id from a url or embed string.
 
@@ -96,9 +96,13 @@ http://www.youtube.com/user/username#p/u/1/*
 www.youtube-nocookie.com/embed/*?
 ```
 
-**Youtube attribution_link**
+**Youtube Attribution Link**
 ```
 http://www.youtube.com/attribution_link?u=%2Fwatch%3Fv%3D*%26
+http://www.youtube.com/attribution_link?u=%2Fwatch%3Fv%3D
+http://www.youtube.com/attribution_link?u=/watch?v=*&
+http://www.youtube.com/attribution_link?u=/watch?v=*
+http://www.youtube.com/attribution_link?/watch?v=*
 ```
 
 **Vimeo urls**
