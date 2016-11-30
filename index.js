@@ -12,16 +12,25 @@ module.exports = function (str) {
 	// remove the '-nocookie' flag from youtube urls
 	str = str.replace('-nocookie', '');
 
-	var id;
+	var metadata;
 
 	if (/youtube|youtu\.be/.test(str)) {
-		id = youtube(str);
+		metadata = {
+			id: youtube(str),
+			service: 'youtube'
+		};
 	} else if (/vimeo/.test(str)) {
-		id = vimeo(str);
+		metadata = {
+			id: vimeo(str),
+			service: 'vimeo'
+		};
 	} else if (/vine/.test(str)) {
-		id = vine(str);
+		metadata = {
+			id: vine(str),
+			service: 'vine'
+		};
 	}
-	return id;
+	return metadata;
 };
 
 /**
