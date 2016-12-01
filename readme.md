@@ -45,7 +45,7 @@ The YouTube, Vimeo, or Vine url (or embed code) from which you want to find the 
 
 ## Patterns
 
-This module will extract the video id from the url / embed patterns below.
+This module works on the url / embed patterns below.
 (where `*` is the id and `?` or `&` are parameter strings):
 
 **YouTube Shortcodes**
