@@ -13,12 +13,12 @@ This module will extract the YouTube, Vimeo, or Vine Video ID from any known You
 Version `2.0` introduces a new API that can handle a wider variety of use cases. The main difference is that the new API returns
 a metadata object instead of a string. The old API would simply return the video id:
 
-Version 1.1.0
+Version **1.1.0**:
 ```js
 getVideoId('https://vimeo.com/1234');
 //=> '1234'
 ```
-Version `2.0` returns an object with the id, as well as the service provider:
+Version **2.0** returns an object with the id, as well as the service provider:
 
 ```js
 getVideoId('https://vimeo.com/1234');
