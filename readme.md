@@ -13,7 +13,7 @@ This module will extract the YouTube, Vimeo, or Vine Video ID from any known You
 Version `2.0` introduces a new API that can handle a wider variety of use cases. The main difference is that the new API returns
 a metadata object instead of a string. The old API would simply return the video id:
 
-Version `1.x`
+Version 1.1.0
 ```js
 getVideoId('https://vimeo.com/1234');
 //=> '1234'
@@ -34,7 +34,7 @@ $ npm install --save get-video-id
 
 ## Usage
 
-Simply supply the module with any known YouTube, Vimeo or Vine url (or embed string) and it's metadata will be extracted:
+Simply supply the module with any known YouTube, Vimeo or Vine url (or embed string) and it's metadata (id and service) will be extracted:
 
 ```js
 const getVideoId = require('get-video-id');
@@ -51,7 +51,14 @@ getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0').id;
 
 ### getVideoId(input)
 
-Get the metadata object from a url or embed string.
+Returns a metadata object with the video id and service name:
+
+```
+{
+  id: 'String',
+  service: 'String'
+}
+```
 
 #### input
 
