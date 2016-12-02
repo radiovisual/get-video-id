@@ -20,13 +20,13 @@ $ npm install --save get-video-id
 
 ## Usage
 
-Simply supply the module with any known YouTube, Vimeo or Vine url (or embed string) and the ID will be extracted:
+Simply supply the module with any known YouTube, Vimeo or Vine url (or embed string) and it's metadata will be extracted:
 
 ```js
 const getVideoId = require('get-video-id');
 
 getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
-//=> '8rSH8-pbHZ0'
+//=> { id: '8rSH8-pbHZ0', service: 'youtube' }
 ```
 
 
@@ -34,7 +34,7 @@ getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
 
 ### getVideoId(input)
 
-Get the Video ID string.  
+Get the metadata from a url or embed string.
 
 #### input
 
@@ -45,7 +45,7 @@ The YouTube, Vimeo, or Vine url (or embed code) from which you want to find the 
 
 ## Patterns
 
-This module will extract the video id from the url / embed patterns below.  
+This module works on the url / embed patterns below.
 (where `*` is the id and `?` or `&` are parameter strings):
 
 **YouTube Shortcodes**
