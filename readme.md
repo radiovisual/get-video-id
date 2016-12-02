@@ -5,11 +5,25 @@
 [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
 This module will extract the YouTube, Vimeo, or Vine Video ID from any known YouTube, Vimeo or Vine url patterns, including embed strings.
+**Pull Requests are welcome** if you would like to see support for other video services or if you find an unsupported video url pattern.
 
-*If you discover a YouTube, Vimeo, or Vine url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues)
-to report it, or [submit a Pull Request](https://github.com/radiovisual/get-video-id/pull/new/master). Thanks!*
 
-**Pull Requests are welcome** if you would like to see support for other video services.
+## Version 2.0
+
+Version `2.0` introduces a new API that can handle a wider variety of use cases. The main difference is that the new API returns
+a metadata object instead of a string. The old API would simply return the video id:
+
+Version `1.x`
+```js
+getVideoId('https://vimeo.com/1234');
+//=> '1234'
+```
+Version `2.0` returns an object with the id, as well as the service provider:
+
+```js
+getVideoId('https://vimeo.com/1234');
+//=> { id: '1234', service: 'vimeo'}
+```
 
 ## Install
 
@@ -27,6 +41,9 @@ const getVideoId = require('get-video-id');
 
 getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
 //=> { id: '8rSH8-pbHZ0', service: 'youtube' }
+
+getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0').id;
+//=> '8rSH8-pbHZ0'
 ```
 
 
@@ -34,7 +51,7 @@ getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
 
 ### getVideoId(input)
 
-Get the metadata from a url or embed string.
+Get the metadata object from a url or embed string.
 
 #### input
 
@@ -127,6 +144,12 @@ https://vine.co/v/*
 <iframe src="https://vine.co/v/*/embed/simple" width="600" height="600" frameborder="0"></iframe>
 <iframe src="https://vine.co/v/*/embed/postcard" width="600" height="600" frameborder="0"></iframe>
 ```
+
+## Contributing
+
+If you discover a YouTube, Vimeo, or Vine url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues)
+to report it, or [submit a Pull Request](https://github.com/radiovisual/get-video-id/pull/new/master). For any submitted pull requests, please ensure
+that you include a unit test to fully cover your code contributions.
 
 ## License
 
