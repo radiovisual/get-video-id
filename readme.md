@@ -1,6 +1,6 @@
 # get-video-id
 
-> Get the YouTube, Vimeo, or Vine video id from a url or embed string.
+> Get the YouTube, Vimeo, Vine or VideoPress video id from a url or embed string.
 
 [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
