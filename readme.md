@@ -5,13 +5,13 @@
 [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
 This module will extract the YouTube, Vimeo, Vine, or VideoPress Video ID from any known YouTube, Vimeo, Vine, or VideoPress url patterns, including embed strings.
+
 **Pull Requests are welcome** if you would like to see support for other video services or if you find an unsupported video url pattern.
 
 
 ## Version 2.0
 
-Version `2.0` introduces a new API that can handle a wider variety of use cases. The main difference is that the new API returns
-a metadata object instead of a string. The old API would simply return the video id:
+Version `2.0` introduces a new API that can handle a wider variety of use cases. The main difference is that the new API returns a metadata object instead of a string. The old API would simply return the video id:
 
 Version **1.1.0**:
 ```js
@@ -166,8 +166,7 @@ https://videopress.com/embed/*
 
 ## Contributing
 
-If you discover a YouTube, Vimeo, or Vine url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues)
-to report it, or [submit a Pull Request](https://github.com/radiovisual/get-video-id/pull/new/master). For any submitted pull requests, please ensure
+If you discover a url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues) to report it, or [submit a Pull Request](https://github.com/radiovisual/get-video-id/pull/new/master). For any submitted pull requests, please ensure
 that you include a unit test to fully cover your code contributions.
 
 ## License
