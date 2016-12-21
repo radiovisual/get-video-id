@@ -29,6 +29,32 @@ test('gets vimeo metadata from iframe', t => {
 });
 
 /**
+ *  VideoPress should be able to find these patterns:
+ *
+ *  // urls
+ * 	https://videopress.com/v/*
+ *  https://videopress.com/embed/*
+ *
+ *  // iframe
+ *  <iframe src="https://videopress.com/embed/zcnJVzQF"
+ *
+ */
+
+test('gets videopress metadata from url', t => {
+	t.is(fn('https://videopress.com/v/dyrgndFq').id, 'dyrgndFq');
+	t.is(fn('https://videopress.com/v/dyrgndFq#fullscreen').id, 'dyrgndFq');
+	t.is(fn('https://videopress.com/embed/zcnJVzQz?hd=0&autoPlay=0&permalink=0&loop=0').id, 'zcnJVzQz');
+
+	t.is(fn('https://videopress.com/embed/zcnJVzQz?hd=0&autoPlay=0&permalink=0&loop=0').service, 'videopress');
+});
+
+test('gets videopress metadata from iframe', t => {
+	var str = '<iframe width="400" height="300" src="https://videopress.com/embed/zcnJVzQz?hd=0&amp;autoPlay=0&amp;permalink=0&amp;loop=0" frameborder="0" allowfullscreen="" sandbox="allow-same-origin allow-scripts allow-popups"></iframe>';
+	t.is(fn(str).id, 'zcnJVzQz');
+	t.is(fn(str).service, 'videopress');
+});
+
+/**
  *  Vine should be able to find these patterns:
  *
  *  // urls

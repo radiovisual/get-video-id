@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
-This module will extract the YouTube, Vimeo, or Vine Video ID from any known YouTube, Vimeo or Vine url patterns, including embed strings.
+This module will extract the YouTube, Vimeo, Vine, or VideoPress Video ID from any known YouTube, Vimeo, Vine, or VideoPress url patterns, including embed strings.
 **Pull Requests are welcome** if you would like to see support for other video services or if you find an unsupported video url pattern.
 
 
@@ -150,6 +150,18 @@ https://vine.co/v/*
 ```
 <iframe src="https://vine.co/v/*/embed/simple" width="600" height="600" frameborder="0"></iframe>
 <iframe src="https://vine.co/v/*/embed/postcard" width="600" height="600" frameborder="0"></iframe>
+```
+
+
+**VideoPress urls**
+```
+https://videopress.com/v/*
+https://videopress.com/embed/*
+```
+
+**VideoPress iframes**
+```
+<iframe src="https://videopress.com/embed/zcnJVzQF" width="600" height="600"></iframe>
 ```
 
 ## Contributing
