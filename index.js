@@ -29,6 +29,11 @@ module.exports = function (str) {
 			id: vine(str),
 			service: 'vine'
 		};
+	} else if (/videopress/.test(str)) {
+		metadata = {
+			id: videopress(str),
+			service: 'videopress'
+		};
 	}
 	return metadata;
 };
@@ -115,6 +120,22 @@ function youtube(str) {
 	if (attrreg.test(str)) {
 		return str.match(attrreg)[1];
 	}
+}
+
+/**
+ * Get the VideoPress id.
+ * @param {string} str - the url from which you want to extract the id
+ * @returns {string|undefined}
+ */
+function videopress(str) {
+	var idRegex;
+	if (str.indexOf('embed') > -1) {
+		idRegex = /embed\/(\w{8})/;
+		return str.match(idRegex)[1];
+	}
+
+	idRegex = /\/v\/(\w{8})/;
+	return str.match(idRegex)[1];
 }
 
 /**
