@@ -32,7 +32,7 @@ test('gets vimeo metadata from iframe', t => {
  *  VideoPress should be able to find these patterns:
  *
  *  // urls
- * 	https://videopress.com/v/*
+ *  https://videopress.com/v/*
  *  https://videopress.com/embed/*
  *
  *  // iframe
