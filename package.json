@@ -1,7 +1,7 @@
 {
   "name": "get-video-id",
-  "version": "2.1.0",
-  "description": "Get the YouTube, Vimeo or Vine video id from a url or embed string.",
+  "version": "2.1.1",
+  "description": "Get the YouTube, Vimeo, Vine or VideoPress video id from a url or embed string.",
   "license": "MIT",
   "repository": "radiovisual/get-video-id",
   "author": {
