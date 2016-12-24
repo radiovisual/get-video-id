@@ -1,4 +1,5 @@
 'use strict';
+var getSrc = require('get-src');
 
 module.exports = function (str) {
 	if (typeof str !== 'string') {
@@ -6,7 +7,7 @@ module.exports = function (str) {
 	}
 
 	if (/<iframe/ig.test(str)) {
-		str = getSrcFromEmbedCode(str);
+		str = getSrc(str);
 	}
 
 	// remove the '-nocookie' flag from youtube urls
@@ -148,18 +149,4 @@ function stripParameters(str) {
 		return str.split('?')[0];
 	}
 	return str;
-}
-
-/**
- * extract the `src` url from an embed string
- * @param embedCodeString
- * @returns {*}
- */
-function getSrcFromEmbedCode(embedCodeString) {
-	var re = /src="(.*?)"/gm;
-	var url = re.exec(embedCodeString);
-
-	if (url && url.length >= 2) {
-		return url[1];
-	}
 }
