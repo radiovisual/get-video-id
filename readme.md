@@ -134,6 +134,7 @@ http://www.youtube.com/attribution_link?/watch?v=*
 https://vimeo.com/*
 https://vimeo.com/*?
 https://player.vimeo.com/video/*
+https://player.vimeo.com/video/*?
 ```
 
 **Vimeo iframe**
