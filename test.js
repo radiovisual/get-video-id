@@ -18,6 +18,7 @@ test('gets vimeo metadata from url', t => {
 	t.is(fn('https://player.vimeo.com/video/123450987').id, '123450987');
 	t.is(fn('https://vimeo.com/1230897').id, '1230897');
 	t.is(fn('https://vimeo.com/140542479#t=0m3s').id, '140542479');
+	t.is(fn('https://player.vimeo.com/video/176337266?color=ffffff&title=0&byline=0&portrait=0&badge=0').id, '176337266');
 
 	t.is(fn('https://player.vimeo.com/video/123450987#t=0m3s').service, 'vimeo');
 });
