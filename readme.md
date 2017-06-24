@@ -135,6 +135,8 @@ https://vimeo.com/*
 https://vimeo.com/*?
 https://player.vimeo.com/video/*
 https://player.vimeo.com/video/*?
+https://www.vimeo.com/*
+https://www.vimeo.com/*?
 ```
 
 **Vimeo iframe**

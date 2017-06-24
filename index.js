@@ -13,6 +13,9 @@ module.exports = function (str) {
 	// remove the '-nocookie' flag from youtube urls
 	str = str.replace('-nocookie', '');
 
+	// remove any leading `www.`
+	str = str.replace('/www.', '/');
+
 	var metadata;
 
 	if (/youtube|youtu\.be/.test(str)) {

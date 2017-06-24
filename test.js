@@ -8,6 +8,8 @@ import fn from './';
  * 	https://vimeo.com/*
  *  https://player.vimeo.com/video/*
  *  https://vimeo.com/*?
+ *  https://www.vimeo.com/*?
+ *  https://www.vimeo.com/*
  *
  *  // iframe
  *  <iframe src="https://player.vimeo.com/video/97682350"
@@ -27,6 +29,17 @@ test('gets vimeo metadata from iframe', t => {
 	const str = '<iframe src="https://player.vimeo.com/video/97682350" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/97682350">Todo list application utilizing the Swift programming language</a> from <a href="https://vimeo.com/user27750098">Rex Fatahi</a> on <a href="https://vimeo.com">Vimeo</a>.</p>';
 	t.is(fn(str).id, '97682350');
 	t.is(fn(str).service, 'vimeo');
+});
+
+test('handles [uncommon] leading \'www\' in vimeo urls', t => {
+	t.is(fn('https://www.vimeo.com/187191771').id, '187191771');
+	t.is(fn('https://www.vimeo.com/187191771').service, 'vimeo');
+	t.is(fn('<iframe src="https://www.player.vimeo.com/video/97682350" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>').id, '97682350');
+	t.is(fn('https://www.player.vimeo.com/video/123450987').id, '123450987');
+	t.is(fn('https://www.vimeo.com/1230897').id, '1230897');
+	t.is(fn('https://www.vimeo.com/140542479#t=0m3s').id, '140542479');
+	t.is(fn('https://www.player.vimeo.com/video/176337266?color=ffffff&title=0&byline=0&portrait=0&badge=0').id, '176337266');
+	t.is(fn('https://www.player.vimeo.com/video/123450987#t=0m3s').service, 'vimeo');
 });
 
 /**
