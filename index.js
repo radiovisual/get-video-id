@@ -18,6 +18,18 @@ module.exports = function (str) {
 
 	var metadata;
 
+	// Try to handle google redirection uri
+	if (/\/\/google/.test(str)) {
+		// Find the redirection uri
+		var matches = str.match(/url=([^&]+)&/);
+
+		// Decode the found uri and replace current url string - continue with final link
+		if (matches) {
+			// Javascript can get encoded URI
+			str = decodeURIComponent(matches[1]);
+		}
+	}
+
 	if (/youtube|youtu\.be/.test(str)) {
 		metadata = {
 			id: youtube(str),

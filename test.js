@@ -226,6 +226,19 @@ test('handles youtube attribution_links', t => {
 	t.is(fn('http://www.youtube.com/attribution_link?u=/watch?v=ABC12302&feature=share&list=UUsnCjinFcybOuyJU1NFOJmg&a=LjnCygXKl21WkJdyKu9O-w').service, 'youtube');
 });
 
+test('handles youtube google link', t => {
+	t.is(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIIjAA&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DeG1uDU0rSLw&usg=AFQjCNECyDn3DQL7U6VW2CnXQQjB0gNKqA').id, 'eG1uDU0rSLw');
+	t.is(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIKDAB&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DtcaUcL8MiKk&usg=AFQjCNFrjHwQiaZ6q-w83GkDd9bNyRQvMw').id, 'tcaUcL8MiKk');
+});
+
+test('handles vimeo google link', t => {
+	t.is(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwiz9P3Aw5DVAhUDZVAKHcegCi8QuAIINDAB&url=https%3A%2F%2Fvimeo.com%2F35652044&usg=AFQjCNG0kTPdL8nC6zCi2QoZ1KVeTXH-pw').id, '35652044');
+});
+
+test('google link returns undefined if missing url parameter', t => {
+	t.is(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwiz9P3Aw5DVAhUDZVAKHcegCi8QuAIINDAB&usg=AFQjCNG0kTPdL8nC6zCi2QoZ1KVeTXH-pw'), undefined);
+});
+
 test('expects a string', t => {
 	t.throws(() => {
 		fn({});
