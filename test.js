@@ -190,6 +190,10 @@ test('handles youtube /v/ and /vi/ formats', t => {
 	t.is(fn('http://youtube.com/vi/ABC12302?feature=youtube_gdata_player').service, 'youtube');
 });
 
+test('handles youtube image vi/{id}/quality.jpg formats', t => {
+	t.is(fn('https://i.ytimg.com/vi/0okagl9U2eo/hqdefault.jpg').id, '0okagl9U2eo');
+});
+
 test('handles youtube /embed/ formats', t => {
 	t.is(fn('https://www.youtube.com/embed/ABC1230').id, 'ABC1230');
 	t.is(fn('www.youtube-nocookie.com/embed/ABC12301?rel=0').id, 'ABC12301');
@@ -226,12 +230,12 @@ test('handles youtube attribution_links', t => {
 	t.is(fn('http://www.youtube.com/attribution_link?u=/watch?v=ABC12302&feature=share&list=UUsnCjinFcybOuyJU1NFOJmg&a=LjnCygXKl21WkJdyKu9O-w').service, 'youtube');
 });
 
-test('handles youtube google link', t => {
+test('handles google redirection to youtube', t => {
 	t.is(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIIjAA&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DeG1uDU0rSLw&usg=AFQjCNECyDn3DQL7U6VW2CnXQQjB0gNKqA').id, 'eG1uDU0rSLw');
 	t.is(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIKDAB&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DtcaUcL8MiKk&usg=AFQjCNFrjHwQiaZ6q-w83GkDd9bNyRQvMw').id, 'tcaUcL8MiKk');
 });
 
-test('handles vimeo google link', t => {
+test('handles google redirection to vimeo', t => {
 	t.is(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwiz9P3Aw5DVAhUDZVAKHcegCi8QuAIINDAB&url=https%3A%2F%2Fvimeo.com%2F35652044&usg=AFQjCNG0kTPdL8nC6zCi2QoZ1KVeTXH-pw').id, '35652044');
 });
 

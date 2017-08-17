@@ -103,6 +103,11 @@ http://youtube.com/?vi=*&
 http://youtube.com/?v=*
 ```
 
+**YouTube image links `vi/*/`**
+```
+https://i.ytimg.com/vi/*/hqdefault.jpg
+```
+
 **YouTube embed**
 ```
 http://www.youtube.com/embed/*?
@@ -176,7 +181,8 @@ https://videopress.com/embed/*
 **Google redirection url**
 
 ```
-https://google.*/url?source=web&cd=1&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIIjAA&url=*&usg=AFQjCNECyDn3DQL7U6VW2CnXQQjB0gNKqA
+https://google.cz/url?source=web&url=*
+https://google.com/image?url=*
 ```
 
 ## Contributing

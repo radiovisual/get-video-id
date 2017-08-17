@@ -30,7 +30,7 @@ module.exports = function (str) {
 		}
 	}
 
-	if (/youtube|youtu\.be/.test(str)) {
+	if (/youtube|youtu\.be|i.ytimg\./.test(str)) {
 		metadata = {
 			id: youtube(str),
 			service: 'youtube'
@@ -159,13 +159,16 @@ function videopress(str) {
 }
 
 /**
- * Strip away any parameters following `?`
+ * Strip away any parameters following `?` or `/`
  * @param str
  * @returns {*}
  */
 function stripParameters(str) {
+	// Split parameters or split folder separator
 	if (str.indexOf('?') > -1) {
 		return str.split('?')[0];
+	} else if (str.indexOf('/') > -1) {
+		return str.split('/')[0];
 	}
 	return str;
 }
