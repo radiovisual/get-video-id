@@ -118,6 +118,14 @@ function youtube(str) {
 		return arr[1].split('&')[0];
 	}
 
+	// v= or vi=
+	var parameterwebp = /\/an_webp\//g;
+
+	if (parameterwebp.test(str)) {
+		var webp = str.split(parameterwebp)[1];
+		return stripParameters(webp);
+	}
+
 	// embed
 	var embedreg = /\/embed\//g;
 

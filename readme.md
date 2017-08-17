@@ -103,9 +103,10 @@ http://youtube.com/?vi=*&
 http://youtube.com/?v=*
 ```
 
-**YouTube image links `vi/*/`**
+**YouTube image links `/vi/*/` or `/an_webp/*/`**
 ```
 https://i.ytimg.com/vi/*/hqdefault.jpg
+https://i.ytimg.com/an_webp/MYDcdp-VNmQ/mqdefault_6s.webp
 ```
 
 **YouTube embed**

@@ -186,12 +186,12 @@ test('handles youtube /v/ and /vi/ formats', t => {
 	t.is(fn('http://www.youtube.com/v/ABC1230').id, 'ABC1230');
 	t.is(fn('http://youtube.com/v/ABC12301?feature=youtube_gdata_player').id, 'ABC12301');
 	t.is(fn('http://youtube.com/vi/ABC12302?feature=youtube_gdata_player').id, 'ABC12302');
-
+	t.is(fn('https://i.ytimg.com/vi/0okagl9U2eo/hqdefault.jpg').id, '0okagl9U2eo');
 	t.is(fn('http://youtube.com/vi/ABC12302?feature=youtube_gdata_player').service, 'youtube');
 });
 
-test('handles youtube image vi/{id}/quality.jpg formats', t => {
-	t.is(fn('https://i.ytimg.com/vi/0okagl9U2eo/hqdefault.jpg').id, '0okagl9U2eo');
+test('handles youtube image /an_webp/{id}/ formats', t => {
+	t.is(fn('https://i.ytimg.com/an_webp/MYDcdp-VNmQ/mqdefault_6s.webp').id, 'MYDcdp-VNmQ');
 });
 
 test('handles youtube /embed/ formats', t => {
