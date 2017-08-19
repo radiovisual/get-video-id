@@ -1,6 +1,12 @@
 import test from 'ava';
 import fn from './';
 
+test('expects a string', t => {
+	t.throws(() => {
+		fn({});
+	}, 'get-video-id expects a string');
+});
+
 /**
  *  Vimeo should be able to find these patterns:
  *
@@ -13,6 +19,12 @@ import fn from './';
  *
  *  // iframe
  *  <iframe src="https://player.vimeo.com/video/97682350"
+ *
+ *  // channels groups and albums
+ *  https://vimeo.com/channels/*
+ *  https://vimeo.com/channels/yourchannel/*
+ *  https://vimeo.com/groups/name/videos/*
+ *  https://vimeo.com/album/album_id/video/*
  *
  */
 
@@ -40,6 +52,13 @@ test('handles [uncommon] leading \'www\' in vimeo urls', t => {
 	t.is(fn('https://www.vimeo.com/140542479#t=0m3s').id, '140542479');
 	t.is(fn('https://www.player.vimeo.com/video/176337266?color=ffffff&title=0&byline=0&portrait=0&badge=0').id, '176337266');
 	t.is(fn('https://www.player.vimeo.com/video/123450987#t=0m3s').service, 'vimeo');
+});
+
+test('handles vimeo channel, groups, albums url patterns', t => {
+	t.is(fn('https://vimeo.com/channels/1234').id, '1234');
+	t.is(fn('https://vimeo.com/channels/yourchannel/12345').id, '12345');
+	t.is(fn('https://vimeo.com/groups/name/videos/123456').id, '123456');
+	t.is(fn('https://vimeo.com/album/album_id/video/1234567').id, '1234567');
 });
 
 /**
@@ -230,6 +249,14 @@ test('handles youtube attribution_links', t => {
 	t.is(fn('http://www.youtube.com/attribution_link?u=/watch?v=ABC12302&feature=share&list=UUsnCjinFcybOuyJU1NFOJmg&a=LjnCygXKl21WkJdyKu9O-w').service, 'youtube');
 });
 
+/**
+ * Google redirect patterns:
+ *
+ *  https://google.cz/url?source=web&url=*
+ *  https://google.com/image?url=*
+ *
+ */
+
 test('handles google redirection to youtube', t => {
 	t.is(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIIjAA&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DeG1uDU0rSLw&usg=AFQjCNECyDn3DQL7U6VW2CnXQQjB0gNKqA').id, 'eG1uDU0rSLw');
 	t.is(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIKDAB&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DtcaUcL8MiKk&usg=AFQjCNFrjHwQiaZ6q-w83GkDd9bNyRQvMw').id, 'tcaUcL8MiKk');
@@ -241,10 +268,4 @@ test('handles google redirection to vimeo', t => {
 
 test('google link returns undefined if missing url parameter', t => {
 	t.is(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwiz9P3Aw5DVAhUDZVAKHcegCi8QuAIINDAB&usg=AFQjCNG0kTPdL8nC6zCi2QoZ1KVeTXH-pw'), undefined);
-});
-
-test('expects a string', t => {
-	t.throws(() => {
-		fn({});
-	}, 'get-video-id expects a string');
 });

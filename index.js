@@ -68,7 +68,7 @@ function vimeo(str) {
 	}
 
 	var id;
-	if (/https?:\/\/vimeo\.com\/[0-9]+$|https?:\/\/player\.vimeo\.com\/video\/[0-9]+$/igm.test(str)) {
+	if (/https?:\/\/vimeo\.com\/[0-9]+$|https?:\/\/player\.vimeo\.com\/video\/[0-9]+$|https?:\/\/vimeo\.com\/channels|groups|album/igm.test(str)) {
 		var arr = str.split('/');
 		if (arr && arr.length) {
 			id = arr.pop();
