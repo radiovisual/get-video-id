@@ -18,7 +18,19 @@ module.exports = function (str) {
 
 	var metadata;
 
-	if (/youtube|youtu\.be/.test(str)) {
+	// Try to handle google redirection uri
+	if (/\/\/google/.test(str)) {
+		// Find the redirection uri
+		var matches = str.match(/url=([^&]+)&/);
+
+		// Decode the found uri and replace current url string - continue with final link
+		if (matches) {
+			// Javascript can get encoded URI
+			str = decodeURIComponent(matches[1]);
+		}
+	}
+
+	if (/youtube|youtu\.be|i.ytimg\./.test(str)) {
 		metadata = {
 			id: youtube(str),
 			service: 'youtube'
@@ -106,6 +118,14 @@ function youtube(str) {
 		return arr[1].split('&')[0];
 	}
 
+	// v= or vi=
+	var parameterwebp = /\/an_webp\//g;
+
+	if (parameterwebp.test(str)) {
+		var webp = str.split(parameterwebp)[1];
+		return stripParameters(webp);
+	}
+
 	// embed
 	var embedreg = /\/embed\//g;
 
@@ -147,13 +167,16 @@ function videopress(str) {
 }
 
 /**
- * Strip away any parameters following `?`
+ * Strip away any parameters following `?` or `/`
  * @param str
  * @returns {*}
  */
 function stripParameters(str) {
+	// Split parameters or split folder separator
 	if (str.indexOf('?') > -1) {
 		return str.split('?')[0];
+	} else if (str.indexOf('/') > -1) {
+		return str.split('/')[0];
 	}
 	return str;
 }

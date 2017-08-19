@@ -46,6 +46,12 @@ getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0').id;
 //=> '8rSH8-pbHZ0'
 ```
 
+You can also use Google redirection URL (link from the search list) with YouTube, Vimeo or Vine as target url.
+
+```js
+getVideoId('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIIjAA&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DeG1uDU0rSLw&usg=AFQjCNECyDn3DQL7U6VW2CnXQQjB0gNKqA');
+//=> { id: 'eG1uDU0rSLw', service: 'youtube' }
+```
 
 ## API
 
@@ -95,6 +101,12 @@ https://www.youtube.com/watch?v=*
 http://youtube.com/watch?vi=*&
 http://youtube.com/?vi=*&
 http://youtube.com/?v=*
+```
+
+**YouTube image links `/vi/*/` or `/an_webp/*/`**
+```
+https://i.ytimg.com/vi/*/hqdefault.jpg
+https://i.ytimg.com/an_webp/MYDcdp-VNmQ/mqdefault_6s.webp
 ```
 
 **YouTube embed**
@@ -165,6 +177,13 @@ https://videopress.com/embed/*
 **VideoPress iframes**
 ```
 <iframe src="https://videopress.com/embed/zcnJVzQF" width="600" height="600"></iframe>
+```
+
+**Google redirection url**
+
+```
+https://google.cz/url?source=web&url=*
+https://google.com/image?url=*
 ```
 
 ## Contributing
