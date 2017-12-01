@@ -10,6 +10,9 @@ module.exports = function (str) {
 		str = getSrc(str);
 	}
 
+	// remove surrounding whitespaces or linefeeds
+	str = str.trim();
+
 	// remove the '-nocookie' flag from youtube urls
 	str = str.replace('-nocookie', '');
 
