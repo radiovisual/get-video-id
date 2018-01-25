@@ -7,6 +7,12 @@ test('expects a string', t => {
 	}, 'get-video-id expects a string');
 });
 
+test('returns empty object', t => {
+	const notFound = fn('foo');
+	t.is(typeof notFound, 'object');
+	t.is(Object.keys(notFound).length, 0);
+});
+
 /**
  *  Vimeo should be able to find these patterns:
  *
@@ -61,6 +67,12 @@ test('handles vimeo channel, groups, albums url patterns', t => {
 	t.is(fn('https://vimeo.com/album/album_id/video/1234567').id, '1234567');
 });
 
+test('vimeo links returns undefined id if id missing', t => {
+	const obj = fn('https://www.vimeo.co');
+	t.is(obj.id, undefined);
+	t.is(obj.service, 'vimeo');
+});
+
 /**
  *  VideoPress should be able to find these patterns:
  *
@@ -85,6 +97,12 @@ test('gets videopress metadata from iframe', t => {
 	var str = '<iframe width="400" height="300" src="https://videopress.com/embed/zcnJVzQz?hd=0&amp;autoPlay=0&amp;permalink=0&amp;loop=0" frameborder="0" allowfullscreen="" sandbox="allow-same-origin allow-scripts allow-popups"></iframe>';
 	t.is(fn(str).id, 'zcnJVzQz');
 	t.is(fn(str).service, 'videopress');
+});
+
+test('videopress links returns undefined id if id missing', t => {
+	const obj = fn('https://videopress.com');
+	t.is(obj.id, undefined);
+	t.is(obj.service, 'videopress');
 });
 
 /**
@@ -123,6 +141,12 @@ test('gets vine metadata from postcard iframe', t => {
 
 	t.is(fn(str).id, 'bjpPT1xwg6B');
 	t.is(fn(str).service, 'vine');
+});
+
+test('vine links returns undefined id if id missing', t => {
+	const obj = fn('https://vine.co');
+	t.is(obj.id, undefined || null);
+	t.is(obj.service, 'vine');
 });
 
 /**
@@ -246,6 +270,12 @@ test('handles youtube attribution_links', t => {
 	t.is(fn('http://www.youtube.com/attribution_link?a=fF1CWYwxCQ4&u=/watch?v=ABC12304&feature=em-uploademail').id, 'ABC12304');
 	t.is(fn('http://www.youtube.com/attribution_link?a=fF1CWYwxCQ4&feature=em-uploademail&u=/watch?v=ABC12305').id, 'ABC12305');
 	t.is(fn('http://www.youtube.com/attribution_link?u=/watch?v=ABC12302&feature=share&list=UUsnCjinFcybOuyJU1NFOJmg&a=LjnCygXKl21WkJdyKu9O-w').service, 'youtube');
+});
+
+test('youtube links returns undefined id if id missing', t => {
+	const obj = fn('https://www.youtube.com');
+	t.is(obj.id, undefined);
+	t.is(obj.service, 'youtube');
 });
 
 /**
