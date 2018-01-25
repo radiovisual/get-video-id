@@ -19,7 +19,7 @@ module.exports = function (str) {
 	// remove any leading `www.`
 	str = str.replace('/www.', '/');
 
-	var metadata;
+	var metadata = {};
 
 	// Try to handle google redirection uri
 	if (/\/\/google/.test(str)) {

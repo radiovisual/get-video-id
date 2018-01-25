@@ -268,6 +268,6 @@ test('handles google redirection to vimeo', t => {
 	t.is(fn(url).service, 'vimeo');
 });
 
-test('google link returns undefined if missing url parameter', t => {
-	t.is(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwiz9P3Aw5DVAhUDZVAKHcegCi8QuAIINDAB&usg=AFQjCNG0kTPdL8nC6zCi2QoZ1KVeTXH-pw'), undefined);
+test('google link returns empty object if missing url parameter', t => {
+	t.is(Object.keys(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwiz9P3Aw5DVAhUDZVAKHcegCi8QuAIINDAB&usg=AFQjCNG0kTPdL8nC6zCi2QoZ1KVeTXH-pw')).length, 0);
 });
