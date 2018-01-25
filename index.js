@@ -166,7 +166,13 @@ function videopress(str) {
 	}
 
 	idRegex = /\/v\/(\w{8})/;
-	return str.match(idRegex)[1];
+
+	var match = str.match(idRegex);
+
+	if (match && match.length > 0) {
+		return str.match(idRegex)[1];
+	}
+	return undefined;
 }
 
 /**
