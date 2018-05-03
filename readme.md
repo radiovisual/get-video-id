@@ -163,6 +163,11 @@ https://www.vimeo.com/*
 https://www.vimeo.com/*?
 ```
 
+**Vimeo swf embed**
+```
+http://vimeo.com/foo.swf?clip_id=1234
+```
+
 **Vimeo iframe**
 ```
 <iframe src="https://player.vimeo.com/video/*" ...

@@ -66,17 +66,25 @@ function vimeo(str) {
 	if (str.indexOf('#') > -1) {
 		str = str.split('#')[0];
 	}
-	if (str.indexOf('?') > -1) {
+	if (str.indexOf('?') > -1 && str.indexOf('clip_id=') === -1) {
 		str = str.split('?')[0];
 	}
 
 	var id;
+	var arr;
+
 	if (/https?:\/\/vimeo\.com\/[0-9]+$|https?:\/\/player\.vimeo\.com\/video\/[0-9]+$|https?:\/\/vimeo\.com\/channels|groups|album/igm.test(str)) {
-		var arr = str.split('/');
+		arr = str.split('/');
 		if (arr && arr.length) {
 			id = arr.pop();
 		}
+	} else if (/clip_id=/igm.test(str)) {
+		arr = str.split('clip_id=');
+		if (arr && arr.length) {
+			id = arr[1].split('&')[0];
+		}
 	}
+
 	return id;
 }
 
