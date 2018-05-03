@@ -31,7 +31,7 @@ test('returns empty object', t => {
  *  https://vimeo.com/channels/yourchannel/*
  *  https://vimeo.com/groups/name/videos/*
  *  https://vimeo.com/album/album_id/video/*
- *
+ *  http://vimeo.com/name.swf?clip_id=10551932?
  */
 
 test('gets vimeo metadata from url', t => {
@@ -65,6 +65,13 @@ test('handles vimeo channel, groups, albums url patterns', t => {
 	t.is(fn('https://vimeo.com/channels/yourchannel/12345').id, '12345');
 	t.is(fn('https://vimeo.com/groups/name/videos/123456').id, '123456');
 	t.is(fn('https://vimeo.com/album/album_id/video/1234567').id, '1234567');
+});
+
+test('handles swf embed patterns', t => {
+	t.is(fn('http://vimeo.com/name.swf?clip_id=1234&server=vimeo.com&show_title=0&show_byline=0&show_portrait=0&color=00adef&fullscreen=1').id, '1234');
+	t.is(fn('http://vimeo.com/name.swf?clip_id=1234&server=vimeo.com&show_title=0&show_byline=0&show_portrait=0&color=00adef&fullscreen=1').service, 'vimeo');
+	t.is(fn('http://vimeo.com/name.swf?clip_id=1234').id, '1234');
+	t.is(fn('http://vimeo.com/name.swf?clip_id=1234').service, 'vimeo');
 });
 
 test('vimeo links returns undefined id if id missing', t => {
