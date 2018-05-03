@@ -81,7 +81,6 @@ function vimeo(str) {
 	} else if (/clip_id=/igm.test(str)) {
 		arr = str.split('clip_id=');
 		if (arr && arr.length) {
-			console.log(arr);
 			id = arr[1].split('&')[0];
 		}
 	}
