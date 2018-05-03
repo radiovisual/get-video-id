@@ -69,9 +69,13 @@ test('handles vimeo channel, groups, albums url patterns', t => {
 
 test('handles swf embed patterns', t => {
 	t.is(fn('http://vimeo.com/name.swf?clip_id=1234&server=vimeo.com&show_title=0&show_byline=0&show_portrait=0&color=00adef&fullscreen=1').id, '1234');
+	t.is(fn('https://vimeo.com/name.swf?clip_id=1234&server=vimeo.com&show_title=0&show_byline=0&show_portrait=0&color=00adef&fullscreen=1').id, '1234');
 	t.is(fn('http://vimeo.com/name.swf?clip_id=1234&server=vimeo.com&show_title=0&show_byline=0&show_portrait=0&color=00adef&fullscreen=1').service, 'vimeo');
+	t.is(fn('https://vimeo.com/name.swf?clip_id=1234&server=vimeo.com&show_title=0&show_byline=0&show_portrait=0&color=00adef&fullscreen=1').service, 'vimeo');
 	t.is(fn('http://vimeo.com/name.swf?clip_id=1234').id, '1234');
+	t.is(fn('https://vimeo.com/name.swf?clip_id=1234').id, '1234');
 	t.is(fn('http://vimeo.com/name.swf?clip_id=1234').service, 'vimeo');
+	t.is(fn('https://vimeo.com/name.swf?clip_id=1234').service, 'vimeo');
 });
 
 test('vimeo links returns undefined id if id missing', t => {
