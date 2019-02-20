@@ -146,7 +146,7 @@ function youtube(str) {
 	}
 
 	// user
-	var userreg = /\/user\//g;
+	var userreg = /\/user\/(?!.*videos)/g;
 
 	if (userreg.test(str)) {
 		var elements = str.split('/');

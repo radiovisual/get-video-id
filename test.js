@@ -232,6 +232,7 @@ test('handles youtube v= and vi= formats', t => {
 	t.is(fn('http://youtube.com/watch?vi=ABC12311&feature=youtube_gdata_player').id, 'ABC12311');
 	t.is(fn('http://www.youtube.com/watch?v=ABC12312&feature=youtube_gdata_player').id, 'ABC12312');
 	t.is(fn('http://www.youtube.com/watch?v=ABC12313&feature=youtu.be').id, 'ABC12313');
+	t.is(fn('https://www.youtube.com/user/ThreeDaysGraceVideos/videos').id, undefined);
 
 	t.is(fn('http://www.youtube.com/watch?v=ABC12306&playnext_from=TL&videos=abc123&feature=sub').service, 'youtube');
 });
