@@ -167,6 +167,7 @@ test('vine links returns undefined id if id missing', t => {
  *  http://youtu.be/*?
  *  https://youtu.be/*
  *  http://youtu.be/*
+ * 	http://y2u.be/*
  *  youtube://
  *
  *  // /v/ or /vi/
@@ -213,6 +214,7 @@ test('gets metadata from youtube shortcode formats', t => {
 	t.is(fn('https://youtu.be/ABC12302').id, 'ABC12302');
 	t.is(fn('http://youtu.be/ABC12303').id, 'ABC12303');
 	t.is(fn('http://youtu.be/ABC12304?feature=youtube_gdata_player').id, 'ABC12304');
+	t.is(fn('http://y2u.be/ABC12304').id, 'ABC12304');
 
 	t.is(fn('http://youtu.be/ABC12304?feature=youtube_gdata_player').service, 'youtube');
 });

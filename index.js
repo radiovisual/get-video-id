@@ -33,7 +33,7 @@ module.exports = function (str) {
 		}
 	}
 
-	if (/youtube|youtu\.be|i.ytimg\./.test(str)) {
+	if (/youtube|youtu\.be|y2u\.be|i.ytimg\./.test(str)) {
 		metadata = {
 			id: youtube(str),
 			service: 'youtube'
@@ -106,7 +106,7 @@ function vine(str) {
  */
 function youtube(str) {
 	// shortcode
-	var shortcode = /youtube:\/\/|https?:\/\/youtu\.be\//g;
+	var shortcode = /youtube:\/\/|https?:\/\/youtu\.be\/|http:\/\/y2u\.be\//g;
 
 	if (shortcode.test(str)) {
 		var shortcodeid = str.split(shortcode)[1];
