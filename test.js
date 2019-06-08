@@ -1,4 +1,4 @@
-/* eslint maxlen: 0 */
+/* eslint max-len: 0 */
 import test from 'ava';
 import fn from './';
 
