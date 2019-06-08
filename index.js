@@ -155,6 +155,13 @@ function youtube(str) {
 		return stripParameters(embedid);
 	}
 
+	// ignore /user/username pattern
+	var usernamereg = /\/user\/([a-zA-Z0-9]*)$/g;
+
+	if (usernamereg.test(str)) {
+		return undefined;
+	}
+
 	// user
 	var userreg = /\/user\/(?!.*videos)/g;
 
