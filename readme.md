@@ -10,8 +10,8 @@ This module will extract the YouTube, Vimeo, Vine, or VideoPress Video ID from a
 
 ## Version 3.0 (Breaking Change)
 
-`get-video-id` now returns an empty object instead of `undefined` if an id or service could not be found. This keeps the 
-API consistant, but also allows for clean destructuring: 
+`get-video-id` now returns an empty object instead of `undefined` if an id or service could not be found. This keeps the
+API consistant, but also allows for clean destructuring:
 
 ```js
 const {id, service} = getVideoId('foo');
@@ -95,6 +95,7 @@ This module works on the url / embed patterns below.
 http://youtu.be/*?
 https://youtu.be/*
 http://youtu.be/*
+http://y2u.be/*
 youtube://
 ```
 
