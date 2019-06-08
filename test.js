@@ -1,3 +1,4 @@
+/* eslint max-len: 0 */
 import test from 'ava';
 import fn from './';
 
@@ -264,6 +265,10 @@ test('handles youtube /user/ formats', t => {
 	t.is(fn('http://www.youtube.com/user/username#p/u/1/ABC12302?rel=0').id, 'ABC12302');
 
 	t.is(fn('http://www.youtube.com/user/username#p/u/1/ABC12302?rel=0').service, 'youtube');
+});
+
+test('ignores youtube.com/user/* patterns', t => {
+	t.is(fn('https://www.youtube.com/user/ThreeDaysGraceVideos').id, undefined);
 });
 
 test('returns id:undefined with /user/ format that does not have a video id', t => {

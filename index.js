@@ -6,7 +6,7 @@ module.exports = function (str) {
 		throw new TypeError('get-video-id expects a string');
 	}
 
-	if (/<iframe/ig.test(str)) {
+	if (/<iframe/gi.test(str)) {
 		str = getSrc(str);
 	}
 
@@ -73,12 +73,22 @@ function vimeo(str) {
 	var id;
 	var arr;
 
-	if (/https?:\/\/vimeo\.com\/[0-9]+$|https?:\/\/player\.vimeo\.com\/video\/[0-9]+$|https?:\/\/vimeo\.com\/channels|groups|album/igm.test(str)) {
+	const vimeoPipe = [
+		'https?:\/\/vimeo\.com\/[0-9]+$',
+		'https?:\/\/player\.vimeo\.com\/video\/[0-9]+$',
+		'https?:\/\/vimeo\.com\/channels',
+		'groups',
+		'album'
+	].join('|');
+
+	const vimeoRegex = new RegExp(vimeoPipe, 'gim');
+
+	if (vimeoRegex.test(str)) {
 		arr = str.split('/');
 		if (arr && arr.length) {
 			id = arr.pop();
 		}
-	} else if (/clip_id=/igm.test(str)) {
+	} else if (/clip_id=/gim.test(str)) {
 		arr = str.split('clip_id=');
 		if (arr && arr.length) {
 			id = arr[1].split('&')[0];
@@ -143,6 +153,13 @@ function youtube(str) {
 	if (embedreg.test(str)) {
 		var embedid = str.split(embedreg)[1];
 		return stripParameters(embedid);
+	}
+
+	// ignore /user/username pattern
+	var usernamereg = /\/user\/([a-zA-Z0-9]*)$/g;
+
+	if (usernamereg.test(str)) {
+		return undefined;
 	}
 
 	// user
