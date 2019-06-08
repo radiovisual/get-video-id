@@ -1,48 +1,16 @@
-# get-video-id
+# get-video-id [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
 > Get the YouTube, Vimeo, Vine or VideoPress video id from a url or embed string.
-
-[![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
 This module will extract the YouTube, Vimeo, Vine, or VideoPress Video ID from any known YouTube, Vimeo, Vine, or VideoPress url patterns, including embed strings.
 
 **Pull Requests are welcome** if you would like to see support for other video services or if you find an unsupported video url pattern.
-
-## Version 3.0 (Breaking Change)
-
-`get-video-id` now returns an empty object instead of `undefined` if an id or service could not be found. This keeps the
-API consistant, but also allows for clean destructuring:
-
-```js
-const {id, service} = getVideoId('foo');
-
-if (id) {
-  // ...
-}
-```
-
-## Version 2.0
-
-Version `2.0` introduces a new API that can handle a wider variety of use cases. The main difference is that the new API returns a metadata object instead of a string. The old API would simply return the video id:
-
-Version **1.1.0**:
-```js
-getVideoId('https://vimeo.com/1234');
-//=> '1234'
-```
-Version **2.0** returns an object with the id, as well as the service provider:
-
-```js
-getVideoId('https://vimeo.com/1234');
-//=> { id: '1234', service: 'vimeo'}
-```
 
 ## Install
 
 ```
 $ npm install --save get-video-id
 ```
-
 
 ## Usage
 
@@ -211,4 +179,4 @@ that you include a unit test to fully cover your code contributions.
 
 ## License
 
-MIT © [Michael Wuergler](http://numetriclabs.com)
+MIT © [Michael Wuergler](https://github.com/radiovisual)
