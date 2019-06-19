@@ -73,7 +73,7 @@ function vimeo(str) {
 	var id;
 	var arr;
 
-	const vimeoPipe = [
+	var vimeoPipe = [
 		'https?:\/\/vimeo\.com\/[0-9]+$',
 		'https?:\/\/player\.vimeo\.com\/video\/[0-9]+$',
 		'https?:\/\/vimeo\.com\/channels',
@@ -81,7 +81,7 @@ function vimeo(str) {
 		'album'
 	].join('|');
 
-	const vimeoRegex = new RegExp(vimeoPipe, 'gim');
+	var vimeoRegex = new RegExp(vimeoPipe, 'gim');
 
 	if (vimeoRegex.test(str)) {
 		arr = str.split('/');
