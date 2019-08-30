@@ -34,13 +34,13 @@ export default {
 		{
 			file: minified(pkg.browser),
 			format: 'iife',
-			name: 'getVideoId',
+			name: 'getVideoId'
 		}
 	],
 
 	plugins: [
 		resolve({
-			mainFields: ['module', 'main', 'browser'],
+			mainFields: ['module', 'main', 'browser']
 		}),
 		commonjs(),
 		babel({
@@ -58,5 +58,5 @@ export default {
 		terser({
 			include: [/^.+\.min\.js$/]
 		})
-	],
+	]
 };
