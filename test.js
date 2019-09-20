@@ -1,6 +1,37 @@
 /* eslint max-len: 0 */
 import test from 'ava';
 import fn from './';
+import {JSDOM} from 'jsdom';
+
+test('works in a browser', async t => {
+	t.plan(2);
+
+	const options = {
+		resources: 'usable',
+		runScripts: 'dangerously'
+	};
+
+	const dom = await JSDOM.fromFile('test.html', options);
+
+	return new Promise((resolve, reject) => {
+		const retry = setInterval(() => {
+			if (!dom.window.getVideoId) {
+				return;
+			}
+
+			t.is(typeof dom.window.getVideoId, 'function');
+			t.is(fn('https://player.vimeo.com/video/123450987').id, '123450987');
+			clearInterval(retry);
+			resolve();
+		}, 100);
+
+		setTimeout(() => {
+			clearInterval(retry);
+			t.fail();
+			reject();
+		}, 5000);
+	});
+});
 
 test('expects a string', t => {
 	t.throws(() => {
