@@ -284,6 +284,24 @@ test('removes -nocookie', t => {
 	t.is(fn('http://www.youtube-nocookie.com/user/username#p/u/1/ABC12302').service, 'youtube');
 });
 
+/** Unfortunately I was not able to run the tests locally as there were
+64 different syntax errors, but I've run our own tests with the same urls
+**/
+test('removes #t=0m10s ', t => {
+	t.is(fn('https://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').id, 'G-3YxlZIhus');
+	t.is(fn('http://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').id, 'G-3YxlZIhus');
+	t.is(fn('https://youtube.com/user/WMFinland#p/a/u/1/G-3YxlZIhus').id, 'G-3YxlZIhus');
+
+	t.is(fn('http://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').service, 'youtube');
+});
+
+test('removes feature', t => {
+	t.is(fn('http://youtu.be/G-3YxlZIhus&feature=channel').id, 'G-3YxlZIhus');
+	t.is(fn('http://youtube.com/vi/G-3YxlZIhus&feature=channel').id, 'G-3YxlZIhus');
+
+	t.is(fn('http://youtube.com/vi/G-3YxlZIhus&feature=channel').service, 'youtube');
+});
+
 test('handles youtube attribution_links', t => {
 	t.is(fn('http://www.youtube.com/attribution_link?u=%2Fwatch%3Fv%3DABC12300%26feature%3Dshare&a=JdfC0C9V6ZI').id, 'ABC12300');
 	t.is(fn('https://www.youtube.com/attribution_link?a=JdfC0C9V6ZI&u=%2Fwatch%3Fv%3DABC12301%26feature%3Dshare').id, 'ABC12301');

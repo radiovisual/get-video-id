@@ -115,6 +115,11 @@ function vine(str) {
  * @returns {string|undefined}
  */
 function youtube(str) {
+
+	// remove time and feature
+	str = str.replace(/#t=.*/, "");
+	str = str.replace(/&feature=.*/, "");
+
 	// shortcode
 	var shortcode = /youtube:\/\/|https?:\/\/youtu\.be\/|http:\/\/y2u\.be\//g;
 
