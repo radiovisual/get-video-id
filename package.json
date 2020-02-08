@@ -16,13 +16,15 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "pretest": "npm run build",
     "test": "xo && ava --verbose && nyc --exclude dist ava",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "prebuild": "rimraf dist",
     "build": "rollup -c rollup.config.js"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "dist/*"
   ],
   "keywords": [
     "RegExp",

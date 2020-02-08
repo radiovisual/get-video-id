@@ -2,16 +2,22 @@
 import test from 'ava';
 import fn from './';
 import {JSDOM} from 'jsdom';
+import fs from 'fs';
 
 test('works in a browser', async t => {
 	t.plan(2);
+
+	const copyTestHtml = () => fs.copyFileSync('test.html', 'dist/test.html');
+	const deleteTestHtml = () => fs.unlinkSync('dist/test.html');
+
+	copyTestHtml();
 
 	const options = {
 		resources: 'usable',
 		runScripts: 'dangerously'
 	};
 
-	const dom = await JSDOM.fromFile('test.html', options);
+	const dom = await JSDOM.fromFile('dist/test.html', options);
 
 	return new Promise((resolve, reject) => {
 		const retry = setInterval(() => {
@@ -22,12 +28,14 @@ test('works in a browser', async t => {
 			t.is(typeof dom.window.getVideoId, 'function');
 			t.is(fn('https://player.vimeo.com/video/123450987').id, '123450987');
 			clearInterval(retry);
+			deleteTestHtml();
 			resolve();
 		}, 100);
 
 		setTimeout(() => {
 			clearInterval(retry);
 			t.fail();
+			deleteTestHtml();
 			reject();
 		}, 5000);
 	});
