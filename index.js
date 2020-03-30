@@ -33,22 +33,22 @@ module.exports = function (str) {
 		}
 	}
 
-	if (/youtube|youtu\.be|y2u\.be|i.ytimg\./.test(str)) {
+	if (/youtube|youtu\.be|y2u\.be|i.ytimg\./i.test(str)) {
 		metadata = {
 			id: youtube(str),
 			service: 'youtube'
 		};
-	} else if (/vimeo/.test(str)) {
+	} else if (/vimeo/i.test(str)) {
 		metadata = {
 			id: vimeo(str),
 			service: 'vimeo'
 		};
-	} else if (/vine/.test(str)) {
+	} else if (/vine/i.test(str)) {
 		metadata = {
 			id: vine(str),
 			service: 'vine'
 		};
-	} else if (/videopress/.test(str)) {
+	} else if (/videopress/i.test(str)) {
 		metadata = {
 			id: videopress(str),
 			service: 'videopress'
