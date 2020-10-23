@@ -73,8 +73,14 @@ function vimeo(str) {
 	var id;
 	var arr;
 
+	var primary = /https?:\/\/vimeo\.com\/([0-9]+)/;
+
+	var matches = primary.exec(str);
+	if (matches && matches[1]) {
+		return matches[1];
+	}
+
 	var vimeoPipe = [
-		'https?:\/\/vimeo\.com\/[0-9]+$',
 		'https?:\/\/player\.vimeo\.com\/video\/[0-9]+$',
 		'https?:\/\/vimeo\.com\/channels',
 		'groups',
