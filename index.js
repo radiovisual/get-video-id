@@ -121,6 +121,9 @@ function vine(str) {
  * @returns {string|undefined}
  */
 function youtube(str) {
+	// remove time hash at the end of the string
+	str = str.replace(/#t=.*$/, '');
+
 	// shortcode
 	var shortcode = /youtube:\/\/|https?:\/\/youtu\.be\/|http:\/\/y2u\.be\//g;
 

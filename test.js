@@ -304,6 +304,12 @@ test('youtube links returns undefined id if id missing', t => {
 	t.is(obj.service, 'youtube');
 });
 
+test('removes time hash at end of string ', t => {
+	t.is(fn('https://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').id, 'G-3YxlZIhus');
+	t.is(fn('http://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').id, 'G-3YxlZIhus');
+	t.is(fn('http://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').service, 'youtube');
+});
+
 /**
  * Google redirect patterns:
  *
