@@ -269,6 +269,7 @@ test('handles youtube /user/ formats', t => {
 	t.is(fn('http://www.youtube.com/user/username#p/u/1/ABC12302?rel=0').id, 'ABC12302');
 
 	t.is(fn('http://www.youtube.com/user/username#p/u/1/ABC12302?rel=0').service, 'youtube');
+	t.is(fn('https://youtube.com/user/WMFinland#p/a/u/1/G-3YxlZIhus').id, 'G-3YxlZIhus');
 });
 
 test('ignores youtube.com/user/* patterns', t => {
@@ -302,6 +303,20 @@ test('youtube links returns undefined id if id missing', t => {
 	const obj = fn('https://www.youtube.com');
 	t.is(obj.id, undefined);
 	t.is(obj.service, 'youtube');
+});
+
+test('removes time hash at end of string ', t => {
+	t.is(fn('https://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').id, 'G-3YxlZIhus');
+	t.is(fn('http://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').id, 'G-3YxlZIhus');
+	t.is(fn('http://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').service, 'youtube');
+});
+
+test('removes trailing parameters from youtube urls', t => {
+	t.is(fn('http://youtu.be/G-3YxlZIhus&feature=channel').id, 'G-3YxlZIhus');
+	t.is(fn('http://youtube.com/vi/G-3YxlZIhus&feature=channel').id, 'G-3YxlZIhus');
+	t.is(fn('http://youtube.com/vi/G-3YxlZIhus&feature=channel').service, 'youtube');
+	t.is(fn('http://youtube.com/vi/G-3YxlZIhus&feature=share').id, 'G-3YxlZIhus');
+	t.is(fn('http://youtube.com/vi/G-3YxlZIhus&foo=bar').id, 'G-3YxlZIhus');
 });
 
 /**
