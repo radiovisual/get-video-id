@@ -12,7 +12,25 @@ This module will extract the YouTube, Vimeo, Vine, or VideoPress Video ID from a
 $ npm install --save get-video-id
 ```
 
+
 ## Usage
+You can use right in the browser or NodeJS using ESModules or CommonJS syntax.
+
+```js
+const getVideoId = require('get-video-id');
+```
+
+or
+
+```js
+import getVideoId from 'get-video-id';
+```
+
+or
+
+```html
+<script src="getVideoId.browser.min.js"><script>
+```
 
 Simply supply the module with any known YouTube, Vimeo or Vine url (or embed string) and it's metadata (id and service) will be extracted:
 

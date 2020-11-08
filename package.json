@@ -4,6 +4,9 @@
   "description": "Get the YouTube, Vimeo, Vine or VideoPress video id from a url or embed string.",
   "license": "MIT",
   "repository": "radiovisual/get-video-id",
+  "main": "dist/get-video-id.js",
+  "module": "dist/get-video-id.esm.js",
+  "browser": "dist/get-video-id.browser.js",
   "author": {
     "name": "Michael Wuergler",
     "email": "wuergler@gmail.com",
@@ -13,11 +16,15 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "xo && ava --verbose && nyc ava",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "pretest": "npm run build",
+    "test": "xo && ava --verbose && nyc --exclude dist ava",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "prebuild": "rimraf dist",
+    "build": "rollup -c rollup.config.js"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "dist/*"
   ],
   "keywords": [
     "RegExp",
@@ -44,9 +51,18 @@
     "get-src": "^1.0.1"
   },
   "devDependencies": {
-    "ava": "^0.12.0",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "ava": "^0.15.2",
     "coveralls": "^2.13.3",
+    "jsdom": "^15.1.1",
     "nyc": "^6.1.1",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.20.3",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.1",
     "xo": "^0.12.1"
   }
 }

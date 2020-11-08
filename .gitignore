@@ -3,4 +3,5 @@ node_modules
 *.iml
 .nyc_output
 coverage
+dist/
 

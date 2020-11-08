@@ -1,6 +1,6 @@
 /* eslint max-len: 0 */
 import test from 'ava';
-import fn from './';
+import fn from '../dist/get-video-id';
 
 test('expects a string', t => {
 	t.throws(() => {
