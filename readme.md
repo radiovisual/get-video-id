@@ -13,34 +13,36 @@ $ npm install --save get-video-id
 ```
 
 
-## Usage
-You can use right in the browser or NodeJS using ESModules or CommonJS syntax.
+## Import
 
+You can use this module in **Node.js** or in the **browser**. See below for the different importing options.
+
+**CommonJS**
 ```js
 const getVideoId = require('get-video-id');
 ```
 
-or
-
+**ESModules**
 ```js
 import getVideoId from 'get-video-id';
 ```
 
-or
-
+**Browser**
 ```html
 <script src="getVideoId.browser.min.js"><script>
 ```
 
-Simply supply the module with any known YouTube, Vimeo or Vine url (or embed string) and it's metadata (id and service) will be extracted:
+## Usage
+
+Simply supply the module with any known YouTube, Vimeo or Vine url (or embed string) and its metadata (`id` and `service`) will be returned:
 
 ```js
-const getVideoId = require('get-video-id');
+import getVideoId from 'get-video-id';
 
 getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
 //=> { id: '8rSH8-pbHZ0', service: 'youtube' }
 
-getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0').id;
+const { id } = getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
 //=> '8rSH8-pbHZ0'
 ```
 
@@ -55,7 +57,7 @@ getVideoId('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0
 
 ### getVideoId(input)
 
-Returns a metadata object with the video id and service name:
+Returns a metadata `Object` with the video `id` and `service` name:
 
 ```
 {
@@ -66,7 +68,7 @@ Returns a metadata object with the video id and service name:
 
 #### input
 
-Type: `string`
+Type: `String`
 
 The YouTube, Vimeo, or Vine url (or embed code) from which you want to find the video id. See the
 [Patterns section](https://github.com/radiovisual/get-video-id#patterns) to see the formats that can be supplied.
@@ -75,6 +77,8 @@ The YouTube, Vimeo, or Vine url (or embed code) from which you want to find the 
 
 This module works on the url / embed patterns below.
 (where `*` is the id and `?` or `&` are parameter strings):
+
+### YouTube 
 
 **YouTube Shortcodes**
 ```
@@ -140,6 +144,15 @@ http://www.youtube.com/attribution_link?u=/watch?v=*
 http://www.youtube.com/attribution_link?/watch?v=*
 ```
 
+**Google Redirection to YouTube**
+
+```
+https://google.cz/url?source=web&url=<YOUTUBE_URL>
+https://google.com/image?url=<YOUTUBE_URL>
+```
+
+### Vimeo 
+
 **Vimeo urls**
 ```
 https://vimeo.com/*
@@ -160,6 +173,8 @@ http://vimeo.com/foo.swf?clip_id=1234
 <iframe src="https://player.vimeo.com/video/*" ...
 ```
 
+### Vine
+
 **Vine urls**
 ```
 https://vine.co/v/*
@@ -171,6 +186,7 @@ https://vine.co/v/*
 <iframe src="https://vine.co/v/*/embed/postcard" width="600" height="600" frameborder="0"></iframe>
 ```
 
+### VideoPress
 
 **VideoPress urls**
 ```
@@ -183,17 +199,9 @@ https://videopress.com/embed/*
 <iframe src="https://videopress.com/embed/zcnJVzQF" width="600" height="600"></iframe>
 ```
 
-**Google redirection url**
-
-```
-https://google.cz/url?source=web&url=*
-https://google.com/image?url=*
-```
-
 ## Contributing
 
-If you discover a url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues) to report it, or [submit a Pull Request](https://github.com/radiovisual/get-video-id/pull/new/master). For any submitted pull requests, please ensure
-that you include a unit test to fully cover your code contributions.
+If you discover a url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues) to report it, or [submit a Pull Request](https://github.com/radiovisual/get-video-id/pull/new/master). For any submitted pull requests, please ensure that you include unit test(s) to fully cover your code contribution(s).
 
 ## License
 
