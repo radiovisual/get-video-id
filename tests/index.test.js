@@ -18,21 +18,22 @@ test('returns empty object', t => {
  *  Vimeo should be able to find these patterns:
  *
  *  // urls
- * 	https://vimeo.com/*
- *  https://player.vimeo.com/video/*
- *  https://vimeo.com/*?
- *  https://www.vimeo.com/*?
- *  https://www.vimeo.com/*
+ * 	https://vimeo.com/id
+ *  https://player.vimeo.com/video/id
+ *  https://vimeo.com/id?
+ *  https://www.vimeo.com/id?
+ *  https://www.vimeo.com/id
+ *  https://vimeo.com/id/hash
  *
  *  // iframe
- *  <iframe src="https://player.vimeo.com/video/97682350"
+ *  iframe src="https://player.vimeo.com/video/id"
  *
  *  // channels groups and albums
- *  https://vimeo.com/channels/*
- *  https://vimeo.com/channels/yourchannel/*
- *  https://vimeo.com/groups/name/videos/*
- *  https://vimeo.com/album/album_id/video/*
- *  http://vimeo.com/name.swf?clip_id=10551932?
+ *  https://vimeo.com/channels/id
+ *  https://vimeo.com/channels/yourchannel/id
+ *  https://vimeo.com/groups/name/videos/id
+ *  https://vimeo.com/album/album_id/video/id
+ *  http://vimeo.com/name.swf?clip_id=id
  */
 
 test('gets vimeo metadata from url', t => {
@@ -42,6 +43,8 @@ test('gets vimeo metadata from url', t => {
 	t.is(fn('https://player.vimeo.com/video/176337266?color=ffffff&title=0&byline=0&portrait=0&badge=0').id, '176337266');
 
 	t.is(fn('https://player.vimeo.com/video/123450987#t=0m3s').service, 'vimeo');
+	t.is(fn('https://vimeo.com/123450987/randomhash').service, 'vimeo');
+	t.is(fn('https://vimeo.com/123450987/randomhash').id, '123450987');
 });
 
 test('gets vimeo metadata from iframe', t => {
@@ -59,6 +62,7 @@ test('handles [uncommon] leading \'www\' in vimeo urls', t => {
 	t.is(fn('https://www.vimeo.com/140542479#t=0m3s').id, '140542479');
 	t.is(fn('https://www.player.vimeo.com/video/176337266?color=ffffff&title=0&byline=0&portrait=0&badge=0').id, '176337266');
 	t.is(fn('https://www.player.vimeo.com/video/123450987#t=0m3s').service, 'vimeo');
+	t.is(fn('https://www.vimeo.com/123450987/randomhash').id, '123450987');
 });
 
 test('handles vimeo channel, groups, albums url patterns', t => {
@@ -89,8 +93,8 @@ test('vimeo links returns undefined id if id missing', t => {
  *  VideoPress should be able to find these patterns:
  *
  *  // urls
- *  https://videopress.com/v/*
- *  https://videopress.com/embed/*
+ *  https://videopress.com/v/id
+ *  https://videopress.com/embed/id
  *
  *  // iframe
  *  <iframe src="https://videopress.com/embed/zcnJVzQF"
@@ -121,11 +125,11 @@ test('videopress links returns undefined id if id missing', t => {
  *  Vine should be able to find these patterns:
  *
  *  // urls
- *  https://vine.co/v/*
+ *  https://vine.co/v/id
  *
  *  // iframe
- *  <iframe src="https://vine.co/v/bjpPT1xwg6B/embed/simple"
- *  <iframe src="https://vine.co/v/bjpPT1xwg6B/embed/postcard"
+ *  <iframe src="https://vine.co/v/id/embed/simple"
+ *  <iframe src="https://vine.co/v/id/embed/postcard"
  *
  */
 
@@ -165,37 +169,37 @@ test('vine links returns undefined id if id missing', t => {
  * Youtube should be able to find these patterns:
  *
  *  // shortcodes
- *  http://youtu.be/*?
- *  https://youtu.be/*
- *  http://youtu.be/*
- * 	http://y2u.be/*
+ *  http://youtu.be/id?
+ *  https://youtu.be/id
+ *  http://youtu.be/id
+ * 	http://y2u.be/id
  *  youtube://
  *
  *  // /v/ or /vi/
- *  http://www.youtube.com/v/*
- *  http://youtube.com/vi/*?
- *  http://youtube.com/v/*?
+ *  http://www.youtube.com/v/id
+ *  http://youtube.com/vi/id?
+ *  http://youtube.com/v/id?
  *
  *  // v= or vi=
- *  http://www.youtube.com/ytscreeningroom?v=*
- *  http://www.youtube.com/watch?v=*?&
- *  https://www.youtube.com/watch?v=*
- *  http://youtube.com/watch?vi=*&
- *  http://youtube.com/?vi=*&
- *  http://youtube.com/?v=*
+ *  http://www.youtube.com/ytscreeningroom?v=id
+ *  http://www.youtube.com/watch?v=id?&
+ *  https://www.youtube.com/watch?v=id
+ *  http://youtube.com/watch?vi=id&
+ *  http://youtube.com/?vi=id&
+ *  http://youtube.com/?v=id
  *
  *  // embed
- *  http://www.youtube.com/embed/*?
- *  www.youtube-nocookie.com/embed/*?
- *  https://www.youtube.com/embed/*
+ *  http://www.youtube.com/embed/id?
+ *  www.youtube-nocookie.com/embed/id?
+ *  https://www.youtube.com/embed/id
  *
  *  // user
- *  http://www.youtube.com/user/username#p/a/u/2/*
- *  http://www.youtube.com/user/username#p/u/1/*?
- *  http://www.youtube.com/user/username#p/u/1/*
+ *  http://www.youtube.com/user/username#p/a/u/2/id
+ *  http://www.youtube.com/user/username#p/u/1/id?
+ *  http://www.youtube.com/user/username#p/u/1/id
  *
  *  // iframe embed
- *  <iframe width="560" height="315" src="https://www.youtube.com/embed/*" frameborder="0" allowfullscreen></iframe>
+ *  <iframe width="560" height="315" src="https://www.youtube.com/embed/id" frameborder="0" allowfullscreen></iframe>
  *
  *  // attribution_link
  *  http://www.youtube.com/attribution_link?u=%2Fwatch%3Fv%3D*%26
@@ -265,6 +269,7 @@ test('handles youtube /user/ formats', t => {
 	t.is(fn('http://www.youtube.com/user/username#p/u/1/ABC12302?rel=0').id, 'ABC12302');
 
 	t.is(fn('http://www.youtube.com/user/username#p/u/1/ABC12302?rel=0').service, 'youtube');
+	t.is(fn('https://youtube.com/user/WMFinland#p/a/u/1/G-3YxlZIhus').id, 'G-3YxlZIhus');
 });
 
 test('ignores youtube.com/user/* patterns', t => {
@@ -300,11 +305,25 @@ test('youtube links returns undefined id if id missing', t => {
 	t.is(obj.service, 'youtube');
 });
 
+test('removes time hash at end of string ', t => {
+	t.is(fn('https://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').id, 'G-3YxlZIhus');
+	t.is(fn('http://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').id, 'G-3YxlZIhus');
+	t.is(fn('http://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').service, 'youtube');
+});
+
+test('removes trailing parameters from youtube urls', t => {
+	t.is(fn('http://youtu.be/G-3YxlZIhus&feature=channel').id, 'G-3YxlZIhus');
+	t.is(fn('http://youtube.com/vi/G-3YxlZIhus&feature=channel').id, 'G-3YxlZIhus');
+	t.is(fn('http://youtube.com/vi/G-3YxlZIhus&feature=channel').service, 'youtube');
+	t.is(fn('http://youtube.com/vi/G-3YxlZIhus&feature=share').id, 'G-3YxlZIhus');
+	t.is(fn('http://youtube.com/vi/G-3YxlZIhus&foo=bar').id, 'G-3YxlZIhus');
+});
+
 /**
  * Google redirect patterns:
  *
- *  https://google.cz/url?source=web&url=*
- *  https://google.com/image?url=*
+ *  https://google.cz/url?source=web&url=id
+ *  https://google.com/image?url=id
  *
  */
 

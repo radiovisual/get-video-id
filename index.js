@@ -73,8 +73,14 @@ function vimeo(str) {
 	var id;
 	var arr;
 
+	var primary = /https?:\/\/vimeo\.com\/([0-9]+)/;
+
+	var matches = primary.exec(str);
+	if (matches && matches[1]) {
+		return matches[1];
+	}
+
 	var vimeoPipe = [
-		'https?:\/\/vimeo\.com\/[0-9]+$',
 		'https?:\/\/player\.vimeo\.com\/video\/[0-9]+$',
 		'https?:\/\/vimeo\.com\/channels',
 		'groups',
@@ -115,6 +121,9 @@ function vine(str) {
  * @returns {string|undefined}
  */
 function youtube(str) {
+	// remove time hash at the end of the string
+	str = str.replace(/#t=.*$/, '');
+
 	// shortcode
 	var shortcode = /youtube:\/\/|https?:\/\/youtu\.be\/|http:\/\/y2u\.be\//g;
 
@@ -136,7 +145,7 @@ function youtube(str) {
 
 	if (parameterv.test(str)) {
 		var arr = str.split(parameterv);
-		return arr[1].split('&')[0];
+		return stripParameters(arr[1].split('&')[0]);
 	}
 
 	// v= or vi=
@@ -174,7 +183,7 @@ function youtube(str) {
 	var attrreg = /\/attribution_link\?.*v%3D([^%&]*)(%26|&|$)/;
 
 	if (attrreg.test(str)) {
-		return str.match(attrreg)[1];
+		return stripParameters(str.match(attrreg)[1]);
 	}
 }
 
@@ -201,9 +210,9 @@ function videopress(str) {
 }
 
 /**
- * Strip away any parameters following `?` or `/`
+ * Strip away any parameters following `?` or `/` or '&'
  * @param str
- * @returns {*}
+ * @returns {String}
  */
 function stripParameters(str) {
 	// Split parameters or split folder separator
@@ -211,6 +220,8 @@ function stripParameters(str) {
 		return str.split('?')[0];
 	} else if (str.indexOf('/') > -1) {
 		return str.split('/')[0];
+	} else if (str.indexOf('&') > -1) {
+		return str.split('&')[0];
 	}
 	return str;
 }
