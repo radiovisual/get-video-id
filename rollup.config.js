@@ -12,11 +12,13 @@ export default {
 	output: [
 		{
 			file: pkg.main,
-			format: 'cjs'
+			format: 'umd',
+			name: 'getVideoId'
 		},
 		{
 			file: minified(pkg.main),
-			format: 'cjs'
+			format: 'umd',
+			name: 'getVideoId'
 		},
 		{
 			file: pkg.module,
@@ -25,16 +27,6 @@ export default {
 		{
 			file: minified(pkg.module),
 			format: 'es'
-		},
-		{
-			file: pkg.browser,
-			format: 'iife',
-			name: 'getVideoId'
-		},
-		{
-			file: minified(pkg.browser),
-			format: 'iife',
-			name: 'getVideoId'
 		}
 	],
 
