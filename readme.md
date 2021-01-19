@@ -22,14 +22,14 @@ You can use this module in **Node.js** or in the **browser**. See below for the 
 const getVideoId = require('get-video-id');
 ```
 
-**ESModules**
+**ES2015 Module**
 ```js
 import getVideoId from 'get-video-id';
 ```
 
 **Browser**
 ```html
-<script src="getVideoId.browser.min.js"><script>
+<script src="get-video-id.umd.min.js"s><script>
 ```
 
 ## Usage
