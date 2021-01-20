@@ -1,7 +1,11 @@
-'use strict';
-var getSrc = require('get-src');
+import getSrc from 'get-src';
 
-module.exports = function (str) {
+/**
+ * Get the id and service from a video url.
+ * @param {String} str - the url from which you want to extract the id
+ * @returns {Object}
+ */
+export default function getVideoId(str) {
 	if (typeof str !== 'string') {
 		throw new TypeError('get-video-id expects a string');
 	}
@@ -55,7 +59,7 @@ module.exports = function (str) {
 		};
 	}
 	return metadata;
-};
+}
 
 /**
  * Get the vimeo id.

@@ -1,12 +1,11 @@
 {
   "name": "get-video-id",
-  "version": "3.1.6",
+  "version": "3.1.7",
   "description": "Get the YouTube, Vimeo, Vine or VideoPress video id from a url or embed string.",
   "license": "MIT",
   "repository": "radiovisual/get-video-id",
   "main": "dist/get-video-id.js",
   "module": "dist/get-video-id.esm.js",
-  "browser": "dist/get-video-id.browser.js",
   "types": "./index.d.ts",
   "author": {
     "name": "Michael Wuergler",
@@ -20,8 +19,7 @@
     "pretest": "npm run build",
     "test": "xo && ava --verbose && nyc --exclude dist ava",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "prebuild": "rimraf dist",
-    "build": "rollup -c rollup.config.js"
+    "build": "rimraf dist && rollup -c rollup.config.js"
   },
   "files": [
     "index.js",
@@ -50,7 +48,8 @@
     "get"
   ],
   "dependencies": {
-    "get-src": "^1.0.1"
+    "get-src": "^1.0.1",
+    "rollup-plugin-cleaner": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
