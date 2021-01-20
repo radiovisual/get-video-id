@@ -8,7 +8,7 @@ import pkg from './package.json';
 const minified = file => file.replace(/.js/, '.min.js');
 
 export default {
-	input: './index.js',
+	input: './src/index.js',
 	output: [
 		{
 			file: pkg.main,
@@ -39,7 +39,7 @@ export default {
 			targets: ['dist']
 		}),
 		resolve({
-			mainFields: ['module', 'main', 'browser']
+			mainFields: ['module', 'main']
 		}),
 		commonjs(),
 		babel({
