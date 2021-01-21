@@ -8,10 +8,10 @@ test('expects a string', (t) => {
   }, 'get-video-id expects a string');
 });
 
-test('returns empty object', (t) => {
+test('returns null as id and service', (t) => {
   const notFound = fn('foo');
-  t.is(typeof notFound, 'object');
-  t.is(Object.keys(notFound).length, 0);
+  t.is(notFound.id, null);
+  t.is(notFound.service, null);
 });
 
 /**
@@ -339,6 +339,8 @@ test('handles google redirection to vimeo', (t) => {
   t.is(fn(url).service, 'vimeo');
 });
 
-test('google link returns empty object if missing url parameter', (t) => {
-  t.is(Object.keys(fn('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwiz9P3Aw5DVAhUDZVAKHcegCi8QuAIINDAB&usg=AFQjCNG0kTPdL8nC6zCi2QoZ1KVeTXH-pw')).length, 0);
+test('google link returns null as id and service if missing url parameter', (t) => {
+  const url = 'https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwiz9P3Aw5DVAhUDZVAKHcegCi8QuAIINDAB&usg=AFQjCNG0kTPdL8nC6zCi2QoZ1KVeTXH-pw';
+  t.is(fn(url).id, null);
+  t.is(fn(url).service, null);
 });

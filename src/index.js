@@ -29,7 +29,10 @@ function getVideoId(videoStr) {
   // remove any leading `www.`
   str = str.replace('/www.', '/');
 
-  let metadata = {};
+  let metadata = {
+    id: null,
+    service: null,
+  };
 
   // Try to handle google redirection uri
   if (/\/\/google/.test(str)) {

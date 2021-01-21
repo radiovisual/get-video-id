@@ -1,8 +1,6 @@
 export default function getVideoId(
 	url: string
-):
-	| {}
-	| {
-			id: string;
-			service: "youtube" | "vimeo" | "vine" | "videopress";
-	  };
+): {
+	id: string | null;
+	service: "youtube" | "vimeo" | "vine" | "videopress" | null;
+};
