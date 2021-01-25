@@ -1,46 +1,49 @@
 /**
  * Get the vimeo id.
- * @param {string} str - the url from which you want to extract the id
+ * @param {string} vimeoStr - the url from which you want to extract the id
  * @returns {string|undefined}
  */
-export default function vimeo(str) {
-	if (str.indexOf('#') > -1) {
-		str = str.split('#')[0];
-	}
-	if (str.indexOf('?') > -1 && str.indexOf('clip_id=') === -1) {
-		str = str.split('?')[0];
-	}
+export default function vimeo(vimeoStr) {
+  let str = vimeoStr;
 
-	var id;
-	var arr;
+  if (str.indexOf('#') > -1) {
+    [str] = str.split('#');
+  }
 
-	var primary = /https?:\/\/vimeo\.com\/([0-9]+)/;
+  if (str.indexOf('?') > -1 && str.indexOf('clip_id=') === -1) {
+    [str] = str.split('?');
+  }
 
-	var matches = primary.exec(str);
-	if (matches && matches[1]) {
-		return matches[1];
-	}
+  let id;
+  let arr;
 
-	var vimeoPipe = [
-		'https?:\/\/player\.vimeo\.com\/video\/[0-9]+$',
-		'https?:\/\/vimeo\.com\/channels',
-		'groups',
-		'album'
-	].join('|');
+  const primary = /https?:\/\/vimeo\.com\/([0-9]+)/;
 
-	var vimeoRegex = new RegExp(vimeoPipe, 'gim');
+  const matches = primary.exec(str);
+  if (matches && matches[1]) {
+    return matches[1];
+  }
 
-	if (vimeoRegex.test(str)) {
-		arr = str.split('/');
-		if (arr && arr.length) {
-			id = arr.pop();
-		}
-	} else if (/clip_id=/gim.test(str)) {
-		arr = str.split('clip_id=');
-		if (arr && arr.length) {
-			id = arr[1].split('&')[0];
-		}
-	}
+  const vimeoPipe = [
+    'https?://player.vimeo.com/video/[0-9]+$',
+    'https?://vimeo.com/channels',
+    'groups',
+    'album',
+  ].join('|');
 
-	return id;
+  const vimeoRegex = new RegExp(vimeoPipe, 'gim');
+
+  if (vimeoRegex.test(str)) {
+    arr = str.split('/');
+    if (arr && arr.length) {
+      id = arr.pop();
+    }
+  } else if (/clip_id=/gim.test(str)) {
+    arr = str.split('clip_id=');
+    if (arr && arr.length) {
+      [id] = arr[1].split('&');
+    }
+  }
+
+  return id;
 }

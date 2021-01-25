@@ -4,7 +4,7 @@
  * @returns {string|undefined}
  */
 export default function vine(str) {
-	var regex = /https:\/\/vine\.co\/v\/([a-zA-Z0-9]*)\/?/;
-	var matches = regex.exec(str);
-	return matches && matches[1];
+  const regex = /https:\/\/vine\.co\/v\/([a-zA-Z0-9]*)\/?/;
+  const matches = regex.exec(str);
+  return matches && matches[1];
 }

@@ -1,43 +1,42 @@
-/* eslint max-len: 0 */
-import test from 'ava';
-import fn from '../dist/get-video-id';
-import {JSDOM} from 'jsdom';
 import fs from 'fs';
+import test from 'ava';
+import { JSDOM } from 'jsdom';
+import fn from '../dist/get-video-id';
 
-test('works in a browser', async t => {
-	t.plan(2);
+test('works in a browser', async (t) => {
+  t.plan(2);
 
-	const copyTestHtml = () => fs.copyFileSync('test.html', '../dist/test.html');
-	const deleteTestHtml = () => fs.unlinkSync('../dist/test.html');
+  const copyTestHtml = () => fs.copyFileSync('test.html', '../dist/test.html');
+  const deleteTestHtml = () => fs.unlinkSync('../dist/test.html');
 
-	copyTestHtml();
+  copyTestHtml();
 
-	const options = {
-		resources: 'usable',
-		runScripts: 'dangerously'
-	};
+  const options = {
+    resources: 'usable',
+    runScripts: 'dangerously',
+  };
 
-	const dom = await JSDOM.fromFile('../dist/test.html', options);
-	const expectedId = '123450987';
+  const dom = await JSDOM.fromFile('../dist/test.html', options);
+  const expectedId = '123450987';
 
-	return new Promise((resolve, reject) => {
-		const retry = setInterval(() => {
-			if (!dom.window.getVideoId) {
-				return;
-			}
+  return new Promise((resolve, reject) => {
+    const retry = setInterval(() => {
+      if (!dom.window.getVideoId) {
+        return;
+      }
 
-			t.is(typeof dom.window.getVideoId, 'function');
-			t.is(fn(`https://player.vimeo.com/video/${expectedId}`).id, expectedId);
-			clearInterval(retry);
-			deleteTestHtml();
-			resolve();
-		}, 100);
+      t.is(typeof dom.window.getVideoId, 'function');
+      t.is(fn(`https://player.vimeo.com/video/${expectedId}`).id, expectedId);
+      clearInterval(retry);
+      deleteTestHtml();
+      resolve();
+    }, 100);
 
-		setTimeout(() => {
-			clearInterval(retry);
-			t.fail();
-			deleteTestHtml();
-			reject();
-		}, 5000);
-	});
+    setTimeout(() => {
+      clearInterval(retry);
+      t.fail();
+      deleteTestHtml();
+      reject();
+    }, 5000);
+  });
 });

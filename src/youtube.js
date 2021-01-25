@@ -2,72 +2,76 @@ import stripParameters from './utils/strip-parameters';
 
 /**
  * Get the Youtube Video id.
- * @param {string} str - the url from which you want to extract the id
+ * @param {string} youtubeStr - the url from which you want to extract the id
  * @returns {string|undefined}
  */
-export default function youtube(str) {
-	// remove time hash at the end of the string
-	str = str.replace(/#t=.*$/, '');
+export default function youtube(youtubeStr) {
+  let str = youtubeStr;
 
-	// shortcode
-	var shortcode = /youtube:\/\/|https?:\/\/youtu\.be\/|http:\/\/y2u\.be\//g;
+  // remove time hash at the end of the string
+  str = str.replace(/#t=.*$/, '');
 
-	if (shortcode.test(str)) {
-		var shortcodeid = str.split(shortcode)[1];
-		return stripParameters(shortcodeid);
-	}
+  // shortcode
+  const shortcode = /youtube:\/\/|https?:\/\/youtu\.be\/|http:\/\/y2u\.be\//g;
 
-	// /v/ or /vi/
-	var inlinev = /\/v\/|\/vi\//g;
+  if (shortcode.test(str)) {
+    const shortcodeid = str.split(shortcode)[1];
+    return stripParameters(shortcodeid);
+  }
 
-	if (inlinev.test(str)) {
-		var inlineid = str.split(inlinev)[1];
-		return stripParameters(inlineid);
-	}
+  // /v/ or /vi/
+  const inlinev = /\/v\/|\/vi\//g;
 
-	// v= or vi=
-	var parameterv = /v=|vi=/g;
+  if (inlinev.test(str)) {
+    const inlineid = str.split(inlinev)[1];
+    return stripParameters(inlineid);
+  }
 
-	if (parameterv.test(str)) {
-		var arr = str.split(parameterv);
-		return stripParameters(arr[1].split('&')[0]);
-	}
+  // v= or vi=
+  const parameterv = /v=|vi=/g;
 
-	// v= or vi=
-	var parameterwebp = /\/an_webp\//g;
+  if (parameterv.test(str)) {
+    const arr = str.split(parameterv);
+    return stripParameters(arr[1].split('&')[0]);
+  }
 
-	if (parameterwebp.test(str)) {
-		var webp = str.split(parameterwebp)[1];
-		return stripParameters(webp);
-	}
+  // v= or vi=
+  const parameterwebp = /\/an_webp\//g;
 
-	// embed
-	var embedreg = /\/embed\//g;
+  if (parameterwebp.test(str)) {
+    const webp = str.split(parameterwebp)[1];
+    return stripParameters(webp);
+  }
 
-	if (embedreg.test(str)) {
-		var embedid = str.split(embedreg)[1];
-		return stripParameters(embedid);
-	}
+  // embed
+  const embedreg = /\/embed\//g;
 
-	// ignore /user/username pattern
-	var usernamereg = /\/user\/([a-zA-Z0-9]*)$/g;
+  if (embedreg.test(str)) {
+    const embedid = str.split(embedreg)[1];
+    return stripParameters(embedid);
+  }
 
-	if (usernamereg.test(str)) {
-		return undefined;
-	}
+  // ignore /user/username pattern
+  const usernamereg = /\/user\/([a-zA-Z0-9]*)$/g;
 
-	// user
-	var userreg = /\/user\/(?!.*videos)/g;
+  if (usernamereg.test(str)) {
+    return undefined;
+  }
 
-	if (userreg.test(str)) {
-		var elements = str.split('/');
-		return stripParameters(elements.pop());
-	}
+  // user
+  const userreg = /\/user\/(?!.*videos)/g;
 
-	// attribution_link
-	var attrreg = /\/attribution_link\?.*v%3D([^%&]*)(%26|&|$)/;
+  if (userreg.test(str)) {
+    const elements = str.split('/');
+    return stripParameters(elements.pop());
+  }
 
-	if (attrreg.test(str)) {
-		return stripParameters(str.match(attrreg)[1]);
-	}
+  // attribution_link
+  const attrreg = /\/attribution_link\?.*v%3D([^%&]*)(%26|&|$)/;
+
+  if (attrreg.test(str)) {
+    return stripParameters(str.match(attrreg)[1]);
+  }
+
+  return undefined;
 }

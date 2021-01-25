@@ -17,7 +17,8 @@
   },
   "scripts": {
     "pretest": "npm run build",
-    "test": "xo && ava --verbose && nyc --exclude dist ava",
+    "test": "npm run lint && ava --verbose && nyc --exclude dist ava",
+    "lint": "npx eslint src tests",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "build": "rimraf dist && rollup -c rollup.config.js"
   },
@@ -52,10 +53,18 @@
     "rollup-plugin-cleaner": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.1",
     "@babel/preset-env": "^7.5.5",
     "ava": "^0.15.2",
+    "babel-eslint": "^10.1.0",
     "coveralls": "^2.13.3",
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
     "jsdom": "^15.1.1",
     "nyc": "^6.1.1",
     "rimraf": "^3.0.0",
@@ -63,7 +72,6 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.1.1",
-    "xo": "^0.12.1"
+    "rollup-plugin-terser": "^5.1.1"
   }
 }

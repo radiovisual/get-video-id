@@ -4,18 +4,20 @@
  * @returns {string|undefined}
  */
 export default function videopress(str) {
-	var idRegex;
-	if (str.indexOf('embed') > -1) {
-		idRegex = /embed\/(\w{8})/;
-		return str.match(idRegex)[1];
-	}
+  let idRegex;
 
-	idRegex = /\/v\/(\w{8})/;
+  if (str.indexOf('embed') > -1) {
+    idRegex = /embed\/(\w{8})/;
+    return str.match(idRegex)[1];
+  }
 
-	var match = str.match(idRegex);
+  idRegex = /\/v\/(\w{8})/;
 
-	if (match && match.length > 0) {
-		return str.match(idRegex)[1];
-	}
-	return undefined;
+  const match = str.match(idRegex);
+
+  if (match && match.length > 0) {
+    return str.match(idRegex)[1];
+  }
+
+  return undefined;
 }
