@@ -49,8 +49,7 @@
     "get"
   ],
   "dependencies": {
-    "get-src": "^1.0.1",
-    "rollup-plugin-cleaner": "^1.0.0"
+    "get-src": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -70,6 +69,7 @@
     "rimraf": "^3.0.0",
     "rollup": "^1.20.3",
     "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-cleaner": "^1.0.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.1.1"
