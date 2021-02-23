@@ -3,6 +3,7 @@ import youtube from './youtube';
 import vimeo from './vimeo';
 import vine from './vine';
 import videopress from './videopress';
+import microsoftStream from './microsoftstream';
 
 /**
  * Get the id and service from a video url.
@@ -65,6 +66,11 @@ function getVideoId(videoStr) {
     metadata = {
       id: videopress(str),
       service: 'videopress',
+    };
+  } else if (/microsoftstream/.test(str)) {
+    metadata = {
+      id: microsoftStream(str),
+      service: 'microsoftstream',
     };
   }
   return metadata;
