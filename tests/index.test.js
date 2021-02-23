@@ -365,14 +365,14 @@ test('gets microsoft stream from url', (t) => {
   t.is(fn('https://web.microsoftstream.com/embed/video/73043e0c-cba8-482a-8a8e-0b72bc580ff0').service, 'microsoftstream');
 });
 
-test('gets vine metadata from iframe', (t) => {
+test('gets microsoft stream metadata from iframe', (t) => {
   const str = '<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/73043e0c-cba8-482a-8a8e-0b72bc580ff0?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe>';
 
   t.is(fn(str).id, '73043e0c-cba8-482a-8a8e-0b72bc580ff0');
   t.is(fn(str).service, 'microsoftstream');
 });
 
-test('vine links returns undefined id if id missing', (t) => {
+test('microsoft stream links returns undefined id if id missing', (t) => {
   const obj = fn('https://web.microsoftstream.com/video');
   t.is(obj.id, null);
   t.is(obj.service, 'microsoftstream');
