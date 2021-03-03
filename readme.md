@@ -209,7 +209,7 @@ https://web.microsoftstream.com/embed/video/*
 
 **Microsoft Stream iframes**
 ```
-<iframe src="https://web.microsoftstream.com/embed/video/73043e0c-cba8-482a-8a8e-0b72bc580ff4?autoplay=false&amp;showinfo=true" width="640" height="360"></iframe>
+<iframe src="https://web.microsoftstream.com/embed/video/*?&" width="640" height="360"></iframe>
 ```
 
 ## Contributing
