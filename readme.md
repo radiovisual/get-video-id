@@ -1,6 +1,6 @@
 # get-video-id [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
-> Get the YouTube, Vimeo, Vine, VideoPress or Microsoft Stream video id from an url or embed string.
+> Get the YouTube, Vimeo, Vine, VideoPress or Microsoft Stream video id from a url or embed string.
 
 This module will extract the YouTube, Vimeo, Vine, or VideoPress Video ID from any known YouTube, Vimeo, Vine, or VideoPress url patterns, including embed strings.
 
