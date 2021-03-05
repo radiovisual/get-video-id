@@ -1,6 +1,6 @@
 # get-video-id [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
-> Get the YouTube, Vimeo, Vine or VideoPress video id from a url or embed string.
+> Get the YouTube, Vimeo, Vine, VideoPress or Microsoft Stream video id from a url or embed string.
 
 This module will extract the YouTube, Vimeo, Vine, or VideoPress Video ID from any known YouTube, Vimeo, Vine, or VideoPress url patterns, including embed strings.
 
@@ -78,7 +78,7 @@ The YouTube, Vimeo, or Vine url (or embed code) from which you want to find the 
 This module works on the url / embed patterns below.
 (where `*` is the id and `?` or `&` are parameter strings):
 
-### YouTube 
+### YouTube
 
 **YouTube Shortcodes**
 ```
@@ -151,7 +151,7 @@ https://google.cz/url?source=web&url=<YOUTUBE_URL>
 https://google.com/image?url=<YOUTUBE_URL>
 ```
 
-### Vimeo 
+### Vimeo
 
 **Vimeo urls**
 ```
@@ -197,6 +197,19 @@ https://videopress.com/embed/*
 **VideoPress iframes**
 ```
 <iframe src="https://videopress.com/embed/zcnJVzQF" width="600" height="600"></iframe>
+```
+
+### Microsoft Stream
+
+**Microsoft Stream urls**
+```
+https://web.microsoftstream.com/video/*
+https://web.microsoftstream.com/embed/video/*
+```
+
+**Microsoft Stream iframes**
+```
+<iframe src="https://web.microsoftstream.com/embed/video/*?&" width="640" height="360"></iframe>
 ```
 
 ## Contributing

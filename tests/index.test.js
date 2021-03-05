@@ -344,3 +344,36 @@ test('google link returns null as id and service if missing url parameter', (t) 
   t.is(fn(url).id, null);
   t.is(fn(url).service, null);
 });
+
+/**
+ *  Microsoft Stream should be able to find these patterns:
+ *
+ *  // urls
+ *  https://web.microsoftstream.com/video/id
+ *
+ *  // iframe
+ *  <iframe src="https://web.microsoftstream.com/embed/video/id"
+ *
+ */
+
+test('gets microsoft stream from url', (t) => {
+  t.is(fn('https://web.microsoftstream.com/video/73043e0c-cba8-482a-8a8e-0b72bc580ff0').id, '73043e0c-cba8-482a-8a8e-0b72bc580ff0');
+  t.is(fn('https://web.microsoftstream.com/video/73043e0c-cba8-482a-8a8e-0b72bc580ff0?list=trending').id, '73043e0c-cba8-482a-8a8e-0b72bc580ff0');
+  t.is(fn('https://web.microsoftstream.com/embed/video/73043e0c-cba8-482a-8a8e-0b72bc580ff0').id, '73043e0c-cba8-482a-8a8e-0b72bc580ff0');
+
+  t.is(fn('https://web.microsoftstream.com/video/73043e0c-cba8-482a-8a8e-0b72bc580ff0').service, 'microsoftstream');
+  t.is(fn('https://web.microsoftstream.com/embed/video/73043e0c-cba8-482a-8a8e-0b72bc580ff0').service, 'microsoftstream');
+});
+
+test('gets microsoft stream metadata from iframe', (t) => {
+  const str = '<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/73043e0c-cba8-482a-8a8e-0b72bc580ff0?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe>';
+
+  t.is(fn(str).id, '73043e0c-cba8-482a-8a8e-0b72bc580ff0');
+  t.is(fn(str).service, 'microsoftstream');
+});
+
+test('microsoft stream links returns undefined id if id missing', (t) => {
+  const obj = fn('https://web.microsoftstream.com/video');
+  t.is(obj.id, null);
+  t.is(obj.service, 'microsoftstream');
+});
