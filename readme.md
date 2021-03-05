@@ -2,8 +2,6 @@
 
 > Get the YouTube, Vimeo, Vine, VideoPress or Microsoft Stream video id from a url or embed string.
 
-This module will extract the YouTube, Vimeo, Vine, or VideoPress Video ID from any known YouTube, Vimeo, Vine, or VideoPress url patterns, including embed strings.
-
 **Pull Requests are welcome** if you would like to see support for other video services or if you find an unsupported video url pattern.
 
 ## Install
@@ -34,7 +32,7 @@ import getVideoId from 'get-video-id';
 
 ## Usage
 
-Simply supply the module with any known YouTube, Vimeo or Vine url (or embed string) and its metadata (`id` and `service`) will be returned:
+Simply supply the module with a url or embed string matching any of the [patterns known by this module](https://github.com/radiovisual/get-video-id#patterns) and its metadata of `id` and `service` will be returned:
 
 ```js
 import getVideoId from 'get-video-id';
@@ -70,7 +68,7 @@ Returns a metadata `Object` with the video `id` and `service` name:
 
 Type: `String`
 
-The YouTube, Vimeo, or Vine url (or embed code) from which you want to find the video id. See the
+The url (or embed code) from which you want to find the video id. See the
 [Patterns section](https://github.com/radiovisual/get-video-id#patterns) to see the formats that can be supplied.
 
 ## Patterns
