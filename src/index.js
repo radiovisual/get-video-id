@@ -4,6 +4,7 @@ import vimeo from './vimeo';
 import vine from './vine';
 import videopress from './videopress';
 import microsoftStream from './microsoftstream';
+import tiktok from './tiktok';
 
 /**
  * Get the id and service from a video url.
@@ -71,6 +72,11 @@ function getVideoId(videoStr) {
     metadata = {
       id: microsoftStream(str),
       service: 'microsoftstream',
+    };
+  } else if (/tiktok\.com/.test(str)) {
+    metadata = {
+      id: tiktok(str),
+      service: 'tiktok',
     };
   }
   return metadata;

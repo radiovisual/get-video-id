@@ -209,6 +209,13 @@ https://web.microsoftstream.com/embed/video/*
 ```
 <iframe src="https://web.microsoftstream.com/embed/video/*?&" width="640" height="360"></iframe>
 ```
+### TikTok
+
+**TikTok urls**
+```
+https://www.tiktok.com/*/video/*
+https://www.tiktok.com/*/video/*?*
+````
 
 ## Contributing
 
