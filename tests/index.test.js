@@ -377,3 +377,36 @@ test('microsoft stream links returns undefined id if id missing', (t) => {
   t.is(obj.id, null);
   t.is(obj.service, 'microsoftstream');
 });
+
+/**
+ *  Dailymotion should be able to find these patterns:
+ *
+ *  Urls:
+ *  http://www.dailymotion.com/video/x44lvd_rates-of-exchange-like-a-renegade_music
+ *  http://www.dailymotion.com/video/x44lvd
+ *  http://www.dailymotion.com/video/xn1bi0_hakan-yukur-klip_sport
+ *  http://www.dailymotion.com/fr/relevance/search/gangnam+style/1#video=xsbwie
+ *  https://www.dailymotion.com/video/x82nygx?playlist=x5nmbq
+ *  https://www.dailymotion.com/embed/video/x82nygx?autoplay=1
+ *  http://dai.ly/x2no31b
+ *
+ *  Not supported (channel id only):
+ *  http://www.dailymotion.com/hub/x9q_Galatasaray
+ */
+
+test('Dailymotion basic link/embed', (t) => {
+  t.is(fn('http://www.dailymotion.com/video/x44lvd_rates-of-exchange-like-a-renegade_music').id, 'x44lvd');
+  t.is(fn('http://www.dailymotion.com/video/x44lvd').id, 'x44lvd');
+  t.is(fn('http://www.dailymotion.com/video/xn1bi0_hakan-yukur-klip_sport').id, 'xn1bi0');
+  t.is(fn('https://www.dailymotion.com/video/x82nygx?playlist=x5nmbq').id, 'x82nygx');
+  t.is(fn('https://www.dailymotion.com/embed/video/x82nygx?autoplay=1').id, 'x82nygx');
+});
+
+test('Dailymotion short link', (t) => {
+  t.is(fn('http://dai.ly/x2no31b').id, 'x2no31b');
+});
+
+test('Dailymotion dynamic id', (t) => {
+  t.is(fn('http://www.dailymotion.com/fr/relevance/search/gangnam+style/1#video=xsbwie').id, 'xsbwie');
+  t.is(fn('http://www.dailymotion.com/hub/x9q_Galatasaray#video=xjw21s').id, 'xjw21s');
+});
