@@ -4,6 +4,7 @@ import vimeo from './vimeo';
 import vine from './vine';
 import videopress from './videopress';
 import microsoftStream from './microsoftstream';
+import dailymotion from './dailymotion';
 
 /**
  * Get the id and service from a video url.
@@ -71,6 +72,11 @@ function getVideoId(videoStr) {
     metadata = {
       id: microsoftStream(str),
       service: 'microsoftstream',
+    };
+  } else if (/(dailymotion\.com|dai\.ly)/.test(str)) {
+    metadata = {
+      id: dailymotion(str),
+      service: 'dailymotion',
     };
   }
   return metadata;

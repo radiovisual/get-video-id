@@ -19,6 +19,7 @@
     "pretest": "npm run build",
     "test": "npm run lint && ava --verbose && nyc --exclude dist ava",
     "lint": "npx eslint src tests",
+    "lint:fix": "npx eslint src tests --fix",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "build": "rimraf dist && rollup -c rollup.config.js"
   },

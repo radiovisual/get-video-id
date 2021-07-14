@@ -210,6 +210,22 @@ https://web.microsoftstream.com/embed/video/*
 <iframe src="https://web.microsoftstream.com/embed/video/*?&" width="640" height="360"></iframe>
 ```
 
+### Dailymotion
+
+**Dailymotion urls**
+```
+http://www.dailymotion.com/video/*_*
+http://www.dailymotion.com/video/*
+http://www.dailymotion.com/fr/relevance/search/*/1#video=*
+https://www.dailymotion.com/video/*?playlist=*
+http://dai.ly/*
+```
+
+**Dailymotion iframes**
+```
+<iframe src="https://www.dailymotion.com/embed/video/*" width="600" height="600"></iframe>
+```
+
 ## Contributing
 
 If you discover a url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues) to report it, or [submit a Pull Request](https://github.com/radiovisual/get-video-id/pull/new/master). For any submitted pull requests, please ensure that you include unit test(s) to fully cover your code contribution(s).
