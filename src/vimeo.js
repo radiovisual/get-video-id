@@ -17,6 +17,14 @@ export default function vimeo(vimeoStr) {
   let id;
   let arr;
 
+  const event = /https?:\/\/vimeo\.com\/event\/([0-9]+)$/;
+
+  const eventMatches = event.exec(str);
+
+  if (eventMatches && eventMatches[1]) {
+    return eventMatches[1];
+  }
+
   const primary = /https?:\/\/vimeo\.com\/([0-9]+)/;
 
   const matches = primary.exec(str);
