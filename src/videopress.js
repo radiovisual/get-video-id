@@ -3,21 +3,21 @@
  * @param {string} str - the url from which you want to extract the id
  * @returns {string|undefined}
  */
-export default function videopress(str) {
-  let idRegex;
+export default function videopress(string_) {
+	let idRegex;
 
-  if (str.indexOf('embed') > -1) {
-    idRegex = /embed\/(\w{8})/;
-    return str.match(idRegex)[1];
-  }
+	if (string_.includes('embed')) {
+		idRegex = /embed\/(\w{8})/;
+		return string_.match(idRegex)[1];
+	}
 
-  idRegex = /\/v\/(\w{8})/;
+	idRegex = /\/v\/(\w{8})/;
 
-  const match = str.match(idRegex);
+	const match = string_.match(idRegex);
 
-  if (match && match.length > 0) {
-    return str.match(idRegex)[1];
-  }
+	if (match && match.length > 0) {
+		return string_.match(idRegex)[1];
+	}
 
-  return undefined;
+	return undefined;
 }
