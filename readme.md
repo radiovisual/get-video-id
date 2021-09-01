@@ -1,6 +1,6 @@
 # get-video-id [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
-> Get the YouTube, Vimeo, Vine, VideoPress or Microsoft Stream video id from a url or embed string.
+> Get the YouTube, Vimeo, Vine, VideoPress, Microsoft Stream and Dailymotion video id from a url or embed string.
 
 **Pull Requests are welcome** if you would like to see support for other video services or if you find an unsupported video url pattern.
 
