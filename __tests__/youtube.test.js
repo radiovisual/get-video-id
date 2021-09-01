@@ -158,18 +158,4 @@ describe('Youtube', () => {
 		expect(fn('http://youtube.com/vi/G-3YxlZIhus&feature=share').id).toBe('G-3YxlZIhus');
 		expect(fn('http://youtube.com/vi/G-3YxlZIhus&foo=bar').id).toBe('G-3YxlZIhus');
 	});
-
-	/**
-	* Google redirect patterns:
-	*
-	*  https://google.cz/url?source=web&url=id
-	*  https://google.com/image?url=id
-	*
-	*/
-
-	test('handles google redirection to youtube', () => {
-		const url = 'https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIIjAA&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DeG1uDU0rSLw&usg=AFQjCNECyDn3DQL7U6VW2CnXQQjB0gNKqA';
-		expect(fn(url).id).toBe('eG1uDU0rSLw');
-		expect(fn(url).service).toBe('youtube');
-	});
 });
