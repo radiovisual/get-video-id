@@ -385,3 +385,47 @@ test('microsoft stream links returns undefined id if id missing', (t) => {
   t.is(obj.id, null);
   t.is(obj.service, 'microsoftstream');
 });
+
+/**
+ *  Dailymotion should be able to find these patterns:
+ *
+ *  Urls:
+ *  http://www.dailymotion.com/video/id_title_text
+ *  http://www.dailymotion.com/video/id
+ *  http://www.dailymotion.com/fr/relevance/search/search+query/1#video=id
+ *  https://www.dailymotion.com/video/id?playlist=
+ *  https://www.dailymotion.com/embed/video/id?autoplay=1
+ *  http://dai.ly/id
+ *
+ *  Not supported (channel id only):
+ *  http://www.dailymotion.com/hub/id_title
+ */
+
+test('Dailymotion basic link/embed', (t) => {
+  t.is(fn('http://www.dailymotion.com/video/x44lvd_rates-of-exchange-like-a-renegade_music').id, 'x44lvd');
+  t.is(fn('http://www.dailymotion.com/video/x44lvd').id, 'x44lvd');
+  t.is(fn('http://www.dailymotion.com/video/xn1bi0_hakan-yukur-klip_sport').id, 'xn1bi0');
+  t.is(fn('https://www.dailymotion.com/video/x82nygx?playlist=x5nmbq').id, 'x82nygx');
+  t.is(fn('https://www.dailymotion.com/embed/video/x82nygx?autoplay=1').id, 'x82nygx');
+  t.is(fn('http://www.dailymotion.com/fr/relevance/search/gangnam+style/1#video=xsbwie').id, 'xsbwie');
+});
+
+test('Dailymotion returns the service', (t) => {
+  t.is(fn('http://www.dailymotion.com/video/1234').service, 'dailymotion');
+  t.is(fn('http://www.dailymotion.com/video/1234').id, '1234');
+});
+
+test('Dailymotion short link', (t) => {
+  t.is(fn('http://dai.ly/x2no31b').id, 'x2no31b');
+});
+
+test('Dailymotion dynamic id', (t) => {
+  t.is(fn('http://www.dailymotion.com/fr/relevance/search/gangnam+style/1#video=xsbwie').id, 'xsbwie');
+  t.is(fn('http://www.dailymotion.com/hub/x9q_Galatasaray#video=xjw21s').id, 'xjw21s');
+});
+
+test('Dailymotion iframe', (t) => {
+  const actual = fn('<iframe src="https://www.dailymotion.com/embed/video/12780" width="600" height="600"></iframe>');
+  t.is(actual.id, '12780');
+  t.is(actual.service, 'dailymotion');
+});
