@@ -1,6 +1,6 @@
 # get-video-id [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
 
-> Get the YouTube, Vimeo, Vine, VideoPress or Microsoft Stream video id from a url or embed string.
+> Get the YouTube, Vimeo, Vine, VideoPress, Microsoft Stream and Dailymotion video id from a url or embed string.
 
 **Pull Requests are welcome** if you would like to see support for other video services or if you find an unsupported video url pattern.
 
@@ -27,7 +27,7 @@ import getVideoId from 'get-video-id';
 
 **Browser**
 ```html
-<script src="get-video-id.umd.min.js"s><script>
+<script src="get-video-id.umd.min.js"></script>
 ```
 
 ## Usage
@@ -166,6 +166,11 @@ https://www.vimeo.com/*?
 http://vimeo.com/foo.swf?clip_id=1234
 ```
 
+**Vimeo events**
+```
+https://vimeo.com/event/*
+```
+
 **Vimeo iframe**
 ```
 <iframe src="https://player.vimeo.com/video/*" ...
@@ -216,6 +221,25 @@ https://web.microsoftstream.com/embed/video/*
 https://www.tiktok.com/*/video/*
 https://www.tiktok.com/*/video/*?*
 ````
+
+### Dailymotion
+
+**Dailymotion urls**
+```
+http://www.dailymotion.com/video/*_text
+http://www.dailymotion.com/video/*
+http://www.dailymotion.com/fr/relevance/search/search+query/1#video=*
+https://www.dailymotion.com/video/*?playlist=
+http://dai.ly/*
+```
+
+**Dailymotion iframes**
+```
+<iframe src="https://www.dailymotion.com/embed/video/*" width="600" height="600"></iframe>
+```
+
+**:warning: Unsupported Dailymotion urls**
+ *  Channel id urls: http://www.dailymotion.com/hub/*_title
 
 ## Contributing
 

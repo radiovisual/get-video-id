@@ -5,6 +5,8 @@ import vine from './vine';
 import videopress from './videopress';
 import microsoftStream from './microsoftstream';
 import tiktok from './tiktok';
+import dailymotion from './dailymotion';
+
 
 /**
  * Get the id and service from a video url.
@@ -77,6 +79,10 @@ function getVideoId(videoStr) {
     metadata = {
       id: tiktok(str),
       service: 'tiktok',
+  } else if (/(dailymotion\.com|dai\.ly)/.test(str)) {
+    metadata = {
+      id: dailymotion(str),
+      service: 'dailymotion',
     };
   }
   return metadata;
