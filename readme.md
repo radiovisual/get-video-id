@@ -214,10 +214,10 @@ https://web.microsoftstream.com/embed/video/*
 
 **Dailymotion urls**
 ```
-http://www.dailymotion.com/video/*_*
+http://www.dailymotion.com/video/*_text
 http://www.dailymotion.com/video/*
-http://www.dailymotion.com/fr/relevance/search/*/1#video=*
-https://www.dailymotion.com/video/*?playlist=*
+http://www.dailymotion.com/fr/relevance/search/search+query/1#video=*
+https://www.dailymotion.com/video/*?playlist=
 http://dai.ly/*
 ```
 
@@ -225,6 +225,9 @@ http://dai.ly/*
 ```
 <iframe src="https://www.dailymotion.com/embed/video/*" width="600" height="600"></iframe>
 ```
+
+**:warning: Unsupported Dailymotion urls**
+ *  Channel id urls: http://www.dailymotion.com/hub/*_title
 
 ## Contributing
 
