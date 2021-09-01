@@ -13,10 +13,10 @@ export default function videopress(string_) {
 
 	idRegex = /\/v\/(\w{8})/;
 
-	const match = string_.match(idRegex);
+	const matches = string_.match(idRegex);
 
-	if (match && match.length > 0) {
-		return string_.match(idRegex)[1];
+	if (matches && matches.length > 0) {
+		return matches[1];
 	}
 
 	return undefined;

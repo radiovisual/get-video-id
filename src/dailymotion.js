@@ -14,14 +14,14 @@ export default function dailymotion(urlString) {
 	// Parse shortlink
 	const shortRegex = /dai\.ly\/([a-zA-Z\d]+)/gm;
 	const shortParsed = shortRegex.exec(urlString);
-	if (shortParsed) {
+	if (shortParsed && shortParsed.length > 1) {
 		return shortParsed[1];
 	}
 
 	// Dynamic link
 	const dynamicRegex = /dailymotion\.com(.*)video=([a-zA-Z\d]+)/gm;
 	const dynamicParsed = dynamicRegex.exec(urlString);
-	if (dynamicParsed) {
+	if (dynamicParsed && dynamicParsed.length > 2) {
 		return dynamicParsed[2];
 	}
 
