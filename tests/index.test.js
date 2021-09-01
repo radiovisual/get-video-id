@@ -28,6 +28,9 @@ test('returns null as id and service', (t) => {
  *  // iframe
  *  iframe src="https://player.vimeo.com/video/id"
  *
+ *  // events
+ *  https://vimeo.com/event/id
+ *
  *  // channels groups and albums
  *  https://vimeo.com/channels/id
  *  https://vimeo.com/channels/yourchannel/id
@@ -81,6 +84,11 @@ test('handles swf embed patterns', (t) => {
   t.is(fn('https://vimeo.com/name.swf?clip_id=1234').id, '1234');
   t.is(fn('http://vimeo.com/name.swf?clip_id=1234').service, 'vimeo');
   t.is(fn('https://vimeo.com/name.swf?clip_id=1234').service, 'vimeo');
+});
+
+test('handles vimeo events patterns', (t) => {
+  t.is(fn('https://vimeo.com/event/12345').id, '12345');
+  t.is(fn('https://vimeo.com/event/12345').service, 'vimeo');
 });
 
 test('vimeo links returns undefined id if id missing', (t) => {

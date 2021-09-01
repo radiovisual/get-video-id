@@ -27,7 +27,7 @@ import getVideoId from 'get-video-id';
 
 **Browser**
 ```html
-<script src="get-video-id.umd.min.js"s><script>
+<script src="get-video-id.umd.min.js"></script>
 ```
 
 ## Usage
@@ -164,6 +164,11 @@ https://www.vimeo.com/*?
 **Vimeo swf embed**
 ```
 http://vimeo.com/foo.swf?clip_id=1234
+```
+
+**Vimeo events**
+```
+https://vimeo.com/event/*
 ```
 
 **Vimeo iframe**
