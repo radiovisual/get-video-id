@@ -17,10 +17,9 @@
   },
   "scripts": {
     "pretest": "npm run build",
-    "test": "npm run lint && jest --verbose && nyc --exclude dist jest --coverage",
+    "test": "npm run lint && c8 jest",
     "lint": "xo",
     "lint:fix": "xo --fix",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "build": "rimraf dist && rollup -c rollup.config.js"
   },
   "files": [
@@ -62,9 +61,8 @@
     "@babel/preset-env": "^7.15.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^27.1.0",
-    "coveralls": "^2.13.3",
+    "c8": "^7.8.0",
     "jest": "^27.1.0",
-    "nyc": "^6.1.1",
     "rimraf": "^3.0.0",
     "rollup": "^1.20.3",
     "rollup-plugin-babel": "^4.3.3",
@@ -79,6 +77,12 @@
       "test",
       "expect",
       "describe"
+    ]
+  },
+  "c8": {
+    "reporter": [
+      "text",
+      "lcov"
     ]
   }
 }
