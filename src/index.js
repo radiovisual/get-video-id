@@ -1,4 +1,3 @@
-import getSrc from 'get-src';
 import youtube from './youtube.js';
 import vimeo from './vimeo.js';
 import vine from './vine.js';
@@ -6,6 +5,7 @@ import videopress from './videopress.js';
 import microsoftStream from './microsoftstream.js';
 import tiktok from './tiktok.js';
 import dailymotion from './dailymotion.js';
+import getSrc from './utils/get-src.js';
 
 /**
  * Get the id and service from a video url.

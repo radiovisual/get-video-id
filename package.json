@@ -53,9 +53,7 @@
     "extract",
     "get"
   ],
-  "dependencies": {
-    "get-src": "^1.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/eslint-parser": "^7.12.1",
