@@ -219,8 +219,10 @@ https://web.microsoftstream.com/embed/video/*
 **TikTok urls**
 ```
 https://www.tiktok.com/*/video/*
-https://www.tiktok.com/*/video/*?*
+https://www.tiktok.com/*/video/*?
 ````
+**:warning: Unsupported TikTok urls**
+ *  Shortlink URL (requires a fetch/redirect to find the real id) : `https://vm.tiktok.com/shorLinkId/`
 
 ### Dailymotion
 
@@ -239,7 +241,7 @@ http://dai.ly/*
 ```
 
 **:warning: Unsupported Dailymotion urls**
- *  Channel id urls: http://www.dailymotion.com/hub/*_title
+ *  Channel id urls: `http://www.dailymotion.com/hub/*_title`
 
 ## Contributing
 
