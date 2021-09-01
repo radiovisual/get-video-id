@@ -1,4 +1,4 @@
-# get-video-id [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
+# get-video-id [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status]( [![Coverage Status](https://codecov.io/gh/radiovisual/get-video-id/branch/main/graph/badge.svg)](https://codecov.io/gh/radiovisual/get-video-id))](https://codecov.io/gh/radiovisual/get-video-id)
 
 > Get the YouTube, Vimeo, Vine, VideoPress, TikTok, Microsoft Stream and Dailymotion video id from a url or embed string.
 
