@@ -3,8 +3,13 @@
  * @param {string} str - the url from which you want to extract the id
  * @returns {string|undefined}
  */
-export default function vine(str) {
-  const regex = /https:\/\/vine\.co\/v\/([a-zA-Z0-9]*)\/?/;
-  const matches = regex.exec(str);
-  return matches && matches[1];
+export default function vine(string_) {
+	const regex = /https:\/\/vine\.co\/v\/([a-zA-Z\d]*)\/?/;
+	const matches = regex.exec(string_);
+
+	if (matches && matches.length > 1) {
+		return matches[1];
+	}
+
+	return undefined;
 }

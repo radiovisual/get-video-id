@@ -1,77 +1,77 @@
-import stripParameters from './utils/strip-parameters';
+import stripParameters from './utils/strip-parameters.js';
 
 /**
  * Get the Youtube Video id.
  * @param {string} youtubeStr - the url from which you want to extract the id
  * @returns {string|undefined}
  */
-export default function youtube(youtubeStr) {
-  let str = youtubeStr;
+export default function youtube(youtubeString) {
+	let string_ = youtubeString;
 
-  // remove time hash at the end of the string
-  str = str.replace(/#t=.*$/, '');
+	// Remove time hash at the end of the string
+	string_ = string_.replace(/#t=.*$/, '');
 
-  // shortcode
-  const shortcode = /youtube:\/\/|https?:\/\/youtu\.be\/|http:\/\/y2u\.be\//g;
+	// Shortcode
+	const shortcode = /youtube:\/\/|https?:\/\/youtu\.be\/|http:\/\/y2u\.be\//g;
 
-  if (shortcode.test(str)) {
-    const shortcodeid = str.split(shortcode)[1];
-    return stripParameters(shortcodeid);
-  }
+	if (shortcode.test(string_)) {
+		const shortcodeid = string_.split(shortcode)[1];
+		return stripParameters(shortcodeid);
+	}
 
-  // /v/ or /vi/
-  const inlinev = /\/v\/|\/vi\//g;
+	// /v/ or /vi/
+	const inlinev = /\/v\/|\/vi\//g;
 
-  if (inlinev.test(str)) {
-    const inlineid = str.split(inlinev)[1];
-    return stripParameters(inlineid);
-  }
+	if (inlinev.test(string_)) {
+		const inlineid = string_.split(inlinev)[1];
+		return stripParameters(inlineid);
+	}
 
-  // v= or vi=
-  const parameterv = /v=|vi=/g;
+	// V= or vi=
+	const parameterv = /v=|vi=/g;
 
-  if (parameterv.test(str)) {
-    const arr = str.split(parameterv);
-    return stripParameters(arr[1].split('&')[0]);
-  }
+	if (parameterv.test(string_)) {
+		const array = string_.split(parameterv);
+		return stripParameters(array[1].split('&')[0]);
+	}
 
-  // v= or vi=
-  const parameterwebp = /\/an_webp\//g;
+	// V= or vi=
+	const parameterwebp = /\/an_webp\//g;
 
-  if (parameterwebp.test(str)) {
-    const webp = str.split(parameterwebp)[1];
-    return stripParameters(webp);
-  }
+	if (parameterwebp.test(string_)) {
+		const webp = string_.split(parameterwebp)[1];
+		return stripParameters(webp);
+	}
 
-  // embed
-  const embedreg = /\/embed\//g;
+	// Embed
+	const embedreg = /\/embed\//g;
 
-  if (embedreg.test(str)) {
-    const embedid = str.split(embedreg)[1];
-    return stripParameters(embedid);
-  }
+	if (embedreg.test(string_)) {
+		const embedid = string_.split(embedreg)[1];
+		return stripParameters(embedid);
+	}
 
-  // ignore /user/username pattern
-  const usernamereg = /\/user\/([a-zA-Z0-9]*)$/g;
+	// ignore /user/username pattern
+	const usernamereg = /\/user\/([a-zA-Z\d]*)$/g;
 
-  if (usernamereg.test(str)) {
-    return undefined;
-  }
+	if (usernamereg.test(string_)) {
+		return undefined;
+	}
 
-  // user
-  const userreg = /\/user\/(?!.*videos)/g;
+	// User
+	const userreg = /\/user\/(?!.*videos)/g;
 
-  if (userreg.test(str)) {
-    const elements = str.split('/');
-    return stripParameters(elements.pop());
-  }
+	if (userreg.test(string_)) {
+		const elements = string_.split('/');
+		return stripParameters(elements.pop());
+	}
 
-  // attribution_link
-  const attrreg = /\/attribution_link\?.*v%3D([^%&]*)(%26|&|$)/;
+	// Attribution_link
+	const attrreg = /\/attribution_link\?.*v%3D([^%&]*)(%26|&|$)/;
 
-  if (attrreg.test(str)) {
-    return stripParameters(str.match(attrreg)[1]);
-  }
+	if (attrreg.test(string_)) {
+		return stripParameters(string_.match(attrreg)[1]);
+	}
 
-  return undefined;
+	return undefined;
 }

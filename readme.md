@@ -1,6 +1,6 @@
-# get-video-id [![Build Status](https://travis-ci.org/radiovisual/get-video-id.svg?branch=master)](https://travis-ci.org/radiovisual/get-video-id) [![Coverage Status](https://coveralls.io/repos/github/radiovisual/get-video-id/badge.svg?branch=master)](https://coveralls.io/github/radiovisual/get-video-id?branch=master)
+# get-video-id [![codecov](https://codecov.io/gh/radiovisual/get-video-id/branch/master/graph/badge.svg?token=fG7V2VRDYY)](https://codecov.io/gh/radiovisual/get-video-id)
 
-> Get the YouTube, Vimeo, Vine, VideoPress, Microsoft Stream and Dailymotion video id from a url or embed string.
+> Get the YouTube, Vimeo, Vine, VideoPress, TikTok, Microsoft Stream and Dailymotion video id from a url or embed string.
 
 **Pull Requests are welcome** if you would like to see support for other video services or if you find an unsupported video url pattern.
 
@@ -44,7 +44,7 @@ const { id } = getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
 //=> '8rSH8-pbHZ0'
 ```
 
-You can also use Google redirection URL (link from the search list) with YouTube, Vimeo or Vine as target url.
+get-video-id can also find the video buried in a Google redirection URL if it contains a reference to any of the supported URL patterns.
 
 ```js
 getVideoId('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIIjAA&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DeG1uDU0rSLw&usg=AFQjCNECyDn3DQL7U6VW2CnXQQjB0gNKqA');

@@ -3,55 +3,55 @@
  * @param {string} vimeoStr - the url from which you want to extract the id
  * @returns {string|undefined}
  */
-export default function vimeo(vimeoStr) {
-  let str = vimeoStr;
+export default function vimeo(vimeoString) {
+	let string_ = vimeoString;
 
-  if (str.indexOf('#') > -1) {
-    [str] = str.split('#');
-  }
+	if (string_.includes('#')) {
+		[string_] = string_.split('#');
+	}
 
-  if (str.indexOf('?') > -1 && str.indexOf('clip_id=') === -1) {
-    [str] = str.split('?');
-  }
+	if (string_.includes('?') && !string_.includes('clip_id=')) {
+		[string_] = string_.split('?');
+	}
 
-  let id;
-  let arr;
+	let id;
+	let array;
 
-  const event = /https?:\/\/vimeo\.com\/event\/([0-9]+)$/;
+	const event = /https?:\/\/vimeo\.com\/event\/(\d+)$/;
 
-  const eventMatches = event.exec(str);
+	const eventMatches = event.exec(string_);
 
-  if (eventMatches && eventMatches[1]) {
-    return eventMatches[1];
-  }
+	if (eventMatches && eventMatches[1]) {
+		return eventMatches[1];
+	}
 
-  const primary = /https?:\/\/vimeo\.com\/([0-9]+)/;
+	const primary = /https?:\/\/vimeo\.com\/(\d+)/;
 
-  const matches = primary.exec(str);
-  if (matches && matches[1]) {
-    return matches[1];
-  }
+	const matches = primary.exec(string_);
+	if (matches && matches[1]) {
+		return matches[1];
+	}
 
-  const vimeoPipe = [
-    'https?://player.vimeo.com/video/[0-9]+$',
-    'https?://vimeo.com/channels',
-    'groups',
-    'album',
-  ].join('|');
+	const vimeoPipe = [
+		'https?://player.vimeo.com/video/[0-9]+$',
+		'https?://vimeo.com/channels',
+		'groups',
+		'album',
+	].join('|');
 
-  const vimeoRegex = new RegExp(vimeoPipe, 'gim');
+	const vimeoRegex = new RegExp(vimeoPipe, 'gim');
 
-  if (vimeoRegex.test(str)) {
-    arr = str.split('/');
-    if (arr && arr.length) {
-      id = arr.pop();
-    }
-  } else if (/clip_id=/gim.test(str)) {
-    arr = str.split('clip_id=');
-    if (arr && arr.length) {
-      [id] = arr[1].split('&');
-    }
-  }
+	if (vimeoRegex.test(string_)) {
+		array = string_.split('/');
+		if (array && array.length > 0) {
+			id = array.pop();
+		}
+	} else if (/clip_id=/gim.test(string_)) {
+		array = string_.split('clip_id=');
+		if (array && array.length > 0) {
+			[id] = array[1].split('&');
+		}
+	}
 
-  return id;
+	return id;
 }

@@ -1,12 +1,17 @@
 /**
  * Get the Microsoft Stream id.
- * @param {string} str - the url from which you want to extract the id
+ * @param {string} string_ - the url from which you want to extract the id
  * @returns {string|undefined}
  */
-export default function microsoftStream(str) {
-  const regex = (str.indexOf('embed') > -1)
-    ? /https:\/\/web\.microsoftstream\.com\/embed\/video\/([a-zA-Z0-9-]*)\/?/
-    : /https:\/\/web\.microsoftstream\.com\/video\/([a-zA-Z0-9-]*)\/?/;
-  const matches = regex.exec(str);
-  return matches && matches[1];
+export default function microsoftStream(string_) {
+	const regex = (string_.includes('embed'))
+		? /https:\/\/web\.microsoftstream\.com\/embed\/video\/([a-zA-Z\d-]*)\/?/
+		: /https:\/\/web\.microsoftstream\.com\/video\/([a-zA-Z\d-]*)\/?/;
+	const matches = regex.exec(string_);
+
+	if (matches && matches.length > 1) {
+		return matches[1];
+	}
+
+	return undefined;
 }

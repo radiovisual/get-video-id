@@ -1,7 +1,7 @@
 {
   "name": "get-video-id",
-  "version": "3.3.0",
-  "description": "Get the YouTube, Vimeo, Vine, Microsoft Steam, Dailymotion or VideoPress video id from a url or embed string.",
+  "version": "3.4.0",
+  "description": "Get the YouTube, Vimeo, Vine, Microsoft Steam, Dailymotion, TikTok or VideoPress video id from a url or embed string.",
   "license": "MIT",
   "repository": "radiovisual/get-video-id",
   "main": "dist/get-video-id.js",
@@ -13,13 +13,13 @@
     "url": "https://github.com/radiovisual"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=10"
   },
   "scripts": {
     "pretest": "npm run build",
-    "test": "npm run lint && ava --verbose && nyc --exclude dist ava",
-    "lint": "npx eslint src tests",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "test": "npm run lint && c8 jest",
+    "lint": "xo",
+    "lint:fix": "xo --fix",
     "build": "rimraf dist && rollup -c rollup.config.js"
   },
   "files": [
@@ -39,6 +39,8 @@
     "videopress",
     "microsoft stream",
     "microsoft",
+    "dailymotion",
+    "tiktok",
     "stream",
     "from",
     "string",
@@ -49,33 +51,38 @@
     "fetch",
     "parse",
     "extract",
-    "get",
-    "dailymnotion"
+    "get"
   ],
-  "dependencies": {
-    "get-src": "^1.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.12.10",
+    "@babel/core": "^7.15.0",
     "@babel/eslint-parser": "^7.12.1",
-    "@babel/preset-env": "^7.5.5",
-    "ava": "^0.15.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "babel-eslint": "^10.1.0",
-    "coveralls": "^2.13.3",
-    "eslint": "^7.18.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.0.0",
-    "jsdom": "^15.1.1",
-    "nyc": "^6.1.1",
+    "babel-jest": "^27.1.0",
+    "c8": "^7.8.0",
+    "jest": "^27.1.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.20.3",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-cleaner": "^1.0.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.1.1"
+    "rollup-plugin-terser": "^5.1.1",
+    "xo": "^0.44.0"
+  },
+  "xo": {
+    "globals": [
+      "test",
+      "expect",
+      "describe"
+    ]
+  },
+  "c8": {
+    "reporter": [
+      "text",
+      "lcov"
+    ]
   }
 }
