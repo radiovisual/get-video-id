@@ -50,7 +50,7 @@
     "parse",
     "extract",
     "get",
-    "dailymotion"
+    "dailymnotion"
   ],
   "dependencies": {
     "get-src": "^1.0.1"
