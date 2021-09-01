@@ -387,6 +387,23 @@ test('microsoft stream links returns undefined id if id missing', (t) => {
 });
 
 /**
+ *  TikTok should be able to find these patterns:
+ *
+ *  Urls:
+ *  https://www.tiktok.com/@brickabrackcommunity/video/id
+ *  https://www.tiktok.com/@brickabrackcommunity/video/id?
+ *
+ *  Not supported yet (requires a fetch):
+ *  https://vm.tiktok.com/ZS9c8yNN/
+ */
+
+test('Tiktok basic link/embed', (t) => {
+  t.is(fn('https://www.tiktok.com/@brickabrackcommunity/video/6950630446614990085').id, '6950630446614990085');
+  t.is(fn('https://www.tiktok.com/@brickabrackcommunity/video/6950630446614990085?lang=fr&is_copy_url=1&is_from_webapp=v1').id, '6950630446614990085');
+  t.is(fn('https://www.tiktok.com/@brickabrackcommunity/video/6950630446614990085?sender_device=pc&sender_web_id=6930592755036374533&is_from_webapp=v1&is_copy_url=0').id, '6950630446614990085');
+});
+
+/**
  *  Dailymotion should be able to find these patterns:
  *
  *  Urls:
