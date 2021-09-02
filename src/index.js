@@ -9,15 +9,15 @@ import getSrc from './utils/get-src.js';
 
 /**
  * Get the id and service from a video url.
- * @param {String} videoStr - the url from which you want to extract the id
+ * @param {String} urlString - the url from which you want to extract the id
  * @returns {Object}
  */
-function getVideoId(videoString) {
-	if (typeof videoString !== 'string') {
+function getVideoId(urlString) {
+	if (typeof urlString !== 'string') {
 		throw new TypeError('get-video-id expects a string');
 	}
 
-	let string_ = videoString;
+	let string_ = urlString;
 
 	if (/<iframe/gi.test(string_)) {
 		string_ = getSrc(string_);

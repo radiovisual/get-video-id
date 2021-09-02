@@ -1,4 +1,25 @@
-import stripParameters from './utils/strip-parameters.js';
+/**
+ * Strip away any remaining parameters following `?` or `/` or '&' for YouTube shortcode urls.
+ *
+ * @param {String} string_ - the parameter string (that does not contain a protocol like https://)
+ * @returns {String}
+ */
+function stripParameters(string_) {
+	// Split parameters or split folder separator
+	if (string_.includes('?')) {
+		return string_.split('?')[0];
+	}
+
+	if (string_.includes('/')) {
+		return string_.split('/')[0];
+	}
+
+	if (string_.includes('&')) {
+		return string_.split('&')[0];
+	}
+
+	return string_;
+}
 
 /**
  * Get the Youtube Video id.
