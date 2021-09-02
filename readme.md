@@ -27,8 +27,19 @@ import getVideoId from 'get-video-id';
 
 **Browser**
 ```html
-<script src="get-video-id.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/get-video-id/dist/get-video-id.min.js"></script>
 ```
+
+###### Download
+
+- [Normal](https://cdn.jsdelivr.net/npm/get-video-id/dist/get-video-id.js)
+- [Minified](https://cdn.jsdelivr.net/npm/get-video-id/dist/get-video-id.min.js)
+
+###### CDN
+
+- [jsdelivr](https://www.jsdelivr.com/package/npm/get-video-id)
+- [unpkg](https://unpkg.com/get-video-id)
+
 
 ## Usage
 

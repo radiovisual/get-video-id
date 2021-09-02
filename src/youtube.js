@@ -1,24 +1,25 @@
 /**
- * Strip away any remaining parameters following `?` or `/` or '&' for YouTube shortcode urls.
+ * Strip away any remaining parameters following `?` or `/` or '&' for YouTube shortcode strings.
  *
- * @param {String} string_ - the parameter string (that does not contain a protocol like https://)
+ * @note this function is not meant to work with url strings containing a protocol like https://
+ * @param {String} shortcodeString - the parameter string
  * @returns {String}
  */
-function stripParameters(string_) {
+function stripParameters(shortcodeString) {
 	// Split parameters or split folder separator
-	if (string_.includes('?')) {
-		return string_.split('?')[0];
+	if (shortcodeString.includes('?')) {
+		return shortcodeString.split('?')[0];
 	}
 
-	if (string_.includes('/')) {
-		return string_.split('/')[0];
+	if (shortcodeString.includes('/')) {
+		return shortcodeString.split('/')[0];
 	}
 
-	if (string_.includes('&')) {
-		return string_.split('&')[0];
+	if (shortcodeString.includes('&')) {
+		return shortcodeString.split('&')[0];
 	}
 
-	return string_;
+	return shortcodeString;
 }
 
 /**

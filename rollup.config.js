@@ -7,6 +7,8 @@ import pkg from './package.json';
 
 const minified = file => file.replace(/.js/, '.min.js');
 
+const banner = `/*! get-video-id v${pkg.version} | @license MIT © Michael Wuergler | https://github.com/radiovisual/get-video-id */`;
+
 const config = {
 	input: './src/index.js',
 	output: [
@@ -15,22 +17,26 @@ const config = {
 			format: 'umd',
 			sourcemap: true,
 			name: 'getVideoId',
+			banner,
 		},
 		{
 			file: minified(pkg.main),
 			format: 'umd',
 			sourcemap: true,
 			name: 'getVideoId',
+			banner,
 		},
 		{
 			file: pkg.module,
 			format: 'esm',
 			sourcemap: true,
+			banner,
 		},
 		{
 			file: minified(pkg.module),
 			format: 'esm',
 			sourcemap: true,
+			banner,
 		},
 	],
 	preserveModules: false,
@@ -55,6 +61,9 @@ const config = {
 			],
 		}),
 		terser({
+			output: {
+				comments: 'some',
+			},
 			include: [/^.+\.min\.js$/],
 		}),
 	],
