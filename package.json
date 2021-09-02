@@ -16,11 +16,11 @@
     "node": ">=10"
   },
   "scripts": {
-    "pretest": "npm run build",
-    "test": "npm run lint && c8 jest",
+    "test:post-build": "jest __tests__/builds/*",
+    "test": "npm run lint && c8 jest --runInBand --testPathIgnorePatterns='<rootDir>/__tests__/builds'",
     "lint": "xo",
     "lint:fix": "xo --fix",
-    "build": "rimraf dist && rollup -c rollup.config.js"
+    "build": "rimraf dist && rollup -c rollup.config.js && npm run test:post-build"
   },
   "files": [
     "index.js",
@@ -63,6 +63,7 @@
     "babel-jest": "^27.1.0",
     "c8": "^7.8.0",
     "jest": "^27.1.0",
+    "jsdom": "^17.0.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.20.3",
     "rollup-plugin-babel": "^4.3.3",
@@ -84,5 +85,6 @@
       "text",
       "lcov"
     ]
-  }
+  },
+  "jest": {}
 }

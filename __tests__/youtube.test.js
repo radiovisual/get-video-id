@@ -1,5 +1,5 @@
 /* eslint max-len: 0 */
-import fn from '../dist/get-video-id.js';
+import fn from '../src/index.js';
 
 /**
  * Youtube should be able to find these patterns:
@@ -26,7 +26,6 @@ import fn from '../dist/get-video-id.js';
  *
  *  // embed
  *  http://www.youtube.com/embed/id?
- *  www.youtube-nocookie.com/embed/id?
  *  https://www.youtube.com/embed/id
  *
  *  // user
@@ -41,12 +40,17 @@ import fn from '../dist/get-video-id.js';
  *  http://www.youtube.com/attribution_link?u=%2Fwatch%3Fv%3D*%26
  *  https://www.youtube.com/attribution_link?u=%2Fwatch%3Fv%3D*%26
  *
+ * // -nocookie urls
+ * www.youtube-nocookie.com/embed/id?
+ * www.youtube-nocookie.com/embed/id?
+ *
  */
 
 describe('Youtube', () => {
 	test('gets youtube metadata from iframe', () => {
 		const expected = {
-			service: 'youtube',					id: '1234',
+			service: 'youtube',
+			id: '1234',
 		};
 		const string_ = '<iframe width="560" height="315" src="https://www.youtube.com/embed/1234" frameborder="0" allowfullscreen></iframe>';
 
@@ -121,6 +125,7 @@ describe('Youtube', () => {
 	});
 
 	test('removes -nocookie', () => {
+		expect(fn('www.youtube-nocookie.com/ytscreeningroom?v=ABC12300').id).toBe('ABC12300');
 		expect(fn('http://www.youtube-nocookie.com/ytscreeningroom?v=ABC12300').id).toBe('ABC12300');
 		expect(fn('http://www.youtube-nocookie.com/v/ABC12301').id).toBe('ABC12301');
 		expect(fn('http://www.youtube-nocookie.com/user/username#p/u/1/ABC12302').id).toBe('ABC12302');

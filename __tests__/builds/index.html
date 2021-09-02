@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>getVideoId Browser Demo</title>
+     <style>
+         body, html { width: 100%; height: 100%; margin: 15px; }
+         code { background-color: coral; color: white; padding: 2px; }
+         #video-id { background-color: darkviolet; font-size: 124px; color: white }
+     </style>
+ </head>
+ <body>
+     <p>If you see <code>1234</code> printed below, it means <code>getVideoId()</code> is running in the browser. 🍕</p>
+     <span id="video-id"></span></p>
+     
+     <!-- Load getVideoId UMD module -->
+     <script src="../../dist/get-video-id.js"></script>
+
+     <!-- Now we are free to use getVideoId in the browser -->
+     <script>
+        var videoId = getVideoId('https://www.youtube.com/watch?v=1234').id;
+        document.getElementById('video-id').innerText = videoId;
+      </script>
+ </body>
+ </html>

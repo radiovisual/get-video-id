@@ -1,5 +1,5 @@
 /* eslint max-len: 0 */
-import fn from '../dist/get-video-id.js';
+import fn from '../src/index.js';
 
 /**
  *  Microsoft Stream should be able to find these patterns:

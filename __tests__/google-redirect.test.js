@@ -1,5 +1,5 @@
 /* eslint max-len: 0 */
-import fn from '../dist/get-video-id.js';
+import fn from '../src/index.js';
 
 /**
 *  Google redirect patterns:
@@ -41,5 +41,11 @@ describe('Google Redirects', () => {
 		const url = `https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIIjAA&url=${encodeURIComponent('https://web.microsoftstream.com/video/73043e0c-cba8-482a-8a8e-0b72bc580ff0')}&usg=AFQjCNECyDn3DQL7U6VW2CnXQQjB0gNKqA`;
 		expect(fn(url).id).toBe('73043e0c-cba8-482a-8a8e-0b72bc580ff0');
 		expect(fn(url).service).toBe('microsoftstream');
+	});
+
+	test('google link returns null as id and service if missing url parameter', () => {
+		const url = 'https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwiz9P3Aw5DVAhUDZVAKHcegCi8QuAIINDAB&usg=AFQjCNG0kTPdL8nC6zCi2QoZ1KVeTXH-pw';
+		expect(fn(url).id).toBe(null);
+		expect(fn(url).service).toBe(null);
 	});
 });
