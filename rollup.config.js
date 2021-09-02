@@ -17,26 +17,26 @@ const config = {
 			format: 'umd',
 			sourcemap: true,
 			name: 'getVideoId',
-			banner
+			banner,
 		},
 		{
 			file: minified(pkg.main),
 			format: 'umd',
 			sourcemap: true,
 			name: 'getVideoId',
-			banner
+			banner,
 		},
 		{
 			file: pkg.module,
 			format: 'esm',
 			sourcemap: true,
-			banner
+			banner,
 		},
 		{
 			file: minified(pkg.module),
 			format: 'esm',
 			sourcemap: true,
-			banner
+			banner,
 		},
 	],
 	preserveModules: false,
@@ -62,7 +62,7 @@ const config = {
 		}),
 		terser({
 			output: {
-				comments: 'some'
+				comments: 'some',
 			},
 			include: [/^.+\.min\.js$/],
 		}),
