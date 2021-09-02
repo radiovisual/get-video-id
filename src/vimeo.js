@@ -1,7 +1,8 @@
 /**
  * Get the vimeo id.
- * @param {string} vimeoStr - the url from which you want to extract the id
- * @returns {string|undefined}
+ *
+ * @param {String} vimeoString the url from which you want to extract the id
+ * @returns {String|undefined}
  */
 export default function vimeo(vimeoString) {
 	let string_ = vimeoString;

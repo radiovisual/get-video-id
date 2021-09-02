@@ -1,6 +1,6 @@
 /**
  * Get the vine id.
- * @param {string} str - the url from which you want to extract the id
+ * @param {string} string_ - the url from which you want to extract the id
  * @returns {string|undefined}
  */
 export default function vine(string_) {
