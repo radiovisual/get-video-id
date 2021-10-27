@@ -65,6 +65,14 @@ export default function youtube(youtubeString) {
 		return stripParameters(webp);
 	}
 
+	// /e/
+	const eformat = /\/e\//g;
+
+	if (eformat.test(string_)) {
+		const estring = string_.split(eformat)[1];
+		return stripParameters(estring);
+	}
+
 	// Embed
 	const embedreg = /\/embed\//g;
 

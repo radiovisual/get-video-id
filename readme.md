@@ -115,6 +115,11 @@ http://youtube.com/?vi=*&
 http://youtube.com/?v=*
 ```
 
+** YouTube `/e/`**
+https://www.youtube.com/e/*
+http://www.youtube.com/e/*
+
+
 **YouTube image links `/vi/*/` or `/an_webp/*/`**
 ```
 https://i.ytimg.com/vi/*/hqdefault.jpg
