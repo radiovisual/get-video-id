@@ -33,8 +33,11 @@ export default function youtube(youtubeString) {
 	// Remove time hash at the end of the string
 	string_ = string_.replace(/#t=.*$/, '');
 
+	// Strip the leading protocol
+	string_ = string_.replace(/^https?:\/\//, '');
+
 	// Shortcode
-	const shortcode = /youtube:\/\/|https?:\/\/youtu\.be\/|http:\/\/y2u\.be\//g;
+	const shortcode = /youtube:\/\/|youtu\.be\/|y2u\.be\//g;
 
 	if (shortcode.test(string_)) {
 		const shortcodeid = string_.split(shortcode)[1];
@@ -57,12 +60,20 @@ export default function youtube(youtubeString) {
 		return stripParameters(array[1].split('&')[0]);
 	}
 
-	// V= or vi=
+	// Format an_webp
 	const parameterwebp = /\/an_webp\//g;
 
 	if (parameterwebp.test(string_)) {
 		const webp = string_.split(parameterwebp)[1];
 		return stripParameters(webp);
+	}
+
+	// /e/
+	const eformat = /\/e\//g;
+
+	if (eformat.test(string_)) {
+		const estring = string_.split(eformat)[1];
+		return stripParameters(estring);
 	}
 
 	// Embed

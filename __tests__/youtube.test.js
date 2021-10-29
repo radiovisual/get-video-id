@@ -24,6 +24,12 @@ import fn from '../src/index.js';
  *  http://youtube.com/?vi=id&
  *  http://youtube.com/?v=id
  *
+ *  // /e/
+ *  https://www.youtube.com/e/id
+ *  http://www.youtube.com/e/id
+ *  www.youtube.com/e/id
+ *  youtube.com/e/id
+ *
  *  // embed
  *  http://www.youtube.com/embed/id?
  *  https://www.youtube.com/embed/id
@@ -93,6 +99,20 @@ describe('Youtube', () => {
 		expect(fn('http://youtube.com/vi/ABC12302?feature=youtube_gdata_player').id).toBe('ABC12302');
 		expect(fn('https://i.ytimg.com/vi/0okagl9U2eo/hqdefault.jpg').id).toBe('0okagl9U2eo');
 		expect(fn('http://youtube.com/vi/ABC12302?feature=youtube_gdata_player').service).toBe('youtube');
+	});
+
+	test('handles youtube /e/ formats', () => {
+		expect(fn('https://www.youtube.com/e/E1230').id).toBe('E1230');
+		expect(fn('http://www.youtube.com/e/E1231').id).toBe('E1231');
+		expect(fn('www.youtube.com/e/E1232').id).toBe('E1232');
+		expect(fn('https://youtube.com/e/E1233?feature=youtube_gdata_player').id).toBe('E1233');
+	});
+
+	test('handles youtube formats without protocols', () => {
+		expect(fn('youtu.be/P1230').id).toBe('P1230');
+		expect(fn('youtube.com/e/P1231').id).toBe('P1231');
+		expect(fn('y2u.be/P1232').id).toBe('P1232');
+		expect(fn('i.ytimg.com/an_webp/P1233/mqdefault_6s.webp').id).toBe('P1233');
 	});
 
 	test('handles youtube image /an_webp/{id}/ formats', () => {
