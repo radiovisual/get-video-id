@@ -115,7 +115,7 @@ http://youtube.com/?vi=*&
 http://youtube.com/?v=*
 ```
 
-** YouTube `/e/`**
+**YouTube `/e/`**
 ```
 https://www.youtube.com/e/*
 https://www.youtube.com/e/*?
