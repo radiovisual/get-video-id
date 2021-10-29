@@ -20,7 +20,8 @@
     "test": "npm run lint && c8 jest --runInBand --testPathIgnorePatterns='<rootDir>/__tests__/builds'",
     "lint": "xo",
     "lint:fix": "xo --fix",
-    "build": "rimraf dist && rollup -c rollup.config.js && npm run test:post-build"
+    "build": "rimraf dist && rollup -c rollup.config.js && npm run test && npm run test:post-build",
+    "prepublish": "npm run build"
   },
   "files": [
     "index.js",
