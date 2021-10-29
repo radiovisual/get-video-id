@@ -108,6 +108,13 @@ describe('Youtube', () => {
 		expect(fn('https://youtube.com/e/E1233?feature=youtube_gdata_player').id).toBe('E1233');
 	});
 
+	test('handles youtube formats without protocols', () => {
+		expect(fn('youtu.be/P1230').id).toBe('P1230');
+		expect(fn('youtube.com/e/P1231').id).toBe('P1231');
+		expect(fn('y2u.be/P1232').id).toBe('P1232');
+		expect(fn('i.ytimg.com/an_webp/P1233/mqdefault_6s.webp').id).toBe('P1233');
+	});
+
 	test('handles youtube image /an_webp/{id}/ formats', () => {
 		expect(fn('https://i.ytimg.com/an_webp/MYDcdp-VNmQ/mqdefault_6s.webp').id).toBe('MYDcdp-VNmQ');
 	});
