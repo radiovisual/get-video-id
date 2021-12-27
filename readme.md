@@ -195,6 +195,12 @@ https://vimeo.com/event/*
 <iframe src="https://player.vimeo.com/video/*" ...
 ```
 
+**Vimeo unlisted/private urls**
+```
+https://vimeo.com/*/privateHash
+```
+⚠️ **Please note**: That `get-video-id` _will_ extract the id from the private/unlisted URLs formats for Vimeo, but the private hash would still be required to rebuild the URL in order to make it reachable/sharable in a browser. If you use `get-video-id` to help you rebuild URLs, you will want to look for this pattern yourself and remember to include the privateHash in the url you want to share. `get-video-id` focuses on extracing video ids, and ignores any other special paramaters or formats at the moment.
+
 ### Vine
 
 **Vine urls**
