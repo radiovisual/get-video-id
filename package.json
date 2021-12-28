@@ -1,6 +1,6 @@
 {
   "name": "get-video-id",
-  "version": "3.4.3",
+  "version": "3.5.3",
   "description": "Get the YouTube, Vimeo, Vine, Microsoft Steam, Dailymotion, TikTok or VideoPress video id from a url or embed string.",
   "license": "MIT",
   "repository": "radiovisual/get-video-id",
@@ -42,6 +42,7 @@
     "microsoft",
     "dailymotion",
     "tiktok",
+    "shorts",
     "stream",
     "from",
     "string",

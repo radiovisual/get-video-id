@@ -98,6 +98,12 @@ http://y2u.be/*
 youtube://
 ```
 
+*YouTube Shorts**
+```
+https://youtube.com/shorts/*
+https://www.youtube.com/shorts/*
+```
+
 **YouTube `/v/` or `/vi/`**
 ```
 http://www.youtube.com/v/*
