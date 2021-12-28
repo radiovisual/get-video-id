@@ -44,6 +44,12 @@ export default function youtube(youtubeString) {
 		return stripParameters(shortcodeid);
 	}
 
+	// Shorts
+	const shortsUrl = /\/shorts\//g;
+	if (shortsUrl.test(string_)) {
+		return stripParameters(string_.split(shortsUrl)[1]);
+	}
+
 	// /v/ or /vi/
 	const inlinev = /\/v\/|\/vi\//g;
 

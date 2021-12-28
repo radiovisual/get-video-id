@@ -11,6 +11,10 @@ import fn from '../src/index.js';
  *  http://y2u.be/id
  *  youtube://
  *
+ *  // shorts
+ *  https://youtube.com/shorts/*
+ *  https://www.youtube.com/shorts/*
+ *
  *  // /v/ or /vi/
  *  http://www.youtube.com/v/id
  *  http://youtube.com/vi/id?
@@ -62,6 +66,12 @@ describe('Youtube', () => {
 
 		const actual = fn(string_);
 		expect(actual).toMatchObject(expected);
+	});
+
+	test('gets id from youtube shorts', () => {
+		expect(fn('https://youtube.com/shorts/123?i=4').id).toBe('123');
+		expect(fn('https://www.youtube.com/shorts/1234?i=4').id).toBe('1234');
+		expect(fn('https://youtube.com/shorts/123').service).toBe('youtube');
 	});
 
 	test('gets metadata from youtube shortcode formats', () => {
