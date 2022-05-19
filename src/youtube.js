@@ -8,15 +8,15 @@
 function stripParameters(shortcodeString) {
 	// Split parameters or split folder separator
 	if (shortcodeString.includes('?')) {
-		return shortcodeString.split('?')[0];
+		shortcodeString = shortcodeString.split('?')[0];
 	}
 
 	if (shortcodeString.includes('/')) {
-		return shortcodeString.split('/')[0];
+		shortcodeString = shortcodeString.split('/')[0];
 	}
 
 	if (shortcodeString.includes('&')) {
-		return shortcodeString.split('&')[0];
+		shortcodeString = shortcodeString.split('&')[0];
 	}
 
 	return shortcodeString;
