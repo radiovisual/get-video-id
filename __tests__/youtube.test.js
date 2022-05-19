@@ -115,7 +115,7 @@ describe('Youtube', () => {
 		expect(fn('http://www.youtube.com/watch/ABC1230').id).toBe('ABC1230');
 		expect(fn('http://www.youtube.com/watch/ABC1230/').id).toBe('ABC1230');
 		expect(fn('http://youtube.com/watch/ABC12301?feature=youtube_gdata_player').id).toBe('ABC12301');
-		expect(fn('http://youtube.com/watch/ABC12301/?feature=youtube_gdata_player').id).toBe('ABC12302');
+		expect(fn('http://youtube.com/watch/ABC12301/?feature=youtube_gdata_player').id).toBe('ABC12301');
 		expect(fn('http://youtube.com/watch/ABC12302?feature=youtube_gdata_player').service).toBe('youtube');
 	});
 
