@@ -66,6 +66,14 @@ export default function youtube(youtubeString) {
 		return stripParameters(array[1].split('&')[0]);
 	}
 
+	// /watch/
+	const inlinev = /\/watch\//g;
+
+	if (inlinev.test(string_)) {
+		const inlineid = string_.split(inlinev)[1];
+		return stripParameters(inlineid);
+	}
+
 	// Format an_webp
 	const parameterwebp = /\/an_webp\//g;
 
