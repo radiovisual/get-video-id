@@ -111,6 +111,14 @@ describe('Youtube', () => {
 		expect(fn('http://youtube.com/vi/ABC12302?feature=youtube_gdata_player').service).toBe('youtube');
 	});
 
+	test('handles youtube /watch/ formats', () => {
+		expect(fn('http://www.youtube.com/watch/ABC1230').id).toBe('ABC1230');
+		expect(fn('http://www.youtube.com/watch/ABC1230/').id).toBe('ABC1230');
+		expect(fn('http://youtube.com/watch/ABC12301?feature=youtube_gdata_player').id).toBe('ABC12301');
+		expect(fn('http://youtube.com/watch/ABC12301/?feature=youtube_gdata_player').id).toBe('ABC12301');
+		expect(fn('http://youtube.com/watch/ABC12302?feature=youtube_gdata_player').service).toBe('youtube');
+	});
+
 	test('handles youtube /e/ formats', () => {
 		expect(fn('https://www.youtube.com/e/E1230').id).toBe('E1230');
 		expect(fn('http://www.youtube.com/e/E1231').id).toBe('E1231');
