@@ -16,7 +16,7 @@ jobs:
       - run: git config --global user.name "Michael Wuergler"
       - run: npm ci
       - run: npm version "${GITHUB_REF:10}"
-      - run: npm build
+      - run: npm run build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
