@@ -20,7 +20,7 @@ function getVideoId(urlString) {
 	let string_ = urlString;
 
 	if (/<iframe/gi.test(string_)) {
-		string_ = getSrc(string_);
+		string_ = getSrc(string_) || '';
 	}
 
 	// Remove surrounding whitespaces or linefeeds
