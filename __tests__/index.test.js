@@ -13,4 +13,6 @@ test('returns null as id and service', () => {
 		service: null,
 	};
 	expect(fn('foo')).toMatchObject(expected);
+	expect(fn('<iframe')).toMatchObject(expected);
+	expect(fn('')).toMatchObject(expected);
 });

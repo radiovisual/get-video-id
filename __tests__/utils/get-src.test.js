@@ -29,6 +29,7 @@ describe('get-src', () => {
 
 	test('returns undefined when no src= is found', () => {
 		expect(fn('hello')).toBe(undefined);
+		expect(fn('<iframe')).toBe(undefined);
 	});
 
 	test('single quotes return undefined', () => {
