@@ -5,6 +5,7 @@ import videopress from './videopress.js';
 import microsoftStream from './microsoftstream.js';
 import tiktok from './tiktok.js';
 import dailymotion from './dailymotion.js';
+import loom from './loom.js';
 import getSrc from './utils/get-src.js';
 
 /**
@@ -83,6 +84,11 @@ function getVideoId(urlString) {
 		metadata = {
 			id: dailymotion(string_),
 			service: 'dailymotion',
+		};
+	} else if (/loom\.com/.test(string_)) {
+		metadata = {
+			id: loom(string_),
+			service: 'loom',
 		};
 	}
 

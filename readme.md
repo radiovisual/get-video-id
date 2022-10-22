@@ -274,6 +274,20 @@ http://dai.ly/*
 **:warning: Unsupported Dailymotion urls**
  *  Channel id urls: `http://www.dailymotion.com/hub/*_title`
 
+ ### Loom
+
+**Loom urls**
+```
+https://www.loom.com/share/7c7ced4911904070a5627374ccd84e8c
+https://www.loom.com/share/5bbdeb480ba84e65b1b3de8c190e2003?source=embed&t=20
+```
+
+**Loom iframe**
+```
+<div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/7c7ced4911904070a5627374ccd84e8c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+```
+
+
 ## Contributing
 
 If you discover a url pattern that is not covered by this module, please [open an issue](https://github.com/radiovisual/get-video-id/issues) to report it, or [submit a Pull Request](https://github.com/radiovisual/get-video-id/pull/new/master). For any submitted pull requests, please ensure that you include unit test(s) to fully cover your code contribution(s).
