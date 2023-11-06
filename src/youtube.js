@@ -112,5 +112,13 @@ export default function youtube(youtubeString) {
 		return stripParameters(string_.match(attrreg)[1]);
 	}
 
+	// Live
+	const livereg = /\/live\//g;
+
+	if (livereg.test(string_)) {
+		const liveid = string_.split(livereg)[1];
+		return stripParameters(liveid);
+	}
+
 	return undefined;
 }

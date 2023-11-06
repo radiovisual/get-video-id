@@ -182,6 +182,14 @@ describe('Youtube', () => {
 		expect(fn('http://www.youtube.com/attribution_link?u=/watch?v=ABC12302&feature=share&list=UUsnCjinFcybOuyJU1NFOJmg&a=LjnCygXKl21WkJdyKu9O-w').service).toBe('youtube');
 	});
 
+	test('handles youtube /live/ formats', () => {
+		expect(fn('https://www.youtube.com/live/ABC1230').id).toBe('ABC1230');
+		expect(fn('www.youtube-nocookie.com/live/ABC12301?feature=share').id).toBe('ABC12301');
+		expect(fn('http://www.youtube.com/live/ABC12302?feature=share').id).toBe('ABC12302');
+
+		expect(fn('http://www.youtube.com/live/ABC12302?feature=share').service).toBe('youtube');
+	});
+
 	test('youtube links returns undefined id if id missing', () => {
 		const object = fn('https://www.youtube.com');
 		expect(object.id).toBe(undefined);
