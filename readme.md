@@ -167,12 +167,20 @@ http://www.youtube.com/attribution_link?u=/watch?v=*
 http://www.youtube.com/attribution_link?/watch?v=*
 ```
 
+**YouTube live URLs**
+```
+https://www.youtube.com/live/*
+https://youtube.com/live/*
+https://youtube.com/live/*?
+```
+
 **Google Redirection to YouTube**
 
 ```
 https://google.cz/url?source=web&url=<YOUTUBE_URL>
 https://google.com/image?url=<YOUTUBE_URL>
 ```
+
 
 ### Vimeo
 
