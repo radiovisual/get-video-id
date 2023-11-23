@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 /* eslint-disable unicorn/prefer-module */
-const getVideoId = require('../../dist/get-video-id.cjs.js');
+const getVideoId = require('../../dist/get-video-id.js');
 
 describe('bundled CJS module', () => {
 	test('has the expected API', () => {
