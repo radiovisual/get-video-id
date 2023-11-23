@@ -14,16 +14,14 @@ const config = {
 	output: [
 		{
 			file: pkg.main,
-			format: 'umd',
+			format: 'cjs',
 			sourcemap: true,
-			name: 'getVideoId',
 			banner,
 		},
 		{
 			file: minified(pkg.main),
-			format: 'umd',
+			format: 'cjs',
 			sourcemap: true,
-			name: 'getVideoId',
 			banner,
 		},
 		{
@@ -36,6 +34,20 @@ const config = {
 			file: minified(pkg.module),
 			format: 'esm',
 			sourcemap: true,
+			banner,
+		},
+		{
+			file: minified('dist/get-video-id.umd.js'),
+			format: 'umd',
+			sourcemap: true,
+			name: 'getVideoId',
+			banner,
+		},
+		{
+			file: 'dist/get-video-id.umd.js',
+			format: 'umd',
+			sourcemap: true,
+			name: 'getVideoId',
 			banner,
 		},
 	],

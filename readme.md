@@ -20,14 +20,14 @@ You can use this module in **Node.js** or in the **browser**. See below for the 
 const getVideoId = require('get-video-id');
 ```
 
-**ES2015 Module**
+**ES Module**
 ```js
 import getVideoId from 'get-video-id';
 ```
 
 **Browser**
 ```html
-<script src="https://cdn.jsdelivr.net/npm/get-video-id/dist/get-video-id.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/get-video-id/dist/get-video-id.umd.min.js"></script>
 ```
 
 ###### Download
