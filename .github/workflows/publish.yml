@@ -33,3 +33,5 @@ jobs:
           branch: version-bump/${{ env.RELEASE_VERSION }}
           labels: version-bump
           token: ${{ secrets.GITHUB_TOKEN }}
+          base: master
+        
