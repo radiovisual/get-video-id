@@ -1,6 +1,6 @@
 # get-video-id [![codecov](https://codecov.io/gh/radiovisual/get-video-id/branch/master/graph/badge.svg?token=fG7V2VRDYY)](https://codecov.io/gh/radiovisual/get-video-id)
 
-> Get the YouTube, Vimeo, Vine, VideoPress, TikTok, Microsoft Stream, Loom and Dailymotion video id from a url or embed string.
+> Get the YouTube, Vimeo, Vine, VideoPress, TikTok, Microsoft Stream, Loom or Dailymotion video id from a url or embed string.
 
 **Pull Requests are welcome** if you would like to see support for other video services or if you find an unsupported video url pattern.
 
