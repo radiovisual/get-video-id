@@ -79,7 +79,7 @@ Returns a metadata `Object` with the video `id` and `service` name:
 
 Type: `String`
 
-The url (or embed code) from which you want to find the video id. See the
+The url (or embed code, or google redirect url) from which you want to find the video id. See the
 [Patterns section](https://github.com/radiovisual/get-video-id#patterns) to see the formats that can be supplied.
 
 ## Patterns
