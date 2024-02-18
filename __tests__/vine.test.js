@@ -42,7 +42,7 @@ describe('Vine', () => {
 
 	test('vine links returns undefined id if id missing', () => {
 		const object = fn('https://vine.co');
-		expect(object.id).toBe(undefined);
+		expect(object.id).toBeUndefined();
 		expect(object.service).toBe('vine');
 	});
 });

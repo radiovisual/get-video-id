@@ -26,7 +26,7 @@ describe('sanitize-url', () => {
 		expect(sanitizeUrl(iframeHtml)).toBe('https://example.com');
 	});
 
-	test('returns an empty string when getSrc returns null for an iframe', () => {
+	test('returns an empty string when getSrc returns undefined for an iframe', () => {
 		const iframeHtml = '<iframe></iframe>';
 		expect(sanitizeUrl(iframeHtml)).toBe('');
 	});

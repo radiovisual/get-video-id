@@ -22,8 +22,8 @@ function getVideoId(urlString) {
 	const url = extractGoogleRedirectionUrl(string_);
 
 	let metadata = {
-		id: null,
-		service: null,
+		id: undefined,
+		service: undefined,
 	};
 
 	if (/youtube|youtu\.be|y2u\.be|i.ytimg\./.test(url)) {

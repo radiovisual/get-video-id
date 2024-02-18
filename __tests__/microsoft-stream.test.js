@@ -30,7 +30,7 @@ describe('Microsoft Stream', () => {
 
 	test('microsoft stream links returns undefined id if id missing', () => {
 		const object = fn('https://web.microsoftstream.com/video');
-		expect(object.id).toBe(undefined);
+		expect(object.id).toBeUndefined();
 		expect(object.service).toBe('microsoftstream');
 	});
 });

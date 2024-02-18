@@ -7,10 +7,10 @@ test('expects a string', () => {
 	}).toThrow(/get-video-id expects a string/);
 });
 
-test('returns null as id and service', () => {
+test('returns undefined as id and service', () => {
 	const expected = {
-		id: null,
-		service: null,
+		id: undefined,
+		service: undefined,
 	};
 	expect(fn('foo')).toMatchObject(expected);
 	expect(fn('<iframe')).toMatchObject(expected);
