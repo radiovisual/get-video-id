@@ -1,7 +1,7 @@
 {
   "name": "get-video-id",
   "version": "3.5.3",
-  "description": "Get the YouTube, Vimeo, Vine, Microsoft Steam, Dailymotion, TikTok or VideoPress video id from a url or embed string.",
+  "description": "Get the YouTube, Vimeo, Vine, VideoPress, TikTok, Microsoft Stream, Loom and Dailymotion video id from a url or embed string.",
   "license": "MIT",
   "repository": "radiovisual/get-video-id",
   "main": "dist/get-video-id.js",
@@ -43,6 +43,7 @@
     "url",
     "vine",
     "vimeo",
+    "loom",
     "youtube",
     "videopress",
     "microsoft stream",
