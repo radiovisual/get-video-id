@@ -6,10 +6,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
       - run: git config --global user.email "wuergler@gmail.com"
       - run: git config --global user.name "Michael Wuergler"
@@ -21,3 +21,15 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # This step will only run if all previous steps have succeeded
+      - name: Create Pull Request for Version Bump
+        if: success()
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: Update package version
+          title: 'chore: update package version to ${{ env.RELEASE_VERSION }}'
+          body: 'Updates `package.json` version to `${{ env.RELEASE_VERSION }}`.'
+          branch: version-bump/${{ env.RELEASE_VERSION }}
+          labels: version-bump
+          token: ${{ secrets.GITHUB_TOKEN }}
