@@ -5,7 +5,8 @@ import videopress from './videopress.js';
 import microsoftStream from './microsoftstream.js';
 import tiktok from './tiktok.js';
 import dailymotion from './dailymotion.js';
-import getSrc from './utils/get-src.js';
+import sanitizeUrl from './utils/sanitize-url.js';
+import extractGoogleRedirectionUrl from './utils/extract-google-redirection-url.js';
 
 /**
  * Get the id and service from a video url.
@@ -17,71 +18,47 @@ function getVideoId(urlString) {
 		throw new TypeError('get-video-id expects a string');
 	}
 
-	let string_ = urlString;
-
-	if (/<iframe/gi.test(string_)) {
-		string_ = getSrc(string_) || '';
-	}
-
-	// Remove surrounding whitespaces or linefeeds
-	string_ = string_.trim();
-
-	// Remove the '-nocookie' flag from youtube urls
-	string_ = string_.replace('-nocookie', '');
-
-	// Remove any leading `www.`
-	string_ = string_.replace('/www.', '/');
+	const string_ = sanitizeUrl(urlString);
+	const url = extractGoogleRedirectionUrl(string_);
 
 	let metadata = {
 		id: null,
 		service: null,
 	};
 
-	// Try to handle google redirection uri
-	if (/\/\/google/.test(string_)) {
-		// Find the redirection uri
-		const matches = string_.match(/url=([^&]+)&/);
-
-		// Decode the found uri and replace current url string - continue with final link
-		if (matches) {
-			// JavaScript can get encoded URI
-			string_ = decodeURIComponent(matches[1]);
-		}
-	}
-
-	if (/youtube|youtu\.be|y2u\.be|i.ytimg\./.test(string_)) {
+	if (/youtube|youtu\.be|y2u\.be|i.ytimg\./.test(url)) {
 		metadata = {
-			id: youtube(string_),
+			id: youtube(url),
 			service: 'youtube',
 		};
-	} else if (/vimeo/.test(string_)) {
+	} else if (/vimeo/.test(url)) {
 		metadata = {
-			id: vimeo(string_),
+			id: vimeo(url),
 			service: 'vimeo',
 		};
-	} else if (/vine/.test(string_)) {
+	} else if (/vine/.test(url)) {
 		metadata = {
-			id: vine(string_),
+			id: vine(url),
 			service: 'vine',
 		};
-	} else if (/videopress/.test(string_)) {
+	} else if (/videopress/.test(url)) {
 		metadata = {
-			id: videopress(string_),
+			id: videopress(url),
 			service: 'videopress',
 		};
-	} else if (/microsoftstream/.test(string_)) {
+	} else if (/microsoftstream/.test(url)) {
 		metadata = {
-			id: microsoftStream(string_),
+			id: microsoftStream(url),
 			service: 'microsoftstream',
 		};
-	} else if (/tiktok\.com/.test(string_)) {
+	} else if (/tiktok\.com/.test(url)) {
 		metadata = {
-			id: tiktok(string_),
+			id: tiktok(url),
 			service: 'tiktok',
 		};
-	} else if (/(dailymotion\.com|dai\.ly)/.test(string_)) {
+	} else if (/(dailymotion\.com|dai\.ly)/.test(url)) {
 		metadata = {
-			id: dailymotion(string_),
+			id: dailymotion(url),
 			service: 'dailymotion',
 		};
 	}
