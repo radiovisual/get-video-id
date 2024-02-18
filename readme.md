@@ -1,15 +1,22 @@
 # get-video-id [![codecov](https://codecov.io/gh/radiovisual/get-video-id/branch/master/graph/badge.svg?token=fG7V2VRDYY)](https://codecov.io/gh/radiovisual/get-video-id)
 
-> Get the YouTube, Vimeo, Vine, VideoPress, TikTok, Microsoft Stream and Dailymotion video id from a url or embed string.
+> Get the YouTube, Vimeo, Vine, VideoPress, TikTok, Microsoft Stream, Loom or Dailymotion video id from a url or embed string.
 
 **Pull Requests are welcome** if you would like to see support for other video services or if you find an unsupported video url pattern.
 
 ## Install
 
+You can install with npm:
+
 ```
 $ npm install --save get-video-id
 ```
 
+or with yarn:
+
+```
+$ yarn add get-video-id
+```
 
 ## Import
 
@@ -70,8 +77,8 @@ Returns a metadata `Object` with the video `id` and `service` name:
 
 ```
 {
-  id: 'String',
-  service: 'String'
+  id: `String` | `undefined`,
+  service: `String` | `undefined`
 }
 ```
 
@@ -98,7 +105,7 @@ http://y2u.be/*
 youtube://
 ```
 
-*YouTube Shorts**
+**YouTube Shorts**
 ```
 https://youtube.com/shorts/*
 https://www.youtube.com/shorts/*
@@ -252,6 +259,7 @@ https://web.microsoftstream.com/embed/video/*
 ```
 <iframe src="https://web.microsoftstream.com/embed/video/*?&" width="640" height="360"></iframe>
 ```
+
 ### TikTok
 
 **TikTok urls**
@@ -280,6 +288,20 @@ http://dai.ly/*
 
 **:warning: Unsupported Dailymotion urls**
  *  Channel id urls: `http://www.dailymotion.com/hub/*_title`
+
+### Loom
+
+**Loom urls**
+```
+https://www.loom.com/share/*
+https://www.loom.com/share/*?
+https://www.loom.com/embed/*
+ ```
+
+**Loom iframes**
+```
+<iframe src="https://www.loom.com/embed/*" width="600" height="600"></iframe>
+```
 
 ## Contributing
 
