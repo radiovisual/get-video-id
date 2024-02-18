@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
@@ -15,7 +14,9 @@ jobs:
       - run: git config --global user.email "wuergler@gmail.com"
       - run: git config --global user.name "Michael Wuergler"
       - run: npm ci
-      - run: npm version "${GITHUB_REF:10}"
+      - name: Extract version from tag
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+      - run: npm version ${{ env.RELEASE_VERSION }}
       - run: npm run build
       - run: npm publish
         env:
