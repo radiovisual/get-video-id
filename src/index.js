@@ -62,9 +62,9 @@ function getVideoId(urlString) {
 			id: dailymotion(url),
 			service: 'dailymotion',
 		};
-	} else if (/loom\.com/.test(string_)) {
+	} else if (/loom\.com/.test(url)) {
 		metadata = {
-			id: loom(string_),
+			id: loom(url),
 			service: 'loom',
 		};
 	}
