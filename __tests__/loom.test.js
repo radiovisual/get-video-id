@@ -2,12 +2,11 @@
 import fn from '../src/index.js';
 
 /**
- *  Loom should be able to find these patterns:
+ * Loom should be able to find these patterns:
  *
- *  Urls:
- *  https://www.loom.com/share/*
- *  https://www.loom.com/share/*?
- * 	https://www.loom.com/embed/*
+ * https://www.loom.com/share/*
+ * https://www.loom.com/share/*?
+ * https://www.loom.com/embed/*
  */
 describe('Loom', () => {
 	test('extracts loom video id in url without query parameters', () => {
