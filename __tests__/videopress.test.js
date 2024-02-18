@@ -30,7 +30,7 @@ describe('Videopress', () => {
 
 	test('videopress links returns undefined id if id missing', () => {
 		const object = fn('https://videopress.com');
-		expect(object.id).toBe(undefined);
+		expect(object.id).toBeUndefined();
 		expect(object.service).toBe('videopress');
 	});
 });

@@ -20,7 +20,7 @@ describe('TikTok', () => {
 
 	test('returns undefined for unknown video ids', () => {
 		const actual = fn('http://www.tiktok.com');
-		expect(actual.id).toBe(undefined);
+		expect(actual.id).toBeUndefined();
 		expect(actual.service).toBe('tiktok');
 	});
 });

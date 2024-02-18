@@ -186,23 +186,22 @@ describe('Youtube', () => {
 		expect(fn('https://www.youtube.com/live/ABC1230').id).toBe('ABC1230');
 		expect(fn('www.youtube-nocookie.com/live/ABC12301?feature=share').id).toBe('ABC12301');
 		expect(fn('http://www.youtube.com/live/ABC12302?feature=share').id).toBe('ABC12302');
-
 		expect(fn('http://www.youtube.com/live/ABC12302?feature=share').service).toBe('youtube');
 	});
 
 	test('youtube links returns undefined id if id missing', () => {
 		const object = fn('https://www.youtube.com');
-		expect(object.id).toBe(undefined);
+		expect(object.id).toBeUndefined();
 		expect(object.service).toBe('youtube');
 	});
 
-	test('removes time hash at end of string ', () => {
+	test('extracts ids from urls with time hashes', () => {
 		expect(fn('https://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').id).toBe('G-3YxlZIhus');
 		expect(fn('http://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').id).toBe('G-3YxlZIhus');
 		expect(fn('http://www.youtube.com/watch?v=G-3YxlZIhus#t=0m10s').service).toBe('youtube');
 	});
 
-	test('removes trailing parameters from youtube urls', () => {
+	test('extracts ids from urls with trailing parameters', () => {
 		expect(fn('http://youtu.be/G-3YxlZIhus&feature=channel').id).toBe('G-3YxlZIhus');
 		expect(fn('http://youtube.com/vi/G-3YxlZIhus&feature=channel').id).toBe('G-3YxlZIhus');
 		expect(fn('http://youtube.com/vi/G-3YxlZIhus&feature=channel').service).toBe('youtube');

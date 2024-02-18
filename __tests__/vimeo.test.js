@@ -81,7 +81,7 @@ describe('Vimeo', () => {
 
 	test('vimeo links returns undefined id if id missing', () => {
 		const object = fn('https://www.vimeo.co');
-		expect(object.id).toBe(undefined);
+		expect(object.id).toBeUndefined();
 		expect(object.service).toBe('vimeo');
 	});
 

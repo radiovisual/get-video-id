@@ -1,6 +1,6 @@
 export default function getVideoId(
 	url: string
 ): {
-	id: string | null;
-	service: 'youtube' | 'vimeo' | 'vine' | 'videopress' | 'microsoftstream' | 'tiktok' | 'dailymotion' | null;
+	id: string | undefined;
+	service: 'youtube' | 'vimeo' | 'vine' | 'videopress' | 'microsoftstream' | 'tiktok' | 'dailymotion' | undefined;
 };

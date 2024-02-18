@@ -28,11 +28,11 @@ describe('get-src', () => {
 	});
 
 	test('returns undefined when no src= is found', () => {
-		expect(fn('hello')).toBe(undefined);
-		expect(fn('<iframe')).toBe(undefined);
+		expect(fn('hello')).toBeUndefined();
+		expect(fn('<iframe')).toBeUndefined();
 	});
 
 	test('single quotes return undefined', () => {
-		expect(fn(' src=\'noop\' ')).toBe(undefined);
+		expect(fn(' src=\'noop\' ')).toBeUndefined();
 	});
 });

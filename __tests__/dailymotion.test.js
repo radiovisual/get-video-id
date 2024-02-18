@@ -28,11 +28,11 @@ describe('Dailymotion', () => {
 
 	test('Dailymotion returns the service', () => {
 		expect(fn('http://www.dailymotion.com/video/1234').service).toBe('dailymotion');
-		expect(fn('http://www.dailymotion.com/video/1234').id).toBe('1234');
 	});
 
 	test('Dailymotion short link', () => {
 		expect(fn('http://dai.ly/x2no31b').id).toBe('x2no31b');
+		expect(fn('http://dai.ly/x2no31b').service).toBe('dailymotion');
 	});
 
 	test('Dailymotion dynamic id', () => {

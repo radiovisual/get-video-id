@@ -43,9 +43,9 @@ describe('Google Redirects', () => {
 		expect(fn(url).service).toBe('microsoftstream');
 	});
 
-	test('google link returns null as id and service if missing url parameter', () => {
+	test('google link returns undefined as id and service if missing url parameter', () => {
 		const url = 'https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwiz9P3Aw5DVAhUDZVAKHcegCi8QuAIINDAB&usg=AFQjCNG0kTPdL8nC6zCi2QoZ1KVeTXH-pw';
-		expect(fn(url).id).toBe(null);
-		expect(fn(url).service).toBe(null);
+		expect(fn(url).id).toBeUndefined();
+		expect(fn(url).service).toBeUndefined();
 	});
 });

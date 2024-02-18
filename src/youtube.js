@@ -30,6 +30,9 @@ function stripParameters(shortcodeString) {
 export default function youtube(youtubeString) {
 	let string_ = youtubeString;
 
+	// Remove the '-nocookie' flag from youtube urls
+	string_ = string_.replace('-nocookie', '');
+
 	// Remove time hash at the end of the string
 	string_ = string_.replace(/#t=.*$/, '');
 

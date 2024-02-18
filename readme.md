@@ -20,14 +20,14 @@ You can use this module in **Node.js** or in the **browser**. See below for the 
 const getVideoId = require('get-video-id');
 ```
 
-**ES2015 Module**
+**ES Module**
 ```js
 import getVideoId from 'get-video-id';
 ```
 
 **Browser**
 ```html
-<script src="https://cdn.jsdelivr.net/npm/get-video-id/dist/get-video-id.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/get-video-id/dist/get-video-id.umd.min.js"></script>
 ```
 
 ###### Download
@@ -48,18 +48,18 @@ Simply supply the module with a url or embed string matching any of the [pattern
 ```js
 import getVideoId from 'get-video-id';
 
-getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
-//=> { id: '8rSH8-pbHZ0', service: 'youtube' }
+getVideoId('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+//=> { id: 'dQw4w9WgXcQ', service: 'youtube' }
 
-const { id } = getVideoId('https://www.youtube.com/watch?v=8rSH8-pbHZ0');
-//=> '8rSH8-pbHZ0'
+const { id } = getVideoId('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+//=> 'dQw4w9WgXcQ'
 ```
 
 get-video-id can also find the video buried in a Google redirection URL if it contains a reference to any of the supported URL patterns.
 
 ```js
-getVideoId('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIIjAA&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DeG1uDU0rSLw&usg=AFQjCNECyDn3DQL7U6VW2CnXQQjB0gNKqA');
-//=> { id: 'eG1uDU0rSLw', service: 'youtube' }
+getVideoId('https://www.google.cz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwj30L2MvpDVAhUFZVAKHb8CBaYQuAIIIjAA&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdQw4w9WgXcQ');
+//=> { id: 'dQw4w9WgXcQ', service: 'youtube' }
 ```
 
 ## API
@@ -79,7 +79,7 @@ Returns a metadata `Object` with the video `id` and `service` name:
 
 Type: `String`
 
-The url (or embed code) from which you want to find the video id. See the
+The url (or embed code, or google redirect url) from which you want to find the video id. See the
 [Patterns section](https://github.com/radiovisual/get-video-id#patterns) to see the formats that can be supplied.
 
 ## Patterns
@@ -165,6 +165,13 @@ http://www.youtube.com/attribution_link?u=%2Fwatch%3Fv%3D
 http://www.youtube.com/attribution_link?u=/watch?v=*&
 http://www.youtube.com/attribution_link?u=/watch?v=*
 http://www.youtube.com/attribution_link?/watch?v=*
+```
+
+**YouTube live URLs**
+```
+https://www.youtube.com/live/*
+https://youtube.com/live/*
+https://youtube.com/live/*?
 ```
 
 **Google Redirection to YouTube**
