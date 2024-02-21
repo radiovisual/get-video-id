@@ -15,7 +15,8 @@
   "exports": {
     ".": {
       "import": "./dist/get-video-id.esm.js",
-      "require": "./dist/get-video-id.js"
+      "require": "./dist/get-video-id.js",
+      "types": "./index.d.ts"
     }
   },
   "author": {
