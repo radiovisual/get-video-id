@@ -23,9 +23,10 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Commit and push version bump
         run: |
+          git checkout -b version-bump/${{ env.RELEASE_VERSION }}
           git add package.json
           git commit -m "chore: bump version to ${{ env.RELEASE_VERSION }}"
-          git push origin HEAD:${{ env.GITHUB_REF#refs/tags/ }}
+          git push origin version-bump/${{ env.RELEASE_VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
