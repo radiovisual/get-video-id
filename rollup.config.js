@@ -10,11 +10,6 @@ const pkg = JSON.parse(await readFile(fileUrl, 'utf8'));
 
 const minifiedExtension = file => file.replace(/.js/, '.min.js');
 
-const babelRuntimeVersion = pkg.dependencies['@babel/runtime'].replace(
-	/^\D*/,
-	'',
-);
-
 /**
  * Used for generating external dependencies
  * See: https://github.com/rollup/rollup-plugin-babel/issues/148#issuecomment-399696316
@@ -82,11 +77,8 @@ const config = {
 		nodeResolve(),
 		commonjs(),
 		babel({
-			babelHelpers: 'runtime',
+			babelHelpers: 'bundled',
 			exclude: /node_modules/,
-			plugins: [
-				['@babel/plugin-transform-runtime', {version: babelRuntimeVersion}],
-			],
 			presets: [['@babel/preset-env', {targets: 'defaults'}]],
 		}),
 	],

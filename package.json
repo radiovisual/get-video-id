@@ -68,7 +68,6 @@
 		"@babel/core": "^7.15.0",
 		"@babel/eslint-parser": "^7.12.1",
 		"@babel/plugin-transform-modules-commonjs": "^7.15.0",
-		"@babel/plugin-transform-runtime": "^7.23.9",
 		"@babel/preset-env": "^7.15.0",
 		"@rollup/plugin-babel": "^6.0.4",
 		"@rollup/plugin-commonjs": "^25.0.7",
@@ -96,8 +95,5 @@
 			"text",
 			"lcov"
 		]
-	},
-	"dependencies": {
-		"@babel/runtime": "^7.23.9"
 	}
 }
