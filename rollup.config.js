@@ -1,6 +1,5 @@
 import {readFile} from 'node:fs/promises';
 import nodeResolve from '@rollup/plugin-node-resolve';
-import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
 
@@ -8,21 +7,7 @@ import terser from '@rollup/plugin-terser';
 const fileUrl = new URL('package.json', import.meta.url);
 const pkg = JSON.parse(await readFile(fileUrl, 'utf8'));
 
-const minifiedExtension = file => file.replace(/.js/, '.min.js');
-
-/**
- * Used for generating external dependencies
- * See: https://github.com/rollup/rollup-plugin-babel/issues/148#issuecomment-399696316
- */
-const makeExternalPredicate = externalArray => {
-	if (externalArray.length === 0) {
-		return () => false;
-	}
-
-	const pattern = new RegExp(`^(${externalArray.join('|')})($|/)`);
-
-	return id => pattern.test(id);
-};
+const minifiedExtension = file => file.replace(/(\.c?js)$/, '.min$1');
 
 const outputOptions = {
 	sourcemap: true,
@@ -55,32 +40,22 @@ const config = {
 			...outputOptions,
 		},
 		{
-			file: minifiedExtension('dist/get-video-id.umd.js'),
+			file: minifiedExtension('dist/get-video-id.umd.cjs'),
 			format: 'umd',
 			name: 'getVideoId',
 			plugins: [terser()],
 			...outputOptions,
 		},
 		{
-			file: 'dist/get-video-id.umd.js',
+			file: 'dist/get-video-id.umd.cjs',
 			format: 'umd',
 			name: 'getVideoId',
 			...outputOptions,
 		},
 	],
-	external: makeExternalPredicate([
-		// Handles both dependencies and peer dependencies so we don't have to manually maintain a list
-		...Object.keys(pkg.dependencies || {}),
-		...Object.keys(pkg.peerDependencies || {}),
-	]),
 	plugins: [
 		nodeResolve(),
 		commonjs(),
-		babel({
-			babelHelpers: 'bundled',
-			exclude: /node_modules/,
-			presets: [['@babel/preset-env', {targets: 'defaults'}]],
-		}),
 	],
 };
 

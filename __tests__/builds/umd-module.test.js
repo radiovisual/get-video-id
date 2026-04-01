@@ -1,6 +1,8 @@
 /* istanbul ignore file */
-/* eslint-disable unicorn/prefer-module */
-const getVideoId = require('../../dist/get-video-id.umd.js');
+import {createRequire} from 'node:module'; // eslint-disable-line import-x/order
+
+const require = createRequire(import.meta.url);
+const getVideoId = require('../../dist/get-video-id.umd.cjs');
 
 describe('bundled umd module', () => {
 	test('has the expected API', () => {
