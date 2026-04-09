@@ -4,7 +4,6 @@
 /* eslint-disable no-promise-executor-return */
 /* eslint-disable unicorn/prefer-module */
 import path from 'path';
-import {expect} from '@jest/globals';
 import {JSDOM} from 'jsdom';
 
 describe('browser build', () => {
