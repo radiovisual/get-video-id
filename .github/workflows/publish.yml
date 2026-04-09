@@ -2,17 +2,21 @@ name: Publish Package to npmjs
 on:
   release:
     types: [created]
+
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
         with:
-          node-version: "22.x"
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
       - run: git config --global user.email "wuergler@gmail.com"
       - run: git config --global user.name "Michael Wuergler"
       - run: npm ci
@@ -20,7 +24,7 @@ jobs:
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
       - run: npm version ${{ env.RELEASE_VERSION }} --no-git-tag-version
       - run: npm run build
-      - run: npm publish --provenance
+      - run: npm publish
       - name: Commit and push version bump
         run: |
           git checkout -b version-bump/${{ env.RELEASE_VERSION }}
