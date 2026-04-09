@@ -13,7 +13,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22.x"
-          registry-url: "https://registry.npmjs.org"
       - run: git config --global user.email "wuergler@gmail.com"
       - run: git config --global user.name "Michael Wuergler"
       - run: npm ci
